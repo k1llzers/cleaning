@@ -1,4 +1,4 @@
-package com.naukma.cleaning.services;
+package com.naukma.cleaning.services.proposalService;
 
 import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaning.models.order.Proposal;

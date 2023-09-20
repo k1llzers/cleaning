@@ -25,4 +25,6 @@ public class Order {
     @NonNull
     private Address address;
     private Status orderStatus = Status.NOT_STARTED;
+    @NonNull
+    private Set<Proposal> proposals;
 }

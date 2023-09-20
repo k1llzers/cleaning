@@ -1,4 +1,4 @@
-package com.naukma.cleaning.services;
+package com.naukma.cleaning.services.notificationService;
 
 import com.naukma.cleaning.models.user.Role;
 import com.naukma.cleaning.models.user.User;

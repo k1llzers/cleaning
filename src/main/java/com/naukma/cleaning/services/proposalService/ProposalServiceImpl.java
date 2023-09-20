@@ -1,7 +1,9 @@
-package com.naukma.cleaning.services;
+package com.naukma.cleaning.services.proposalService;
 
 import com.naukma.cleaning.models.order.Proposal;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProposalServiceImpl implements ProposalService {
     @Override
     public void createProposal(Proposal proposal) {

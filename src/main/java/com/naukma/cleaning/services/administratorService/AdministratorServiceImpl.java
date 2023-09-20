@@ -2,7 +2,7 @@ package com.naukma.cleaning.services.administratorService;
 
 import com.naukma.cleaning.models.user.Role;
 import com.naukma.cleaning.models.user.User;
-import com.naukma.cleaning.services.UserService;
+import com.naukma.cleaning.services.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

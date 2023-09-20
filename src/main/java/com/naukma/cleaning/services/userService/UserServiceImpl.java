@@ -1,8 +1,7 @@
-package com.naukma.cleaning.services;
+package com.naukma.cleaning.services.userService;
 
 import com.naukma.cleaning.models.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

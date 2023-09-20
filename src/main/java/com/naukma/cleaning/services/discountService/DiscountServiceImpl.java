@@ -1,7 +1,9 @@
-package com.naukma.cleaning.services;
+package com.naukma.cleaning.services.discountService;
 
 import com.naukma.cleaning.models.order.Discount;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DiscountServiceImpl implements DiscountService {
     @Override
     public void createDiscount(Discount discount) {
@@ -20,6 +22,11 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public Discount getDiscount(long id) {
+        return null;
+    }
+
+    @Override
+    public Discount getCurrentDiscount() {
         return null;
     }
 }
