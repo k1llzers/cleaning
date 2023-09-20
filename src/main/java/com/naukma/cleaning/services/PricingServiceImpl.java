@@ -2,7 +2,7 @@ package com.naukma.cleaning.services;
 
 import com.naukma.cleaning.models.order.Proposal;
 
-public class ProposalServiceImp implements ProposalService {
+public class PricingServiceImpl implements ProposalService {
     @Override
     public void createProposal(Proposal proposal) {
 

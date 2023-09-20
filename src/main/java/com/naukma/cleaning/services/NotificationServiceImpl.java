@@ -5,7 +5,7 @@ import com.naukma.cleaning.models.user.User;
 import org.springframework.stereotype.Component;
 
 @Component
-public class NotificationServiceImp implements NotificationService {
+public class NotificationServiceImpl implements NotificationService {
     @Override
     public void notify(User user) {
 

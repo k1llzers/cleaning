@@ -2,7 +2,7 @@ package com.naukma.cleaning.services;
 
 import com.naukma.cleaning.models.order.Discount;
 
-public class DiscountServiceImp implements DiscountService {
+public class DiscountServiceImpl implements DiscountService {
     @Override
     public void createDiscount(Discount discount) {
 

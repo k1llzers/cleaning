@@ -3,7 +3,7 @@ package com.naukma.cleaning.services;
 import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaning.models.order.Status;
 
-public class OrderServiceImp implements OrderService {
+public class OrderServiceImpl implements OrderService {
     @Override
     public void createOrder(Order order) {
 
