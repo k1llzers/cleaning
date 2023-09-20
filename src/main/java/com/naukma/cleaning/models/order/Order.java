@@ -24,4 +24,5 @@ public class Order {
     private Comment comment;
     @NonNull
     private Address address;
+    private Status orderStatus = Status.NOT_STARTED;
 }
