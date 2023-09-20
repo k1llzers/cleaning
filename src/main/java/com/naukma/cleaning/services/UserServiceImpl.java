@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
     public User getUser(long id) {
         return null;
     }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return null;
+    }
 }
