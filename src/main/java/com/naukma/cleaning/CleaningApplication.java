@@ -9,7 +9,7 @@ public class CleaningApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(CleaningApplication.class, args);
-//        abc
+        System.out.println("It's alive!");
     }
 
 }

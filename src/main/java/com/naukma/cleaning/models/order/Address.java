@@ -14,6 +14,7 @@ public class Address {
     private String street;
     @NonNull
     private String houseNumber;
+    //TODO: nullable?
     @NonNull
     private int flatNumber;
 }
