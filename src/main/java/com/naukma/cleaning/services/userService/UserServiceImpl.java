@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private PasswordEncoder encoder;
+    private final PasswordEncoder encoder;
+
+    public UserServiceImpl(PasswordEncoder encoder) {
+        this.encoder = encoder;
+    }
+
     @Override
     public void createUser(User user) {
 
