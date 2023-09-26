@@ -3,7 +3,7 @@ package com.naukma.cleaning.services.orderService;
 import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.pricingService.PricingService;
-import com.naukma.cleaning.services.proposalService.ProposalService;
+import com.naukma.cleaning.services.proposalService.CommercialProposalService;
 import com.naukma.cleaning.services.commentService.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
     private PricingService pricingService;
     private CommentService commentService;
-    private ProposalService proposalService;
+    private CommercialProposalService commercialProposalService;
 
     @Autowired
-    public OrderServiceImpl(PricingService pricingService, CommentService commentService, ProposalService proposalService) {
+    public OrderServiceImpl(PricingService pricingService, CommentService commentService, CommercialProposalService commercialProposalService) {
         this.pricingService = pricingService;
         this.commentService = commentService;
-        this.proposalService = proposalService;
+        this.commercialProposalService = commercialProposalService;
     }
 
 

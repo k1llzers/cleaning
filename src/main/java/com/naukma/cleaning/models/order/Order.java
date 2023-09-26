@@ -26,5 +26,5 @@ public class Order {
     private Address address;
     private Status orderStatus = Status.NOT_STARTED;
     @NonNull
-    private Set<Proposal> proposals;
+    private Set<CommercialProposal> commercialProposals;
 }
