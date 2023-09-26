@@ -1,6 +1,8 @@
 package com.naukma.cleaning.services.discountService;
 
-import com.naukma.cleaning.models.order.Discount;
+
+import com.naukma.cleaningstarter.Discount;
+import com.naukma.cleaningstarter.DiscountService;
 import org.springframework.stereotype.Service;
 
 @Service
