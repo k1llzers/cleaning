@@ -3,9 +3,8 @@ package com.naukma.cleaning.services.discountService;
 
 import com.naukma.cleaningstarter.Discount;
 import com.naukma.cleaningstarter.DiscountService;
-import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class DiscountServiceImpl implements DiscountService {
     @Override
     public void createDiscount(Discount discount) {
