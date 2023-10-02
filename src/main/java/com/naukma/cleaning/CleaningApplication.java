@@ -19,7 +19,7 @@ public class CleaningApplication {
     //LoggingService loggingService;
 
     public static void main(String[] args) {
-        SpringApplication.run(CleaningApplication.class, args);
+        var context = SpringApplication.run(CleaningApplication.class, args);
         System.out.println("It's alive!");
     }
 
