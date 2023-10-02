@@ -1,6 +1,5 @@
 package com.naukma.cleaning.models.order;
 
-import com.naukma.cleaning.models.user.User;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +14,4 @@ public class Comment {
     private String text;
     @NonNull
     private int rate;
-    @NonNull
-    private User user;
-
 }
