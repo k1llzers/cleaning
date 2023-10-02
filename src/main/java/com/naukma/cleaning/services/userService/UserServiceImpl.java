@@ -1,7 +1,7 @@
 package com.naukma.cleaning.services.userService;
 
+import com.naukma.cleaning.dao.UserDao;
 import com.naukma.cleaning.models.user.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     private final PasswordEncoder encoder;
 
-    public UserServiceImpl(PasswordEncoder encoder) {
+    private UserDao userDao;
+
+    public UserServiceImpl(PasswordEncoder encoder, UserDao userDao) {
         this.encoder = encoder;
+        this.userDao = userDao;
     }
 
     @Override
     public void createUser(User user) {
-
     }
 
     @Override
