@@ -1,14 +1,19 @@
 package com.naukma.cleaning.services.addressService;
 
 import com.naukma.cleaning.dao.AddressDao;
+import com.naukma.cleaning.dao.UserDao;
 import com.naukma.cleaning.dao.entities.AddressEntity;
+import com.naukma.cleaning.dao.entities.UserEntity;
 import com.naukma.cleaning.models.order.AddressDto;
-
+import com.naukma.cleaning.models.user.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class AddressServiceImpl implements AddressService{
+public class AddressServiceImpl implements AddressService {
+
     private AddressDao addressDao;
     private ModelMapper modelMapper;
 
@@ -18,8 +23,10 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public void createAddress(AddressDto addressDto) {
+    public void createAddress(UserDto userDto, AddressDto addressDto) {
+        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
         AddressEntity addressEntity = modelMapper.map(addressDto, AddressEntity.class);
+        addressEntity.setUserEntity(userEntity);
         addressDao.save(addressEntity);
     }
 
@@ -36,7 +43,14 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public AddressDto getAddress(long id) {
-        AddressEntity addressById = addressDao.getReferenceById(id);
-        return modelMapper.map(addressById,AddressDto.class);
+        AddressEntity addressEntity = addressDao.getReferenceById(id);
+        return modelMapper.map(addressEntity, AddressDto.class);
+    }
+
+    @Override
+    public List<AddressDto> getUserAddresses(UserDto userDto) {
+        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+        List<AddressEntity> addresses = addressDao.findAddressEntitiesByUserEntity(userEntity);
+        return addresses.stream().map(x -> modelMapper.map(x, AddressDto.class)).toList();
     }
 }

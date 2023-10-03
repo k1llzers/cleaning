@@ -23,4 +23,7 @@ public class AddressEntity {
     @Column(nullable = false)
     private String houseNumber;
     private int flatNumber;
+    @ManyToOne
+    @JoinColumn(name="cleaning_user_fk", nullable=false)
+    private UserEntity userEntity;
 }

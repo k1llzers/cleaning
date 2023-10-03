@@ -25,8 +25,6 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_addresses")
-    @Column(nullable = false)
+    @OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY)
     private List<AddressEntity> addressList;
 }
