@@ -43,7 +43,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressDto getAddress(long id) {
-        AddressEntity addressEntity = addressDao.getReferenceById(id);
+        AddressEntity addressEntity = addressDao.findById(id).get();
         return modelMapper.map(addressEntity, AddressDto.class);
     }
 

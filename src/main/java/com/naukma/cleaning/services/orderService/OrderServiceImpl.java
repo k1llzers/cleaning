@@ -49,7 +49,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDto getOrder(long id) {
-        OrderEntity orderById = orderDao.getReferenceById(id);
+        OrderEntity orderById = orderDao.findById(id).get();
         return modelMapper.map(orderById, OrderDto.class);
     }
 }

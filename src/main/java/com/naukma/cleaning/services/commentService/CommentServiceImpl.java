@@ -37,7 +37,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentDto getComment(long id) {
-        CommentEntity commentById = commentDao.getReferenceById(id);
+        CommentEntity commentById = commentDao.findById(id).get();
         return modelMapper.map(commentById,CommentDto.class);
     }
 }

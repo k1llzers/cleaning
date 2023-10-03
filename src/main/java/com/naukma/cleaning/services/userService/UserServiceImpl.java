@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUser(long id) {
-        UserEntity userById = userDao.getReferenceById(id);
+        UserEntity userById = userDao.findById(id).get();
         return modelMapper.map(userById,UserDto.class);
     }
 

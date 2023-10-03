@@ -38,7 +38,7 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public DiscountDto getDiscount(long id) {
-        return modelMapper.map(discountDao.getReferenceById(id),DiscountDto.class);
+        return modelMapper.map(discountDao.findById(id).get(),DiscountDto.class);
     }
 
     @Override

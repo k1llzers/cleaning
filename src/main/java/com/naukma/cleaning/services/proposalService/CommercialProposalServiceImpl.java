@@ -37,7 +37,7 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
 
     @Override
     public CommercialProposalDto getCommercialProposal(long id) {
-        var commercialProposalEntity = commercialProposalDao.getReferenceById(id);
+        CommercialProposalEntity commercialProposalEntity = commercialProposalDao.findById(id).get();
         return modelMapper.map(commercialProposalEntity, CommercialProposalDto.class);
     }
 }
