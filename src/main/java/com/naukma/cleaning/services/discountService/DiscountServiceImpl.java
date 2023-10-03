@@ -43,7 +43,7 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public DiscountDto getCurrentDiscount() {
-        DiscountEntity currentDiscount = discountDao.getByStartLessThanEqualAndFinishGreaterThanEqual(LocalDateTime.now());
+        DiscountEntity currentDiscount = discountDao.getByStartLessThanEqualAndFinishGreaterThanEqual(LocalDateTime.now(),LocalDateTime.now());
         return modelMapper.map(currentDiscount, DiscountDto.class);
     }
 }

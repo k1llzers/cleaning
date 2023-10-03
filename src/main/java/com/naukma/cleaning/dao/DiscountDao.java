@@ -7,5 +7,5 @@ import com.naukma.cleaning.dao.entities.DiscountEntity;
 import java.time.LocalDateTime;
 
 public interface DiscountDao extends JpaRepository<DiscountEntity, Long> {
-    DiscountEntity getByStartLessThanEqualAndFinishGreaterThanEqual(LocalDateTime localDateTime);
+    DiscountEntity getByStartLessThanEqualAndFinishGreaterThanEqual(LocalDateTime start, LocalDateTime finish);
 }
