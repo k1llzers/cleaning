@@ -25,7 +25,7 @@ public class OrderEntity {
     @Column(nullable = false)
     private LocalDateTime creationTime;
     @OneToOne
-    @Column(nullable = false)
+    @JoinColumn(name = "client_fk", nullable = false)
     private UserEntity client;
     @ManyToMany
     @JoinTable(name = "order_executors",
@@ -35,7 +35,7 @@ public class OrderEntity {
     @OneToOne
     private CommentEntity comment;
     @OneToOne
-    @Column(nullable = false)
+    @JoinColumn(name = "address_fk", nullable = false)
     private AddressEntity address;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
