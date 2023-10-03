@@ -15,8 +15,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
     @Override
     public void register(String name,String email, String password) {
-        UserDto userDto = new UserDto(name, password, email);
-        userDto.setRole(Role.User);
+        UserDto userDto = new UserDto(name, password, email,Role.User);
         userService.createUser(userDto);
     }
 

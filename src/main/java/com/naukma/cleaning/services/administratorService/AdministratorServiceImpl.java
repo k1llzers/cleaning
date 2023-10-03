@@ -17,8 +17,7 @@ public class AdministratorServiceImpl implements AdministratorService{
 
     @Override
     public void createEmployee(String name, String email, String password) {
-        UserDto employee = new UserDto(name, password, email);
-        employee.setRole(Role.Employee);
+        UserDto employee = new UserDto(name, password, email,Role.Employee);
         userService.createUser(employee);
     }
 
@@ -34,8 +33,7 @@ public class AdministratorServiceImpl implements AdministratorService{
 
     @Override
     public void createAdmin(String name, String email, String password) {
-        UserDto admin = new UserDto(name, password, email);
-        admin.setRole(Role.Admin);
+        UserDto admin = new UserDto(name, password, email,Role.Admin);
         userService.createUser(admin);
     }
 }
