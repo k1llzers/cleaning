@@ -17,12 +17,16 @@ public class OrderEntity {
     @Id
     @GeneratedValue
     private long id;
+    @Column(nullable = false)
     private double price;
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
     private LocalDateTime orderTime;
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
     private LocalDateTime creationTime;
     @OneToOne
+    @Column(nullable = false)
     private UserEntity client;
     @ManyToMany
     @JoinTable(name = "order_executors",
@@ -32,8 +36,10 @@ public class OrderEntity {
     @OneToOne
     private CommentEntity comment;
     @OneToOne
+    @Column(nullable = false)
     private AddressEntity address;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Status orderStatus;
     @ManyToMany
     @JoinTable(name = "order_proposals",

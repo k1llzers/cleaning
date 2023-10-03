@@ -20,8 +20,10 @@ public class CommercialProposalEntity {
     @Id
     @GeneratedValue
     private long id;
+    @Column(unique = true, nullable = false)
     private String name;
     @Column(length = 1000)
     private String description;
+    @Column(nullable = false)
     private double price;
 }
