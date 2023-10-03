@@ -20,10 +20,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(UserDto userDto) {
+    public UserDto createUser(UserDto userDto) {
         UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
         userEntity.setPassword(encoder.encode(userEntity.getPassword()));
-        userDao.save(userEntity);
+        return modelMapper.map(userDao.save(userEntity),UserDto.class);
     }
 
     @Override
@@ -40,7 +40,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUser(long id) {
         UserEntity userById = userDao.getReferenceById(id);
-        return modelMapper.map(userById,UserDto.class);
+//        return modelMapper.map(userById,UserDto.class);
+        return null;
     }
 
     @Override
