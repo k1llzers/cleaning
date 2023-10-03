@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,4 +22,10 @@ public class DiscountEntity {
     private String name;
     @Column(nullable = false)
     private double discountPercent;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private LocalDateTime start;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
+    private LocalDateTime finish;
 }

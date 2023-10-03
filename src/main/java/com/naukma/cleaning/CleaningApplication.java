@@ -28,8 +28,6 @@ public class CleaningApplication {
 
     public static void main(String[] args) {
         var context = SpringApplication.run(CleaningApplication.class, args);
-        UserService userService = (UserService) context.getBean("userServiceImpl");
-        userService.createUser(new UserDto("asf","asfsaf","asfasf", Role.User));
         System.out.println("It's alive!");
     }
 

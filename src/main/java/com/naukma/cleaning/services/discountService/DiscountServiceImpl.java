@@ -1,33 +1,49 @@
 package com.naukma.cleaning.services.discountService;
 
 
-import com.naukma.cleaningstarter.Discount;
-import com.naukma.cleaningstarter.DiscountService;
+import com.naukma.cleaning.dao.DiscountDao;
+import com.naukma.cleaning.dao.entities.DiscountEntity;
+import com.naukma.cleaning.models.order.DiscountDto;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
-//@Service
+import java.time.LocalDateTime;
+
+@Service
 public class DiscountServiceImpl implements DiscountService {
-    @Override
-    public void createDiscount(Discount discount) {
+    private DiscountDao discountDao;
+    private ModelMapper modelMapper;
 
+    public DiscountServiceImpl(DiscountDao discountDao, ModelMapper modelMapper) {
+        this.discountDao = discountDao;
+        this.modelMapper = modelMapper;
     }
 
     @Override
-    public void editDiscount(Discount discount) {
+    public void createDiscount(DiscountDto discount) {
+        DiscountEntity discountEntity = modelMapper.map(discount, DiscountEntity.class);
+        discountDao.save(discountEntity);
+    }
 
+    @Override
+    public void editDiscount(DiscountDto discount) {
+        DiscountEntity discountEntity = modelMapper.map(discount, DiscountEntity.class);
+        discountDao.save(discountEntity);
     }
 
     @Override
     public void deleteDiscount(long id) {
-
+        discountDao.deleteById(id);
     }
 
     @Override
-    public Discount getDiscount(long id) {
-        return null;
+    public DiscountDto getDiscount(long id) {
+        return modelMapper.map(discountDao.getReferenceById(id),DiscountDto.class);
     }
 
     @Override
-    public Discount getCurrentDiscount() {
-        return null;
+    public DiscountDto getCurrentDiscount() {
+        DiscountEntity currentDiscount = discountDao.getByStartLessThanEqualAndFinishGreaterThanEqual(LocalDateTime.now());
+        return modelMapper.map(currentDiscount, DiscountDto.class);
     }
 }
