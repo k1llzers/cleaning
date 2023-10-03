@@ -2,6 +2,7 @@ package com.naukma.cleaning;
 
 import com.naukma.cleaning.services.loggingService.LoggingService;
 import com.naukma.cleaning.services.notificationService.NotificationService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -44,5 +45,10 @@ public class CleaningApplication {
         dataSource.setUsername("sa");
         dataSource.setPassword("sa");
         return dataSource;
+    }
+
+    @Bean
+    public ModelMapper getModelMapper(){
+        return new ModelMapper();
     }
 }
