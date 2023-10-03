@@ -1,6 +1,7 @@
 package com.naukma.cleaning.services.userService;
 
 import com.naukma.cleaning.dao.UserDao;
+import com.naukma.cleaning.dao.entities.UserEntity;
 import com.naukma.cleaning.models.user.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,25 +21,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUser(UserDto userDto) {
+        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+        userDao.save(userEntity);
     }
 
     @Override
     public void editUser(UserDto userDto) {
-
+        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+        userDao.save(userEntity);
     }
 
     @Override
     public void deleteUser(long id) {
-
+        userDao.deleteById(id);
     }
 
     @Override
     public UserDto getUser(long id) {
-        return null;
+        UserEntity userById = userDao.getReferenceById(id);
+        return modelMapper.map(userById,UserDto.class);
     }
 
     @Override
     public UserDto getUserByEmail(String email) {
-        return null;
+        UserEntity userByEmail = userDao.findUserEntityByEmail(email);
+        return modelMapper.map(userByEmail,UserDto.class);
     }
 }
