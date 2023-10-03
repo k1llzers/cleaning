@@ -1,7 +1,7 @@
 package com.naukma.cleaning.services.pricingService;
 
-import com.naukma.cleaning.models.order.Order;
-import com.naukma.cleaning.models.order.CommercialProposal;
+import com.naukma.cleaning.models.order.OrderDto;
+import com.naukma.cleaning.models.order.CommercialProposalDto;
 import com.naukma.cleaningstarter.DiscountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,8 +19,8 @@ public class PricingServiceImpl implements PricingService {
     }
 
     @Override
-    public double calculate(Order order) {
-        return order.getCommercialProposals().stream().mapToDouble(CommercialProposal::getPrice).sum()
+    public double calculate(OrderDto orderDto) {
+        return orderDto.getCommercialProposalDtos().stream().mapToDouble(CommercialProposalDto::getPrice).sum()
                 * discountService.getCurrentDiscount().getDiscountPercent() * (1 + fee / 100.0);
     }
 }

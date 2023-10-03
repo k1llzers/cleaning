@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Comment {
+public class CommentDto {
     private long id;
     @NonNull
     private String text;

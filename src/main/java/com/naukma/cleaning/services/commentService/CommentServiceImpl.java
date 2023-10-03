@@ -1,17 +1,17 @@
 package com.naukma.cleaning.services.commentService;
 
-import com.naukma.cleaning.models.order.Comment;
+import com.naukma.cleaning.models.order.CommentDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommentServiceImpl implements CommentService {
     @Override
-    public void createComment(Comment comment) {
+    public void createComment(CommentDto commentDto) {
 
     }
 
     @Override
-    public void editProposal(Comment comment) {
+    public void editProposal(CommentDto commentDto) {
 
     }
 
@@ -21,7 +21,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment getComment(long id) {
+    public CommentDto getComment(long id) {
         return null;
     }
 }

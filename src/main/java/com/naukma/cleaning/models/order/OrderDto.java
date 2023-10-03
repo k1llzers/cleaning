@@ -1,6 +1,6 @@
 package com.naukma.cleaning.models.order;
 
-import com.naukma.cleaning.models.user.User;
+import com.naukma.cleaning.models.user.UserDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -8,7 +8,7 @@ import java.util.Set;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Order {
+public class OrderDto {
     private long id;
     @NonNull
     private double price;
@@ -17,14 +17,14 @@ public class Order {
     @NonNull
     private LocalDateTime creationTime;
     @NonNull
-    private User client;
+    private UserDto client;
     @NonNull
-    private Set<User> executors;
+    private Set<UserDto> executors;
     @NonNull
-    private Comment comment;
+    private CommentDto commentDto;
     @NonNull
-    private Address address;
+    private AddressDto addressDto;
     private Status orderStatus = Status.NOT_STARTED;
     @NonNull
-    private Set<CommercialProposal> commercialProposals;
+    private Set<CommercialProposalDto> commercialProposalDtos;
 }

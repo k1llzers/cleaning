@@ -1,11 +1,11 @@
 package com.naukma.cleaning.services.commentService;
 
-import com.naukma.cleaning.models.order.Comment;
+import com.naukma.cleaning.models.order.CommentDto;
 
 
 public interface CommentService {
-    void createComment(Comment comment);
-    void editProposal(Comment comment);
+    void createComment(CommentDto commentDto);
+    void editProposal(CommentDto commentDto);
     void deleteComment(long id);
-    Comment getComment(long id);
+    CommentDto getComment(long id);
 }

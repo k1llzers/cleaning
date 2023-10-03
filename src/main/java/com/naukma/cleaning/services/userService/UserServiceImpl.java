@@ -1,7 +1,7 @@
 package com.naukma.cleaning.services.userService;
 
 import com.naukma.cleaning.dao.UserDao;
-import com.naukma.cleaning.models.user.User;
+import com.naukma.cleaning.models.user.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(User user) {
+    public void createUser(UserDto userDto) {
     }
 
     @Override
-    public void editUser(User user) {
+    public void editUser(UserDto userDto) {
 
     }
 
@@ -33,12 +33,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(long id) {
+    public UserDto getUser(long id) {
         return null;
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public UserDto getUserByEmail(String email) {
         return null;
     }
 }

@@ -1,7 +1,7 @@
 package com.naukma.cleaning.services.administratorService;
 
 import com.naukma.cleaning.models.user.Role;
-import com.naukma.cleaning.models.user.User;
+import com.naukma.cleaning.models.user.UserDto;
 import com.naukma.cleaning.services.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,14 +17,14 @@ public class AdministratorServiceImpl implements AdministratorService{
 
     @Override
     public void createEmployee(String name, String email, String password) {
-        User employee = new User(name, password, email);
+        UserDto employee = new UserDto(name, password, email);
         employee.setRole(Role.Employee);
         userService.createUser(employee);
     }
 
     @Override
-    public void editEmployee(User user) {
-        userService.editUser(user);
+    public void editEmployee(UserDto userDto) {
+        userService.editUser(userDto);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class AdministratorServiceImpl implements AdministratorService{
 
     @Override
     public void createAdmin(String name, String email, String password) {
-        User admin = new User(name, password, email);
+        UserDto admin = new UserDto(name, password, email);
         admin.setRole(Role.Admin);
         userService.createUser(admin);
     }

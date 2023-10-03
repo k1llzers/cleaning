@@ -1,11 +1,10 @@
 package com.naukma.cleaning.services.addressService;
 
-import com.naukma.cleaning.models.order.Address;
-import com.naukma.cleaning.models.order.Comment;
+import com.naukma.cleaning.models.order.AddressDto;
 
 public interface AddressService {
-    void createAddress(Address address);
-    void editAddress(Address address);
+    void createAddress(AddressDto addressDto);
+    void editAddress(AddressDto addressDto);
     void deleteAddress(long id);
-    Address getAddress(long id);
+    AddressDto getAddress(long id);
 }

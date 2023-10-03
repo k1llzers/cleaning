@@ -1,17 +1,17 @@
 package com.naukma.cleaning.services.proposalService;
 
-import com.naukma.cleaning.models.order.CommercialProposal;
+import com.naukma.cleaning.models.order.CommercialProposalDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommercialProposalServiceImpl implements CommercialProposalService {
     @Override
-    public void createCommercialProposal(CommercialProposal commercialProposal) {
+    public void createCommercialProposal(CommercialProposalDto commercialProposalDto) {
 
     }
 
     @Override
-    public void editCommercialProposal(CommercialProposal commercialProposal) {
+    public void editCommercialProposal(CommercialProposalDto commercialProposalDto) {
 
     }
 
@@ -21,7 +21,7 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
     }
 
     @Override
-    public CommercialProposal getCommercialProposal(long id) {
+    public CommercialProposalDto getCommercialProposal(long id) {
         return null;
     }
 }

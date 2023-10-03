@@ -1,17 +1,17 @@
 package com.naukma.cleaning.services.addressService;
 
-import com.naukma.cleaning.models.order.Address;
+import com.naukma.cleaning.models.order.AddressDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AddressServiceImpl implements AddressService{
     @Override
-    public void createAddress(Address address) {
+    public void createAddress(AddressDto addressDto) {
 
     }
 
     @Override
-    public void editAddress(Address address) {
+    public void editAddress(AddressDto addressDto) {
 
     }
 
@@ -21,7 +21,7 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public Address getAddress(long id) {
+    public AddressDto getAddress(long id) {
         return null;
     }
 }

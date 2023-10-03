@@ -1,6 +1,6 @@
 package com.naukma.cleaning.services.orderService;
 
-import com.naukma.cleaning.models.order.Order;
+import com.naukma.cleaning.models.order.OrderDto;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.pricingService.PricingService;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
@@ -23,22 +23,22 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public void createOrder(Order order) {
+    public void createOrder(OrderDto orderDto) {
 
     }
 
     @Override
-    public void editOrder(Order order) {
+    public void editOrder(OrderDto orderDto) {
 
     }
 
     @Override
-    public void changeStatus(Order order, Status status) {
+    public void changeStatus(OrderDto orderDto, Status status) {
 
     }
 
     @Override
-    public Order getOrder(long id) {
+    public OrderDto getOrder(long id) {
         return null;
     }
 }

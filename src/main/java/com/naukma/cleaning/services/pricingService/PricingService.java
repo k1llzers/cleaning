@@ -1,7 +1,7 @@
 package com.naukma.cleaning.services.pricingService;
 
-import com.naukma.cleaning.models.order.Order;
+import com.naukma.cleaning.models.order.OrderDto;
 
 public interface PricingService {
-    double calculate(Order order);
+    double calculate(OrderDto orderDto);
 }

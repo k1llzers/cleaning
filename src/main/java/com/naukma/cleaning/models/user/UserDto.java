@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class User {
+public class UserDto {
     private long id;
     @NonNull
     private String name;

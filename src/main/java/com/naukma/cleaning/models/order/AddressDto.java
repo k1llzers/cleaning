@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Address {
+public class AddressDto {
     private long id;
     @NonNull
     private String city;

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CommercialProposal {
+public class CommercialProposalDto {
     private String name;
     private String description;
     private double price;

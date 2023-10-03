@@ -1,4 +1,4 @@
-package com.naukma.cleaning.dao;
+package com.naukma.cleaning.dao.entities;
 
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;

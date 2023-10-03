@@ -1,10 +1,10 @@
 package com.naukma.cleaning.services.proposalService;
 
-import com.naukma.cleaning.models.order.CommercialProposal;
+import com.naukma.cleaning.models.order.CommercialProposalDto;
 
 public interface CommercialProposalService {
-    void createCommercialProposal(CommercialProposal commercialProposal);
-    void editCommercialProposal(CommercialProposal commercialProposal);
+    void createCommercialProposal(CommercialProposalDto commercialProposalDto);
+    void editCommercialProposal(CommercialProposalDto commercialProposalDto);
     void deleteCommercialProposal(long id);
-    CommercialProposal getCommercialProposal(long id);
+    CommercialProposalDto getCommercialProposal(long id);
 }
