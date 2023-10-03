@@ -1,10 +1,13 @@
 package com.naukma.cleaning.services.proposalService;
 
+import com.naukma.cleaning.dao.CommercialProposalDao;
 import com.naukma.cleaning.models.order.CommercialProposalDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommercialProposalServiceImpl implements CommercialProposalService {
+    private CommercialProposalDao commercialProposalDao;
+
     @Override
     public void createCommercialProposal(CommercialProposalDto commercialProposalDto) {
 
