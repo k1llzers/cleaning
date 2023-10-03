@@ -1,17 +1,17 @@
-package com.naukma.cleaning.dao;
+package com.naukma.cleaning.dao.entities;
 
-import com.naukma.cleaning.models.order.Address;
-import com.naukma.cleaning.models.order.Comment;
-import com.naukma.cleaning.models.order.CommercialProposal;
 import com.naukma.cleaning.models.order.Status;
-import com.naukma.cleaning.models.user.User;
 import jakarta.persistence.*;
-import lombok.NonNull;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class OrderEntity {
     @Id
     @GeneratedValue

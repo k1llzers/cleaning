@@ -1,12 +1,16 @@
-package com.naukma.cleaning.dao;
+package com.naukma.cleaning.dao.entities;
 
 import com.naukma.cleaning.models.user.Role;
 import jakarta.persistence.*;
-import lombok.NonNull;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class UserEntity {
     @Id
     @GeneratedValue
