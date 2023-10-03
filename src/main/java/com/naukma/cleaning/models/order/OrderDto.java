@@ -8,6 +8,7 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class OrderDto {
     private long id;
     private double price;
