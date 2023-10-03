@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class CommercialProposalDto {
+    private long id;
     private String name;
     private String description;
     private double price;
-
 }
