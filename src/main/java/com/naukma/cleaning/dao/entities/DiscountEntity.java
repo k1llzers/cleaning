@@ -1,9 +1,6 @@
 package com.naukma.cleaning.dao.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +16,8 @@ public class DiscountEntity {
     @Id
     @GeneratedValue
     private long id;
+    @Column(unique = true, nullable = false)
     private String name;
+    @Column(nullable = false)
     private double discountPercent;
 }
