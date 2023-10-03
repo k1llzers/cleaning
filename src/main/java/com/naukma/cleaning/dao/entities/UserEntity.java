@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "user")
 public class UserEntity {
     @Id
     @GeneratedValue

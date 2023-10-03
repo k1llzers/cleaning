@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "comment")
 public class CommentEntity {
     @Id
     @GeneratedValue
