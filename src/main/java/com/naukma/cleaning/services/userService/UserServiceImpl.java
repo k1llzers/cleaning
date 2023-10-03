@@ -40,8 +40,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto getUser(long id) {
         UserEntity userById = userDao.getReferenceById(id);
-//        return modelMapper.map(userById,UserDto.class);
-        return null;
+        return modelMapper.map(userById,UserDto.class);
     }
 
     @Override
