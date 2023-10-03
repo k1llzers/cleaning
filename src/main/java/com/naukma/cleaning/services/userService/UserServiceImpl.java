@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUser(UserDto userDto) {
         UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+        userEntity.setPassword(encoder.encode(userEntity.getPassword()));
         userDao.save(userEntity);
     }
 

@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "cleaningUser")
+@Table(name = "cleaning_user")
 public class UserEntity {
     @Id
     @GeneratedValue

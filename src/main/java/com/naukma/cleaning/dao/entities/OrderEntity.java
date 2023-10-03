@@ -3,7 +3,6 @@ package com.naukma.cleaning.dao.entities;
 import com.naukma.cleaning.models.order.Status;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -12,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "cleaningOrder")
+@Table(name = "cleaning_order")
 public class OrderEntity {
     @Id
     @GeneratedValue
