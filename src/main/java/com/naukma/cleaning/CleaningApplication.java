@@ -46,16 +46,16 @@ public class CleaningApplication {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    @Profile("DEV")
-    public DataSource devDataSource(){
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
-        dataSource.setUsername("sa");
-        dataSource.setPassword("sa");
-        return dataSource;
-    }
+//    @Bean
+//    @Profile("DEV")
+//    public DataSource devDataSource(){
+//        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//        dataSource.setDriverClassName("org.h2.Driver");
+//        dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
+//        dataSource.setUsername("sa");
+//        dataSource.setPassword("sa");
+//        return dataSource;
+//    }
 
     @Bean
     public ModelMapper getModelMapper(){
