@@ -1,7 +1,11 @@
 package com.naukma.cleaning;
 
+import com.naukma.cleaning.models.user.Role;
+import com.naukma.cleaning.models.user.UserDto;
 import com.naukma.cleaning.services.loggingService.LoggingService;
 import com.naukma.cleaning.services.notificationService.NotificationService;
+import com.naukma.cleaning.services.userService.UserService;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -29,6 +33,12 @@ public class CleaningApplication {
     public static void main(String[] args) {
         var context = SpringApplication.run(CleaningApplication.class, args);
         System.out.println("It's alive!");
+        UserService userService = (UserService)context.getBean("userServiceImpl");
+        var testUser = new UserDto("testA", "testB", "testC", Role.Employee);
+        userService.createUser(testUser);
+        System.out.println("It's alive2!");
+        System.out.println(userService.getUserByEmail("testC").getName());
+
     }
 
     @Bean
