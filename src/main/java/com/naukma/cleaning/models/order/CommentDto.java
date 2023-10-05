@@ -2,10 +2,10 @@ package com.naukma.cleaning.models.order;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,5 +14,6 @@ import lombok.ToString;
 public class CommentDto {
     private long id;
     private String text;
+    private LocalDateTime date;
     private int rate;
 }
