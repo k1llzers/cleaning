@@ -20,7 +20,7 @@ public class PricingServiceImpl implements PricingService {
 
     @Override
     public double calculate(OrderDto orderDto) {
-        return orderDto.getCommercialProposalDtos().stream().mapToDouble(CommercialProposalDto::getPrice).sum()
+        return orderDto.getCommercialProposals().stream().mapToDouble(CommercialProposalDto::getPrice).sum()
                 * discountService.getCurrentDiscount().getDiscountPercent() * (1 + fee / 100.0);
     }
 }
