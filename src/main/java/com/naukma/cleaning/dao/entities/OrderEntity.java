@@ -27,7 +27,7 @@ public class OrderEntity {
     @OneToOne
     @JoinColumn(name = "client_fk", nullable = false)
     private UserEntity client;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "order_executors",
             joinColumns = @JoinColumn(name = "order_fk"),
             inverseJoinColumns = @JoinColumn(name = "executor_fk"))
@@ -40,7 +40,7 @@ public class OrderEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status orderStatus;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "order_proposals",
             joinColumns = @JoinColumn(name = "order_fk"),
             inverseJoinColumns = @JoinColumn(name = "proposal_fk"))
