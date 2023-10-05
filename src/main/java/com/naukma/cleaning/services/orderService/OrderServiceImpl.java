@@ -21,11 +21,12 @@ public class OrderServiceImpl implements OrderService {
     private ModelMapper modelMapper;
 
     @Autowired
-    public OrderServiceImpl(PricingService pricingService, CommentService commentService, CommercialProposalService commercialProposalService, ModelMapper modelMapper) {
+    public OrderServiceImpl(PricingService pricingService, CommentService commentService, CommercialProposalService commercialProposalService, ModelMapper modelMapper, OrderDao orderDao) {
         this.pricingService = pricingService;
         this.commentService = commentService;
         this.commercialProposalService = commercialProposalService;
         this.modelMapper = modelMapper;
+        this.orderDao = orderDao;
     }
 
 
