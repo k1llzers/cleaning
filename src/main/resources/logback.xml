@@ -6,8 +6,8 @@
     </appender>
 
     <appender name="FILE" class="com.naukma.cleaning.services.loggingService.CleaningAppender">
-        <encoder>
-            <pattern>%d [%thread] %-5level %logger{35} - %msg%n</pattern>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="com.naukma.cleaning.services.loggingService.CleaningLayout" />
         </encoder>
     </appender>
 
