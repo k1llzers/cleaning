@@ -11,9 +11,9 @@
         </encoder>
     </appender>
 
-    <logger name="com.naukma.cleaning" level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE" />
-    </logger>
+    </root>
 
 </configuration>
