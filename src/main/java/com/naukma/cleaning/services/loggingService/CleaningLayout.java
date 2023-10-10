@@ -1,7 +1,10 @@
 package com.naukma.cleaning.services.loggingService;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
@@ -13,7 +16,7 @@ public class CleaningLayout extends LayoutBase<ILoggingEvent> {
 
   public String doLayout(ILoggingEvent event) {
     StringBuffer sbuf = new StringBuffer(128);
-    sbuf.append(new Date(event.getTimeStamp()));
+    sbuf.append(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     sbuf.append(" | ");
     sbuf.append(event.getLevel());
     sbuf.append(" [");
@@ -28,6 +31,12 @@ public class CleaningLayout extends LayoutBase<ILoggingEvent> {
     sbuf.append(event.getLoggerName());
     sbuf.append(" - ");
     sbuf.append(event.getFormattedMessage());
+    Map<String, String> mdc = event.getMDCPropertyMap();
+    if (mdc != null && !mdc.isEmpty()) {
+      sbuf.append(" with parameter ");
+      sbuf.append(event.getMDCPropertyMap().entrySet().stream().map(entry -> entry.getKey() + "=" + entry.getValue())
+              .collect(Collectors.joining(", ", "{", "}")));
+    }
     sbuf.append(CoreConstants.LINE_SEPARATOR);
     return sbuf.toString();
   }
