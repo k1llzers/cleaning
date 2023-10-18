@@ -2,6 +2,7 @@ package com.naukma.cleaning.services.orderService;
 
 import com.naukma.cleaning.dao.OrderDao;
 import com.naukma.cleaning.dao.entities.OrderEntity;
+import com.naukma.cleaning.models.dtos.OrderDto;
 import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.pricingService.PricingService;
@@ -52,5 +53,28 @@ public class OrderServiceImpl implements OrderService {
     public Order getOrder(long id) {
         OrderEntity orderById = orderDao.findById(id).get();
         return modelMapper.map(orderById, Order.class);
+    }
+
+    @Override
+    public void createOrder(OrderDto orderDto) {
+        Order order = modelMapper.map(orderDto, Order.class);
+        createOrder(order);
+    }
+
+    @Override
+    public void editOrder(OrderDto orderDto) {
+        Order order = modelMapper.map(orderDto, Order.class);
+        editOrder(order);
+    }
+
+    @Override
+    public void changeStatus(OrderDto orderDto, Status status) {
+        Order order = modelMapper.map(orderDto, Order.class);
+        changeStatus(order, status);
+    }
+
+    @Override
+    public OrderDto getOrderDto(long id) {
+        return modelMapper.map(getOrder(id), OrderDto.class);
     }
 }
