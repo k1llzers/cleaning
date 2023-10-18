@@ -24,12 +24,12 @@ public class CommentController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteComment(@PathVariable long id) {
+    public void deleteComment(@PathVariable Long id) {
         commentService.deleteComment(id);
     }
 
     @GetMapping("/{id}")
-    public CommentDto getComment(@PathVariable long id) {
+    public CommentDto getComment(@PathVariable Long id) {
         return commentService.getComment(id);
     }
 

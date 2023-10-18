@@ -2,6 +2,7 @@ package com.naukma.cleaning.services.proposalService;
 
 import com.naukma.cleaning.dao.CommercialProposalDao;
 import com.naukma.cleaning.dao.entities.CommercialProposalEntity;
+import com.naukma.cleaning.models.dtos.CommercialProposalDto;
 import com.naukma.cleaning.models.order.CommercialProposal;
 
 import org.modelmapper.ModelMapper;
@@ -25,9 +26,21 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
     }
 
     @Override
+    public CommercialProposalDto createCommercialProposal(CommercialProposalDto commercialProposalDto) {
+        CommercialProposal commercialProposal = modelMapper.map(commercialProposalDto, CommercialProposal.class);
+        return modelMapper.map(createCommercialProposal(commercialProposal), CommercialProposalDto.class);
+    }
+
+    @Override
     public CommercialProposal editCommercialProposal(CommercialProposal commercialProposal) {
         var commercialProposalEntity = modelMapper.map(commercialProposal, CommercialProposalEntity.class);
         return modelMapper.map(commercialProposalDao.save(commercialProposalEntity), CommercialProposal.class);
+    }
+
+    @Override
+    public CommercialProposalDto editCommercialProposal(CommercialProposalDto commercialProposalDto) {
+        CommercialProposal commercialProposal = modelMapper.map(commercialProposalDto, CommercialProposal.class);
+        return modelMapper.map(editCommercialProposal(commercialProposal), CommercialProposalDto.class);
     }
 
     @Override
@@ -39,5 +52,10 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
     public CommercialProposal getCommercialProposal(long id) {
         CommercialProposalEntity commercialProposalEntity = commercialProposalDao.findById(id).get();
         return modelMapper.map(commercialProposalEntity, CommercialProposal.class);
+    }
+
+    @Override
+    public CommercialProposalDto getCommercialProposalDto(long id) {
+        return modelMapper.map(getCommercialProposal(id), CommercialProposalDto.class);
     }
 }
