@@ -1,5 +1,6 @@
 package com.naukma.cleaning.controllers;
 
+import com.naukma.cleaning.models.dtos.CommercialProposalDto;
 import com.naukma.cleaning.models.order.CommercialProposal;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
 import jakarta.validation.Valid;
@@ -20,12 +21,12 @@ public class CommercialProposalController {
     private final CommercialProposalService commercialProposalService;
 
     @GetMapping("/{id}")
-    public CommercialProposal getProposalById(@PathVariable Long id){
-        return commercialProposalService.getCommercialProposal(id);
+    public CommercialProposalDto getProposalById(@PathVariable Long id){
+        return commercialProposalService.getCommercialProposalDto(id);
     }
 
     @PostMapping
-    public CommercialProposal addProposal(@RequestBody @Valid CommercialProposal commercialProposal){
+    public CommercialProposalDto addProposal(@RequestBody @Valid CommercialProposalDto commercialProposal){
         return commercialProposalService.createCommercialProposal(commercialProposal);
     }
 
@@ -35,7 +36,7 @@ public class CommercialProposalController {
     }
 
     @PutMapping
-    public CommercialProposal editProposal(@RequestBody @Valid CommercialProposal commercialProposal){
+    public CommercialProposalDto editProposal(@RequestBody @Valid CommercialProposalDto commercialProposal){
         return commercialProposalService.editCommercialProposal(commercialProposal);
     }
 }
