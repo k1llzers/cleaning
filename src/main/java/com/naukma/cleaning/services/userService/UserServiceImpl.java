@@ -35,9 +35,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUser(UserDto userDto) {
+    public UserDto editUser(UserDto userDto) {
         UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
-        userDao.save(userEntity);
+        return modelMapper.map(userDao.save(userEntity),UserDto.class);
     }
 
     @Override
