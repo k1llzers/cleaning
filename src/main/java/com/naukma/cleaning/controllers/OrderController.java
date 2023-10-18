@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/orders")
 @RequiredArgsConstructor
 public class OrderController {
-
     private final OrderService orderService;
 
     @GetMapping("/{id}")
@@ -29,7 +28,7 @@ public class OrderController {
         orderService.editOrder(order);
     }
 
-    @PutMapping()
+    @PutMapping("/status")
     public void changeStatus(@RequestBody  @Valid Order order, @RequestParam Status status) {
         orderService.changeStatus(order, status);
     }
