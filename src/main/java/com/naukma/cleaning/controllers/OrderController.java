@@ -29,7 +29,7 @@ public class OrderController {
         orderService.editOrder(order);
     }
 
-    @PutMapping()
+    @PutMapping("/status")
     public void changeStatus(@RequestBody  @Valid Order order, @RequestParam Status status) {
         orderService.changeStatus(order, status);
     }
