@@ -17,7 +17,7 @@ public class AddressController {
     public final AddressService addressService;
 
     @PostMapping("/{userId}")
-    public void createAddress(@PathVariable long userId, @RequestBody AddressDto addressDto) {
+    public void createAddress(@PathVariable Long userId, @RequestBody AddressDto addressDto) {
         addressService.createAddress(userId, addressDto);
     }
 
@@ -27,12 +27,12 @@ public class AddressController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAddress(@PathVariable long id) {
+    public void deleteAddress(@PathVariable Long id) {
         addressService.deleteAddress(id);
     }
 
     @GetMapping("/{id}")
-    public AddressDto getAddress(@PathVariable long id) {
+    public AddressDto getAddress(@PathVariable Long id) {
         return addressService.getAddressDto(id);
     }
 
