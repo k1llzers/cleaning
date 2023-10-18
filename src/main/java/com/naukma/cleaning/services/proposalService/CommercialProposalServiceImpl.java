@@ -19,15 +19,15 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
 
 
     @Override
-    public void createCommercialProposal(CommercialProposalDto commercialProposalDto) {
+    public CommercialProposalDto createCommercialProposal(CommercialProposalDto commercialProposalDto) {
         var commercialProposalEntity = modelMapper.map(commercialProposalDto, CommercialProposalEntity.class);
-        commercialProposalDao.save(commercialProposalEntity);
+        return modelMapper.map(commercialProposalDao.save(commercialProposalEntity),CommercialProposalDto.class);
     }
 
     @Override
-    public void editCommercialProposal(CommercialProposalDto commercialProposalDto) {
+    public CommercialProposalDto editCommercialProposal(CommercialProposalDto commercialProposalDto) {
         var commercialProposalEntity = modelMapper.map(commercialProposalDto, CommercialProposalEntity.class);
-        commercialProposalDao.save(commercialProposalEntity);
+        return modelMapper.map(commercialProposalDao.save(commercialProposalEntity),CommercialProposalDto.class);
     }
 
     @Override

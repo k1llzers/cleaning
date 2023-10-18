@@ -35,7 +35,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @PostMapping()
+    @PostMapping
     public UserDto addUser(@RequestBody @Valid UserDto userDto){
         return userService.createUser(userDto);
     }
