@@ -1,7 +1,6 @@
 package com.naukma.cleaning;
 
 import com.naukma.cleaning.models.user.Role;
-import com.naukma.cleaning.models.user.UserDto;
 import com.naukma.cleaning.services.loggingService.LoggingService;
 import com.naukma.cleaning.services.notificationService.NotificationService;
 import com.naukma.cleaning.services.userService.UserService;
