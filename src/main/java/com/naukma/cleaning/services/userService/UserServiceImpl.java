@@ -2,6 +2,7 @@ package com.naukma.cleaning.services.userService;
 
 import com.naukma.cleaning.dao.UserDao;
 import com.naukma.cleaning.dao.entities.UserEntity;
+import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.user.User;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -55,5 +56,27 @@ public class UserServiceImpl implements UserService {
     public User getUserByEmail(String email) {
         UserEntity userByEmail = userDao.findUserEntityByEmail(email);
         return modelMapper.map(userByEmail, User.class);
+    }
+
+    @Override
+    public UserDto createUser(UserDto userDto) {
+        User user = modelMapper.map(userDto, User.class);
+        return modelMapper.map(createUser(user), UserDto.class);
+    }
+
+    @Override
+    public UserDto editUser(UserDto userDto) {
+        User user = modelMapper.map(userDto, User.class);
+        return modelMapper.map(editUser(user), UserDto.class);
+    }
+
+    @Override
+    public UserDto getUserDto(long id) {
+        return modelMapper.map(getUser(id), UserDto.class);
+    }
+
+    @Override
+    public UserDto getUserDtoByEmail(String email) {
+        return modelMapper.map(getUserByEmail(email), UserDto.class);
     }
 }

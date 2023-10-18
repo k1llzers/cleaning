@@ -1,5 +1,6 @@
 package com.naukma.cleaning.controllers;
 
+import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import com.naukma.cleaning.utils.exceptions.EmailDuplicateException;
@@ -28,18 +29,18 @@ public class UserController {
     private final static Logger log = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id){
+    public UserDto getUserById(@PathVariable Long id){
         throw new EmailDuplicateException();
 //        return userService.getUser(id);
     }
 
     @GetMapping("/by-email")
-    public User getUserByEmail(@RequestParam String email){
+    public UserDto getUserByEmail(@RequestParam String email){
         RestTemplate restTemplate = new RestTemplate();
         String resource = "http://worldtimeapi.org/api/timezone/Europe/Kyiv";
         ResponseEntity<String> time = restTemplate.getForEntity(resource, String.class);
         log.info("time from api:" + time.getBody());
-        return userService.getUserByEmail(email);
+        return userService.getUserDtoByEmail(email);
     }
 
     @DeleteMapping("/{id}")
@@ -48,13 +49,13 @@ public class UserController {
     }
 
     @PostMapping
-    public User addUser(@RequestBody @Valid User user){
-        return userService.createUser(user);
+    public UserDto addUser(@RequestBody @Valid UserDto userDto){
+        return userService.createUser(userDto);
     }
 
     @PutMapping
-    public User updateUser(@RequestBody @Valid User user){
-        return userService.editUser(user);
+    public UserDto updateUser(@RequestBody @Valid UserDto userDto){
+        return userService.editUser(userDto);
     }
 
     @ExceptionHandler({EmailDuplicateException.class})
