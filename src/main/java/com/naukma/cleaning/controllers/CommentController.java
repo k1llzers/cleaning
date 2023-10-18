@@ -1,5 +1,6 @@
 package com.naukma.cleaning.controllers;
 
+import com.naukma.cleaning.models.dtos.CommentDto;
 import com.naukma.cleaning.models.order.Comment;
 import com.naukma.cleaning.services.commentService.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -13,12 +14,12 @@ public class CommentController {
     public final CommentService commentService;
 
     @PostMapping()
-    public void createComment(@RequestBody Comment comment) {
+    public void createComment(@RequestBody CommentDto comment) {
         commentService.createComment(comment);
     }
 
     @PutMapping()
-    public void editProposal(@RequestBody Comment comment) {
+    public void editProposal(@RequestBody CommentDto comment) {
         commentService.editProposal(comment);
     }
 
@@ -28,7 +29,7 @@ public class CommentController {
     }
 
     @GetMapping("/{id}")
-    public Comment getComment(@PathVariable long id) {
+    public CommentDto getComment(@PathVariable long id) {
         return commentService.getComment(id);
     }
 

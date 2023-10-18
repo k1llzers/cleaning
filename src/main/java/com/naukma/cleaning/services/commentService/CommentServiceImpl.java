@@ -2,6 +2,7 @@ package com.naukma.cleaning.services.commentService;
 
 import com.naukma.cleaning.dao.CommentDao;
 import com.naukma.cleaning.dao.entities.CommentEntity;
+import com.naukma.cleaning.models.dtos.CommentDto;
 import com.naukma.cleaning.models.order.Comment;
 
 import org.modelmapper.ModelMapper;
@@ -19,14 +20,14 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void createComment(Comment comment) {
-        CommentEntity commentEntity = modelMapper.map(comment, CommentEntity.class);
+    public void createComment(CommentDto commentDto) {
+        CommentEntity commentEntity = modelMapper.map(commentDto, CommentEntity.class);
         commentDao.save(commentEntity);
     }
 
     @Override
-    public void editProposal(Comment comment) {
-        CommentEntity commentEntity = modelMapper.map(comment, CommentEntity.class);
+    public void editProposal(CommentDto commentDto) {
+        CommentEntity commentEntity = modelMapper.map(commentDto, CommentEntity.class);
         commentDao.save(commentEntity);
     }
 
@@ -36,8 +37,10 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment getComment(long id) {
+    public CommentDto getComment(long id) {
         CommentEntity commentById = commentDao.findById(id).get();
-        return modelMapper.map(commentById, Comment.class);
+        return modelMapper.map(commentById, CommentDto.class);
     }
+
+
 }
