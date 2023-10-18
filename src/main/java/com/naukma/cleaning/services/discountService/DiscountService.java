@@ -1,16 +1,15 @@
 package com.naukma.cleaning.services.discountService;
 
-import com.naukma.cleaning.models.order.DiscountDto;
-import com.naukma.cleaningstarter.Discount;
+import com.naukma.cleaning.models.order.Discount;
 
 public interface DiscountService {
-    void createDiscount(DiscountDto discount);
+    void createDiscount(Discount discount);
 
-    void editDiscount(DiscountDto discount);
+    void editDiscount(Discount discount);
 
     void deleteDiscount(long id);
 
-    DiscountDto getDiscount(long id);
+    Discount getDiscount(long id);
 
-    DiscountDto getCurrentDiscount();
+    Discount getCurrentDiscount();
 }

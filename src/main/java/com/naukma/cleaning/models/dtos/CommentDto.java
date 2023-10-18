@@ -1,16 +1,12 @@
-package com.naukma.cleaning.models.order;
+package com.naukma.cleaning.models.dtos;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@ToString
 public class CommentDto {
     private long id;
     private String text;

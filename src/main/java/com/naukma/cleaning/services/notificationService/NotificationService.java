@@ -1,10 +1,10 @@
 package com.naukma.cleaning.services.notificationService;
 
 import com.naukma.cleaning.models.user.Role;
-import com.naukma.cleaning.models.user.UserDto;
+import com.naukma.cleaning.models.user.User;
 
 public interface NotificationService {
-    void notify(UserDto userDto);
+    void notify(User user);
     void notifyAllUsers();
     void notifyUsersByRole(Role role);
 }

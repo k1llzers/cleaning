@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @ToString
-public class UserDto {
+public class User {
     private long id;
     @NonNull
     @NotBlank

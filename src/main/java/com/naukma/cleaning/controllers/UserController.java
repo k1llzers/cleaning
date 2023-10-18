@@ -1,6 +1,6 @@
 package com.naukma.cleaning.controllers;
 
-import com.naukma.cleaning.models.user.UserDto;
+import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,12 +21,12 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable Long id){
+    public User getUserById(@PathVariable Long id){
         return userService.getUser(id);
     }
 
     @GetMapping("/by-email")
-    public UserDto getUserByEmail(@RequestParam String email){
+    public User getUserByEmail(@RequestParam String email){
         return userService.getUserByEmail(email);
     }
 
@@ -36,12 +36,12 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDto addUser(@RequestBody @Valid UserDto userDto){
-        return userService.createUser(userDto);
+    public User addUser(@RequestBody @Valid User user){
+        return userService.createUser(user);
     }
 
     @PutMapping
-    public UserDto updateUser(@RequestBody @Valid UserDto userDto){
-        return userService.editUser(userDto);
+    public User updateUser(@RequestBody @Valid User user){
+        return userService.editUser(user);
     }
 }

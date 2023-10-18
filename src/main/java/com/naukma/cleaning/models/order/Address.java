@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @ToString
-public class AddressDto {
+public class Address {
     private long id;
     private String city;
     private String street;

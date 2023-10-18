@@ -1,7 +1,7 @@
 package com.naukma.cleaning.services.authenticationService;
 
 import com.naukma.cleaning.models.user.Role;
-import com.naukma.cleaning.models.user.UserDto;
+import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,8 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 
     @Override
     public void register(String name,String email, String password) {
-        UserDto userDto = new UserDto(name, password, email,Role.User);
-        userService.createUser(userDto);
+        User user = new User(name, password, email,Role.User);
+        userService.createUser(user);
     }
 
     @Override

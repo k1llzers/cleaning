@@ -1,11 +1,11 @@
 package com.naukma.cleaning.services.userService;
 
-import com.naukma.cleaning.models.user.UserDto;
+import com.naukma.cleaning.models.user.User;
 
 public interface UserService {
-    UserDto createUser(UserDto userDto);
-    UserDto editUser(UserDto userDto);
+    User createUser(User user);
+    User editUser(User user);
     void deleteUser(long id);
-    UserDto getUser(long id);
-    UserDto getUserByEmail(String email);
+    User getUser(long id);
+    User getUserByEmail(String email);
 }

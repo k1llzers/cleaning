@@ -2,7 +2,7 @@ package com.naukma.cleaning.services.orderService;
 
 import com.naukma.cleaning.dao.OrderDao;
 import com.naukma.cleaning.dao.entities.OrderEntity;
-import com.naukma.cleaning.models.order.OrderDto;
+import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.pricingService.PricingService;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
@@ -31,26 +31,26 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public void createOrder(OrderDto orderDto) {
-        orderDto.setPrice(pricingService.calculate(orderDto));
-        orderDao.save(modelMapper.map(orderDto, OrderEntity.class));
+    public void createOrder(Order order) {
+        order.setPrice(pricingService.calculate(order));
+        orderDao.save(modelMapper.map(order, OrderEntity.class));
     }
 
     @Override
-    public void editOrder(OrderDto orderDto) {
-        orderDto.setPrice(pricingService.calculate(orderDto));
-        orderDao.save(modelMapper.map(orderDto, OrderEntity.class));
+    public void editOrder(Order order) {
+        order.setPrice(pricingService.calculate(order));
+        orderDao.save(modelMapper.map(order, OrderEntity.class));
     }
 
     @Override
-    public void changeStatus(OrderDto orderDto, Status status) {
-        orderDto.setOrderStatus(status);
-        orderDao.save(modelMapper.map(orderDto, OrderEntity.class));
+    public void changeStatus(Order order, Status status) {
+        order.setOrderStatus(status);
+        orderDao.save(modelMapper.map(order, OrderEntity.class));
     }
 
     @Override
-    public OrderDto getOrder(long id) {
+    public Order getOrder(long id) {
         OrderEntity orderById = orderDao.findById(id).get();
-        return modelMapper.map(orderById, OrderDto.class);
+        return modelMapper.map(orderById, Order.class);
     }
 }

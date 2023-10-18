@@ -2,7 +2,7 @@ package com.naukma.cleaning.services.proposalService;
 
 import com.naukma.cleaning.dao.CommercialProposalDao;
 import com.naukma.cleaning.dao.entities.CommercialProposalEntity;
-import com.naukma.cleaning.models.order.CommercialProposalDto;
+import com.naukma.cleaning.models.order.CommercialProposal;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -19,15 +19,15 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
 
 
     @Override
-    public CommercialProposalDto createCommercialProposal(CommercialProposalDto commercialProposalDto) {
-        var commercialProposalEntity = modelMapper.map(commercialProposalDto, CommercialProposalEntity.class);
-        return modelMapper.map(commercialProposalDao.save(commercialProposalEntity),CommercialProposalDto.class);
+    public CommercialProposal createCommercialProposal(CommercialProposal commercialProposal) {
+        var commercialProposalEntity = modelMapper.map(commercialProposal, CommercialProposalEntity.class);
+        return modelMapper.map(commercialProposalDao.save(commercialProposalEntity), CommercialProposal.class);
     }
 
     @Override
-    public CommercialProposalDto editCommercialProposal(CommercialProposalDto commercialProposalDto) {
-        var commercialProposalEntity = modelMapper.map(commercialProposalDto, CommercialProposalEntity.class);
-        return modelMapper.map(commercialProposalDao.save(commercialProposalEntity),CommercialProposalDto.class);
+    public CommercialProposal editCommercialProposal(CommercialProposal commercialProposal) {
+        var commercialProposalEntity = modelMapper.map(commercialProposal, CommercialProposalEntity.class);
+        return modelMapper.map(commercialProposalDao.save(commercialProposalEntity), CommercialProposal.class);
     }
 
     @Override
@@ -36,8 +36,8 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
     }
 
     @Override
-    public CommercialProposalDto getCommercialProposal(long id) {
+    public CommercialProposal getCommercialProposal(long id) {
         CommercialProposalEntity commercialProposalEntity = commercialProposalDao.findById(id).get();
-        return modelMapper.map(commercialProposalEntity, CommercialProposalDto.class);
+        return modelMapper.map(commercialProposalEntity, CommercialProposal.class);
     }
 }

@@ -1,7 +1,7 @@
 package com.naukma.cleaning.services.notificationService;
 
 import com.naukma.cleaning.models.user.Role;
-import com.naukma.cleaning.models.user.UserDto;
+import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -18,7 +18,7 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public void notify(UserDto userDto) {
+    public void notify(User user) {
 
     }
 

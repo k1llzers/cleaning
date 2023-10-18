@@ -2,7 +2,7 @@ package com.naukma.cleaning.services.userService;
 
 import com.naukma.cleaning.dao.UserDao;
 import com.naukma.cleaning.dao.entities.UserEntity;
-import com.naukma.cleaning.models.user.UserDto;
+import com.naukma.cleaning.models.user.User;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,17 +27,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto createUser(UserDto userDto) {
-        MDC.put("NewUserID", String.valueOf(userDto.getId()));
-        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+    public User createUser(User user) {
+        MDC.put("NewUserID", String.valueOf(user.getId()));
+        UserEntity userEntity = modelMapper.map(user, UserEntity.class);
         userEntity.setPassword(encoder.encode(userEntity.getPassword()));
-        return modelMapper.map(userDao.save(userEntity),UserDto.class);
+        return modelMapper.map(userDao.save(userEntity), User.class);
     }
 
     @Override
-    public UserDto editUser(UserDto userDto) {
-        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
-        return modelMapper.map(userDao.save(userEntity),UserDto.class);
+    public User editUser(User user) {
+        UserEntity userEntity = modelMapper.map(user, UserEntity.class);
+        return modelMapper.map(userDao.save(userEntity), User.class);
     }
 
     @Override
@@ -46,14 +46,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto getUser(long id) {
+    public User getUser(long id) {
         UserEntity userById = userDao.findById(id).get();
-        return modelMapper.map(userById,UserDto.class);
+        return modelMapper.map(userById, User.class);
     }
 
     @Override
-    public UserDto getUserByEmail(String email) {
+    public User getUserByEmail(String email) {
         UserEntity userByEmail = userDao.findUserEntityByEmail(email);
-        return modelMapper.map(userByEmail,UserDto.class);
+        return modelMapper.map(userByEmail, User.class);
     }
 }

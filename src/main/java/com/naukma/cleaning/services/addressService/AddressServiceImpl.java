@@ -1,11 +1,10 @@
 package com.naukma.cleaning.services.addressService;
 
 import com.naukma.cleaning.dao.AddressDao;
-import com.naukma.cleaning.dao.UserDao;
 import com.naukma.cleaning.dao.entities.AddressEntity;
 import com.naukma.cleaning.dao.entities.UserEntity;
-import com.naukma.cleaning.models.order.AddressDto;
-import com.naukma.cleaning.models.user.UserDto;
+import com.naukma.cleaning.models.order.Address;
+import com.naukma.cleaning.models.user.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -23,16 +22,16 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void createAddress(UserDto userDto, AddressDto addressDto) {
-        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
-        AddressEntity addressEntity = modelMapper.map(addressDto, AddressEntity.class);
+    public void createAddress(User user, Address address) {
+        UserEntity userEntity = modelMapper.map(user, UserEntity.class);
+        AddressEntity addressEntity = modelMapper.map(address, AddressEntity.class);
         addressEntity.setUserEntity(userEntity);
         addressDao.save(addressEntity);
     }
 
     @Override
-    public void editAddress(AddressDto addressDto) {
-        AddressEntity addressEntity = modelMapper.map(addressDto, AddressEntity.class);
+    public void editAddress(Address address) {
+        AddressEntity addressEntity = modelMapper.map(address, AddressEntity.class);
         addressDao.save(addressEntity);
     }
 
@@ -42,15 +41,15 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public AddressDto getAddress(long id) {
+    public Address getAddress(long id) {
         AddressEntity addressEntity = addressDao.findById(id).get();
-        return modelMapper.map(addressEntity, AddressDto.class);
+        return modelMapper.map(addressEntity, Address.class);
     }
 
     @Override
-    public List<AddressDto> getUserAddresses(UserDto userDto) {
-        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+    public List<Address> getUserAddresses(User user) {
+        UserEntity userEntity = modelMapper.map(user, UserEntity.class);
         List<AddressEntity> addresses = addressDao.findAddressEntitiesByUserEntity(userEntity);
-        return addresses.stream().map(x -> modelMapper.map(x, AddressDto.class)).toList();
+        return addresses.stream().map(x -> modelMapper.map(x, Address.class)).toList();
     }
 }
