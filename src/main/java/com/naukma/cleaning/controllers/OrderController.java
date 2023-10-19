@@ -3,6 +3,7 @@ package com.naukma.cleaning.controllers;
 import com.naukma.cleaning.models.dtos.OrderDto;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.orderService.OrderService;
+import com.naukma.cleaning.utils.exceptions.PaymentUnsuccessfulException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,8 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public OrderDto getOrder(@PathVariable("id") Long id) {
-        return orderService.getOrderDto(id);
+        throw new PaymentUnsuccessfulException();
+        //return orderService.getOrderDto(id);
     }
 
     @PostMapping()

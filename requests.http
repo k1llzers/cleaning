@@ -1,1 +1,27 @@
-GET http://localhost:8080/users/by-email?email=sss@gmail.sss
+POST http://localhost:8080/commercial-proposals
+Content-Type: application/json
+
+{
+  "name": "Wet clean",
+  "description": "Fast cleaning",
+  "price": 500
+}
+
+###
+GET http://localhost:8080/commercial-proposals/1
+###
+DELETE http://localhost:8080/commercial-proposals/1
+###
+PUT http://localhost:8080/commercial-proposals
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Wet clean",
+  "description": "Fast cleaning",
+  "price": 600
+}
+###
+GET http://localhost:8080/users/1
+###
+GET http://localhost:8080/users/by-email?email=ssss@asfsaf
