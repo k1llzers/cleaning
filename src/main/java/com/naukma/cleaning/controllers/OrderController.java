@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
 
     private final OrderService orderService;
-    @Operation(summary = "Create new order", description = "Create new order")
-    @PostMapping()
-    public void createOrder(@RequestBody @Valid OrderDto orderDto) {
-        orderService.createOrder(orderDto);
+
+    @Operation(summary = "Get order by id", description = "Get order by id")
+    @GetMapping("/{id}")
+    public OrderDto getOrder(@PathVariable("id") Long id) {
+        throw new PaymentUnsuccessfulException();
+        //return orderService.getOrderDto(id);
     }
 
     @Operation(summary = "Change order if status NOT_PROCESSED", description = "Change order if status NOT_PROCESSED")
@@ -31,15 +33,14 @@ public class OrderController {
 
     @Operation(summary = "Change order status", description = "Change order status")
     @PutMapping("/status")
-    public void changeStatus(@RequestBody  @Valid OrderDto orderDto, @RequestParam Status status) {
+    public void changeStatus(@RequestBody @Valid OrderDto orderDto, @RequestParam Status status) {
         orderService.changeStatus(orderDto, status);
 
     }
-    @Operation(summary = "Get order by id", description = "Get order by id")
-    @GetMapping("/{id}")
-    public OrderDto getOrder(@PathVariable("id") Long id) {
-        throw new PaymentUnsuccessfulException();
-        //return orderService.getOrderDto(id);
-    }
 
+    @Operation(summary = "Create new order", description = "Create new order")
+    @PostMapping()
+    public void createOrder(@RequestBody @Valid OrderDto orderDto) {
+        orderService.createOrder(orderDto);
+    }
 }

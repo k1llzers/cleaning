@@ -30,39 +30,44 @@ import org.springframework.web.client.RestTemplate;
 public class UserController {
     private final UserService userService;
     private final static Logger log = LoggerFactory.getLogger(UserController.class);
+
     @Operation(summary = "Get user by id", description = "Get user by id")
     @GetMapping("/{id}")
-    public UserDto getUserById(@PathVariable Long id){
+    public UserDto getUserById(@PathVariable Long id) {
         throw new EmailDuplicateException();
         // return userService.getUser(id);
     }
+
     @Operation(summary = "Get user by email", description = "Get user by email")
     @GetMapping("/by-email")
-    public UserDto getUserByEmail(@RequestParam String email){
+    public UserDto getUserByEmail(@RequestParam String email) {
         RestTemplate restTemplate = new RestTemplate();
         String resource = "http://worldtimeapi.org/api/timezone/Europe/Kyiv";
         ResponseEntity<String> time = restTemplate.getForEntity(resource, String.class);
         log.info("time from api:" + time.getBody());
         return userService.getUserDtoByEmail(email);
     }
-    @Operation(summary = "Delete user", description = "Delete user")
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
-        userService.deleteUser(id);
-    }
-    @Operation(summary = "Add user", description = "Add user")
-    @PostMapping
-    public UserDto addUser(@RequestBody @Valid UserDto userDto){
-        return userService.createUser(userDto);
-    }
+
     @Operation(summary = "Change user", description = "Change user")
     @PutMapping
-    public UserDto updateUser(@RequestBody @Valid UserDto userDto){
+    public UserDto updateUser(@RequestBody @Valid UserDto userDto) {
         return userService.editUser(userDto);
     }
 
+    @Operation(summary = "Add user", description = "Add user")
+    @PostMapping
+    public UserDto addUser(@RequestBody @Valid UserDto userDto) {
+        return userService.createUser(userDto);
+    }
+
+    @Operation(summary = "Delete user", description = "Delete user")
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        userService.deleteUser(id);
+    }
+
     @ExceptionHandler({EmailDuplicateException.class})
-    public void handleException(Exception ex){
+    public void handleException(Exception ex) {
         log.warn("Excep");
     }
 }

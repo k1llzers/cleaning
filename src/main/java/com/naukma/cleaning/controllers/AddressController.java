@@ -18,24 +18,6 @@ import java.util.List;
 public class AddressController {
     public final AddressService addressService;
 
-    @Operation(summary = "Create new address for user", description = "Create new address for user")
-    @PostMapping("/{userId}")
-    public void createAddress(@PathVariable Long userId, @RequestBody AddressDto addressDto) {
-        addressService.createAddress(userId, addressDto);
-    }
-
-    @Operation(summary = "Change address", description = "Change address")
-    @PutMapping()
-    public void editAddress(@RequestBody AddressDto addressDto) {
-        addressService.editAddress(addressDto);
-    }
-
-    @Operation(summary = "Delete address", description = "Delete address")
-    @DeleteMapping("/{id}")
-    public void deleteAddress(@PathVariable Long id) {
-        addressService.deleteAddress(id);
-    }
-
     @Operation(summary = "Get address by id", description = "Get address by id")
     @GetMapping("/{id}")
     public AddressDto getAddress(@PathVariable Long id) {
@@ -48,4 +30,21 @@ public class AddressController {
         return addressService.getUserAddresses(userDto);
     }
 
+    @Operation(summary = "Change address", description = "Change address")
+    @PutMapping()
+    public void editAddress(@RequestBody AddressDto addressDto) {
+        addressService.editAddress(addressDto);
+    }
+
+    @Operation(summary = "Create new address for user", description = "Create new address for user")
+    @PostMapping("/{userId}")
+    public void createAddress(@PathVariable Long userId, @RequestBody AddressDto addressDto) {
+        addressService.createAddress(userId, addressDto);
+    }
+
+    @Operation(summary = "Delete address", description = "Delete address")
+    @DeleteMapping("/{id}")
+    public void deleteAddress(@PathVariable Long id) {
+        addressService.deleteAddress(id);
+    }
 }
