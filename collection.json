@@ -1,0 +1,1994 @@
+{
+    "item": [
+        {
+            "name": "Address API",
+            "description": "Endpoint for operations with addresses",
+            "item": [
+                {
+                    "id": "17fa5662-55b0-47e0-b15e-f8b5d7f34f14",
+                    "name": "Get all user addresses",
+                    "request": {
+                        "name": "Get all user addresses",
+                        "description": {
+                            "content": "Get all user addresses",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "addresses"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "email",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "name",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "password",
+                                    "value": "b@:}u~3DC:[b@:}u~3DC:["
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "role",
+                                    "value": "Employee"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "id",
+                                    "value": "<long>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "92755791-364d-41aa-9fc7-cc490e5fef39",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "addresses"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "email",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "name",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "password",
+                                            "value": "b@:}u~3DC:[b@:}u~3DC:["
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "role",
+                                            "value": "Employee"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "id",
+                                            "value": "<long>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "[\n  {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  }\n]",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "1616dc8f-556e-416f-b5b5-c85104fd8d6d",
+                    "name": "Change address",
+                    "request": {
+                        "name": "Change address",
+                        "description": {
+                            "content": "Change address",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "addresses"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id\": \"<long>\",\n  \"city\": \"<string>\",\n  \"street\": \"<string>\",\n  \"houseNumber\": \"<string>\",\n  \"flatNumber\": \"<integer>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "502e3cf9-9398-4307-9a47-315d0b0183a1",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "addresses"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"id\": \"<long>\",\n  \"city\": \"<string>\",\n  \"street\": \"<string>\",\n  \"houseNumber\": \"<string>\",\n  \"flatNumber\": \"<integer>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "385b7115-e14f-4b29-a263-49f5b620eeec",
+                    "name": "Create new address for user",
+                    "request": {
+                        "name": "Create new address for user",
+                        "description": {
+                            "content": "Create new address for user",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "addresses",
+                                ":userId"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "userId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id\": \"<long>\",\n  \"city\": \"<string>\",\n  \"street\": \"<string>\",\n  \"houseNumber\": \"<string>\",\n  \"flatNumber\": \"<integer>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "b121db90-da42-4167-8394-3bc39e2e837b",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "addresses",
+                                        ":userId"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"id\": \"<long>\",\n  \"city\": \"<string>\",\n  \"street\": \"<string>\",\n  \"houseNumber\": \"<string>\",\n  \"flatNumber\": \"<integer>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "391fb174-d035-4db6-bfd2-7609162cacf2",
+                    "name": "Get address by id",
+                    "request": {
+                        "name": "Get address by id",
+                        "description": {
+                            "content": "Get address by id",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "addresses",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "7264b950-f94d-42ae-acac-91dd40bf7cc8",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "addresses",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<long>\",\n  \"city\": \"<string>\",\n  \"street\": \"<string>\",\n  \"houseNumber\": \"<string>\",\n  \"flatNumber\": \"<integer>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "1b94ff0c-767f-4107-afd8-f0447bf76a21",
+                    "name": "Delete address",
+                    "request": {
+                        "name": "Delete address",
+                        "description": {
+                            "content": "Delete address",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "addresses",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "c0ba0aee-47bc-48e1-bc32-0e5599bec103",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "addresses",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "method": "DELETE",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "CommercialProposal API",
+            "description": "Endpoint for operations with commercial proposals",
+            "item": [
+                {
+                    "id": "cfc24f1e-f272-4f7d-b07f-c45826beb606",
+                    "name": "Change commercial proposal",
+                    "request": {
+                        "name": "Change commercial proposal",
+                        "description": {
+                            "content": "Change commercial proposal",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "commercial-proposals"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "0102cfa4-d363-4a4f-947c-cc549bd21a9c",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "commercial-proposals"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "19171c42-24f2-446b-8e7e-c335cf6633ab",
+                    "name": "Create new commercial proposal",
+                    "request": {
+                        "name": "Create new commercial proposal",
+                        "description": {
+                            "content": "Create new commercial proposal",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "commercial-proposals"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "cd9f7dff-699c-4d2a-b170-70c7afcbaed8",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "commercial-proposals"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "71b0eb92-fcab-41d6-a510-06b7aef2c320",
+                    "name": "Get commercial proposal by id",
+                    "request": {
+                        "name": "Get commercial proposal by id",
+                        "description": {
+                            "content": "Get commercial proposal by id",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "commercial-proposals",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "9ab2d2cf-2b19-4503-b72c-5de4eab57291",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "commercial-proposals",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"description\": \"<string>\",\n  \"price\": \"<double>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "b0d01bcb-f4d5-4884-b5e1-d06456aff4ac",
+                    "name": "Delete commercial proposal",
+                    "request": {
+                        "name": "Delete commercial proposal",
+                        "description": {
+                            "content": "Delete commercial proposal",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "commercial-proposals",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "fc531a9f-2895-4e6a-8eb7-3e8a3cab9c2a",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "commercial-proposals",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "method": "DELETE",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User API",
+            "description": "Endpoint for operations with users (customers/staff)",
+            "item": [
+                {
+                    "id": "09158bbb-b58c-481b-9108-438b3f4acb07",
+                    "name": "Change user",
+                    "request": {
+                        "name": "Change user",
+                        "description": {
+                            "content": "Change user",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "users"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "97fd758b-40fc-4991-9fb5-c4df348233a5",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "users"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "a8ac3a11-a00a-41c4-949d-cf885c5752d5",
+                    "name": "Add user",
+                    "request": {
+                        "name": "Add user",
+                        "description": {
+                            "content": "Add user",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "users"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "b5d38815-fc23-4aa1-8002-4255ef924585",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "users"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "6e3b2268-d0b8-46e3-ac1d-18e237801980",
+                    "name": "Get user by id",
+                    "request": {
+                        "name": "Get user by id",
+                        "description": {
+                            "content": "Get user by id",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "users",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "6af9ab31-7bca-4b78-9d85-e6b1ca8a655c",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "users",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "15290de1-1cf7-4779-9494-36e9eddad048",
+                    "name": "Delete user",
+                    "request": {
+                        "name": "Delete user",
+                        "description": {
+                            "content": "Delete user",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "users",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "9f00576a-cbaf-476d-81c0-325400a42789",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "users",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "method": "DELETE",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "8dd57178-70f9-41b8-9b55-241dc08cd33a",
+                    "name": "Get user by email",
+                    "request": {
+                        "name": "Get user by email",
+                        "description": {
+                            "content": "Get user by email",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "users",
+                                "by-email"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "email",
+                                    "value": "<string>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "5f8a682a-3a75-498a-90fd-02e737960e2c",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "users",
+                                        "by-email"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "email",
+                                            "value": "<string>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"email\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"b@:}u~3DC:[b@:}u~3DC:[\",\n  \"role\": \"Employee\",\n  \"id\": \"<long>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Comment API",
+            "description": "Endpoint for operations with comments of orders",
+            "item": [
+                {
+                    "id": "4a96e319-3d5c-49cb-9b1f-ff3aac7833e7",
+                    "name": "Change comment",
+                    "request": {
+                        "name": "Change comment",
+                        "description": {
+                            "content": "Change comment",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "comments"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id\": \"<long>\",\n  \"text\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"rate\": \"<integer>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "9886f598-ba3e-4249-ac1a-477aa860fe6b",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "comments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"id\": \"<long>\",\n  \"text\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"rate\": \"<integer>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "405532aa-83d9-4897-be7c-b45f51f0b4f4",
+                    "name": "Create new comment for order",
+                    "request": {
+                        "name": "Create new comment for order",
+                        "description": {
+                            "content": "Create new comment for order",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "comments"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"id\": \"<long>\",\n  \"text\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"rate\": \"<integer>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "e395e007-bc88-4937-9bd6-45f1db913f3d",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "comments"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"id\": \"<long>\",\n  \"text\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"rate\": \"<integer>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "7831373e-4d95-4d62-a44a-55ebbad8fa4f",
+                    "name": "Get comment by id",
+                    "request": {
+                        "name": "Get comment by id",
+                        "description": {
+                            "content": "Get comment by id",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "comments",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "3e00c8b4-692b-4465-bd7d-6f490e8d4d5a",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "comments",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<long>\",\n  \"text\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"rate\": \"<integer>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "96df991e-9476-45e7-910c-c585fc8f5171",
+                    "name": "Delete comment",
+                    "request": {
+                        "name": "Delete comment",
+                        "description": {
+                            "content": "Delete comment",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "comments",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "2f9e0ab7-4b1d-4373-b1fd-514d7213046c",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "comments",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "method": "DELETE",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Order API",
+            "description": "Endpoint for operations with orders",
+            "item": [
+                {
+                    "id": "e39fdf5f-565a-483a-9f50-ae19d866aeb9",
+                    "name": "Change order if status NOT_PROCESSED",
+                    "request": {
+                        "name": "Change order if status NOT_PROCESSED",
+                        "description": {
+                            "content": "Change order if status NOT_PROCESSED",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "orders"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"address\": {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  \"client\": {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"password\": \" 1?c8y4 1?c8y4\",\n    \"role\": \"User\",\n    \"id\": \"<long>\"\n  },\n  \"comment\": {\n    \"id\": \"<long>\",\n    \"text\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"rate\": \"<integer>\"\n  },\n  \"commercialProposals\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    }\n  ],\n  \"executors\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"9U^Oh9U^Oh9U^Oh9U^Oh\",\n      \"role\": \"User\",\n      \"id\": \"<long>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"^4Q%rcv4a^4Q%rcv4a\",\n      \"role\": \"Employee\",\n      \"id\": \"<long>\"\n    }\n  ],\n  \"orderStatus\": \"VERIFIED\",\n  \"id\": \"<long>\",\n  \"price\": \"<double>\",\n  \"orderTime\": \"<dateTime>\",\n  \"creationTime\": \"<dateTime>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "ef2c1d01-fa7d-4998-8ba1-bab1df81c2f9",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "orders"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"address\": {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  \"client\": {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"password\": \" 1?c8y4 1?c8y4\",\n    \"role\": \"User\",\n    \"id\": \"<long>\"\n  },\n  \"comment\": {\n    \"id\": \"<long>\",\n    \"text\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"rate\": \"<integer>\"\n  },\n  \"commercialProposals\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    }\n  ],\n  \"executors\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"9U^Oh9U^Oh9U^Oh9U^Oh\",\n      \"role\": \"User\",\n      \"id\": \"<long>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"^4Q%rcv4a^4Q%rcv4a\",\n      \"role\": \"Employee\",\n      \"id\": \"<long>\"\n    }\n  ],\n  \"orderStatus\": \"VERIFIED\",\n  \"id\": \"<long>\",\n  \"price\": \"<double>\",\n  \"orderTime\": \"<dateTime>\",\n  \"creationTime\": \"<dateTime>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "f7679761-05fc-489a-8575-8d615bcffd95",
+                    "name": "Create new order",
+                    "request": {
+                        "name": "Create new order",
+                        "description": {
+                            "content": "Create new order",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "orders"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"address\": {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  \"client\": {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"password\": \" 1?c8y4 1?c8y4\",\n    \"role\": \"User\",\n    \"id\": \"<long>\"\n  },\n  \"comment\": {\n    \"id\": \"<long>\",\n    \"text\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"rate\": \"<integer>\"\n  },\n  \"commercialProposals\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    }\n  ],\n  \"executors\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"9U^Oh9U^Oh9U^Oh9U^Oh\",\n      \"role\": \"User\",\n      \"id\": \"<long>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"^4Q%rcv4a^4Q%rcv4a\",\n      \"role\": \"Employee\",\n      \"id\": \"<long>\"\n    }\n  ],\n  \"orderStatus\": \"VERIFIED\",\n  \"id\": \"<long>\",\n  \"price\": \"<double>\",\n  \"orderTime\": \"<dateTime>\",\n  \"creationTime\": \"<dateTime>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "fc8aa754-61ff-406a-85f3-0efea975da41",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "orders"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"address\": {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  \"client\": {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"password\": \" 1?c8y4 1?c8y4\",\n    \"role\": \"User\",\n    \"id\": \"<long>\"\n  },\n  \"comment\": {\n    \"id\": \"<long>\",\n    \"text\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"rate\": \"<integer>\"\n  },\n  \"commercialProposals\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    }\n  ],\n  \"executors\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"9U^Oh9U^Oh9U^Oh9U^Oh\",\n      \"role\": \"User\",\n      \"id\": \"<long>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"^4Q%rcv4a^4Q%rcv4a\",\n      \"role\": \"Employee\",\n      \"id\": \"<long>\"\n    }\n  ],\n  \"orderStatus\": \"VERIFIED\",\n  \"id\": \"<long>\",\n  \"price\": \"<double>\",\n  \"orderTime\": \"<dateTime>\",\n  \"creationTime\": \"<dateTime>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "c35cdc8b-6d46-4747-9ffa-35f1a94384c8",
+                    "name": "Change order status",
+                    "request": {
+                        "name": "Change order status",
+                        "description": {
+                            "content": "Change order status",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "orders",
+                                "status"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "status",
+                                    "value": "IN_PROGRESS"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"address\": {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  \"client\": {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"password\": \" 1?c8y4 1?c8y4\",\n    \"role\": \"User\",\n    \"id\": \"<long>\"\n  },\n  \"comment\": {\n    \"id\": \"<long>\",\n    \"text\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"rate\": \"<integer>\"\n  },\n  \"commercialProposals\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    }\n  ],\n  \"executors\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"9U^Oh9U^Oh9U^Oh9U^Oh\",\n      \"role\": \"User\",\n      \"id\": \"<long>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"^4Q%rcv4a^4Q%rcv4a\",\n      \"role\": \"Employee\",\n      \"id\": \"<long>\"\n    }\n  ],\n  \"orderStatus\": \"VERIFIED\",\n  \"id\": \"<long>\",\n  \"price\": \"<double>\",\n  \"orderTime\": \"<dateTime>\",\n  \"creationTime\": \"<dateTime>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "5a24aec6-c6eb-466d-bde5-317fb7cb3713",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "orders",
+                                        "status"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "status",
+                                            "value": "IN_PROGRESS"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"address\": {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  \"client\": {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"password\": \" 1?c8y4 1?c8y4\",\n    \"role\": \"User\",\n    \"id\": \"<long>\"\n  },\n  \"comment\": {\n    \"id\": \"<long>\",\n    \"text\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"rate\": \"<integer>\"\n  },\n  \"commercialProposals\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    }\n  ],\n  \"executors\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"9U^Oh9U^Oh9U^Oh9U^Oh\",\n      \"role\": \"User\",\n      \"id\": \"<long>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"^4Q%rcv4a^4Q%rcv4a\",\n      \"role\": \"Employee\",\n      \"id\": \"<long>\"\n    }\n  ],\n  \"orderStatus\": \"VERIFIED\",\n  \"id\": \"<long>\",\n  \"price\": \"<double>\",\n  \"orderTime\": \"<dateTime>\",\n  \"creationTime\": \"<dateTime>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "293ae972-62af-4fb8-ba42-83b93b1c411a",
+                    "name": "Get order by id",
+                    "request": {
+                        "name": "Get order by id",
+                        "description": {
+                            "content": "Get order by id",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "orders",
+                                ":id"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<long>",
+                                    "key": "id",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "720fd181-d425-4258-9009-01409ad621a9",
+                            "name": "OK",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "orders",
+                                        ":id"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "*/*"
+                                }
+                            ],
+                            "body": "{\n  \"address\": {\n    \"id\": \"<long>\",\n    \"city\": \"<string>\",\n    \"street\": \"<string>\",\n    \"houseNumber\": \"<string>\",\n    \"flatNumber\": \"<integer>\"\n  },\n  \"client\": {\n    \"email\": \"<string>\",\n    \"name\": \"<string>\",\n    \"password\": \" 1?c8y4 1?c8y4\",\n    \"role\": \"User\",\n    \"id\": \"<long>\"\n  },\n  \"comment\": {\n    \"id\": \"<long>\",\n    \"text\": \"<string>\",\n    \"date\": \"<dateTime>\",\n    \"rate\": \"<integer>\"\n  },\n  \"commercialProposals\": [\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    },\n    {\n      \"id\": \"<long>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"price\": \"<double>\"\n    }\n  ],\n  \"executors\": [\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"9U^Oh9U^Oh9U^Oh9U^Oh\",\n      \"role\": \"User\",\n      \"id\": \"<long>\"\n    },\n    {\n      \"email\": \"<string>\",\n      \"name\": \"<string>\",\n      \"password\": \"^4Q%rcv4a^4Q%rcv4a\",\n      \"role\": \"Employee\",\n      \"id\": \"<long>\"\n    }\n  ],\n  \"orderStatus\": \"VERIFIED\",\n  \"id\": \"<long>\",\n  \"price\": \"<double>\",\n  \"orderTime\": \"<dateTime>\",\n  \"creationTime\": \"<dateTime>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ],
+    "info": {
+        "_postman_id": "d71bc45c-9001-432d-bf81-39d628e596c4",
+        "name": "Cleaning Application",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "TEAM 1 PROJECT",
+            "type": "text/plain"
+        }
+    }
+}
