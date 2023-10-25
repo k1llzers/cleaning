@@ -3,6 +3,7 @@ package com.naukma.cleaning.controllers;
 import com.naukma.cleaning.models.dtos.CommercialProposalDto;
 import com.naukma.cleaning.models.order.CommercialProposal;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/commercial-proposals")
+@Tag(name = "CommercialProposal API", description = "Endpoint for operations with commercial proposals")
 public class CommercialProposalController {
     private final CommercialProposalService commercialProposalService;
 

@@ -3,12 +3,14 @@ package com.naukma.cleaning.controllers;
 import com.naukma.cleaning.models.dtos.CommentDto;
 import com.naukma.cleaning.models.order.Comment;
 import com.naukma.cleaning.services.commentService.CommentService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/comments")
 @RequiredArgsConstructor
+@Tag(name = "Comment API", description = "Endpoint for operations with comments of orders")
 public class CommentController {
 
     public final CommentService commentService;

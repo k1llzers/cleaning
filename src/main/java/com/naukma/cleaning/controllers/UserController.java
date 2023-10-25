@@ -4,6 +4,7 @@ import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import com.naukma.cleaning.utils.exceptions.EmailDuplicateException;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController()
 @RequestMapping("/users")
 @RequiredArgsConstructor
+@Tag(name = "User API", description = "Endpoint for operations with users (customers/staff)")
 public class UserController {
     private final UserService userService;
     private final static Logger log = LoggerFactory.getLogger(UserController.class);
@@ -31,7 +33,7 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id){
         throw new EmailDuplicateException();
-//        return userService.getUser(id);
+        // return userService.getUser(id);
     }
 
     @GetMapping("/by-email")

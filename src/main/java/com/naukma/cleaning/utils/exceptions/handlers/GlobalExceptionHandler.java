@@ -1,5 +1,6 @@
-package com.naukma.cleaning.utils.exceptions;
+package com.naukma.cleaning.utils.exceptions.handlers;
 
+import com.naukma.cleaning.utils.exceptions.PaymentUnsuccessfulException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

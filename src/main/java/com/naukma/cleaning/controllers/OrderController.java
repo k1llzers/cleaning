@@ -4,6 +4,7 @@ import com.naukma.cleaning.models.dtos.OrderDto;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.orderService.OrderService;
 import com.naukma.cleaning.utils.exceptions.PaymentUnsuccessfulException;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/orders")
 @RequiredArgsConstructor
+@Tag(name = "Order API", description = "Endpoint for operations with orders")
 public class OrderController {
 
     private final OrderService orderService;
