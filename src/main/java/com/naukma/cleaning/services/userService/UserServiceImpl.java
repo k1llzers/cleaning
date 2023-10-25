@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        MDC.put("NewUserID", String.valueOf(user.getId()));
         UserEntity userEntity = modelMapper.map(user, UserEntity.class);
         userEntity.setPassword(encoder.encode(userEntity.getPassword()));
         return modelMapper.map(userDao.save(userEntity), User.class);
