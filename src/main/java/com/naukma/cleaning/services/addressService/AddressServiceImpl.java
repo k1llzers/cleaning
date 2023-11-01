@@ -79,4 +79,10 @@ public class AddressServiceImpl implements AddressService {
         List<Address> addresses = getUserAddresses(user);
         return addresses.stream().map(x -> modelMapper.map(x, AddressDto.class)).toList();
     }
+
+    @Override
+    public List<AddressDto> getAddressesByUserId(Long id) {
+        UserDto userDto = userService.getUserDto(id);
+        return getUserAddresses(userDto);
+    }
 }

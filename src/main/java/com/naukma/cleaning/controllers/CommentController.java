@@ -24,14 +24,14 @@ public class CommentController {
 
     @Operation(summary = "Change comment", description = "Change comment")
     @PutMapping()
-    public void editProposal(@RequestBody CommentDto comment) {
-        commentService.editProposal(comment);
+    public void editComment(@RequestBody CommentDto comment) {
+        commentService.editComment(comment);
     }
 
     @Operation(summary = "Create new comment for order", description = "Create new comment for order")
-    @PostMapping()
-    public void createComment(@RequestBody CommentDto comment) {
-        commentService.createComment(comment);
+    @PostMapping("/{orderId}")
+    public void createComment(@PathVariable Long orderId, @RequestBody CommentDto comment) {
+        commentService.createComment(orderId, comment);
     }
 
     @Operation(summary = "Delete comment", description = "Delete comment")

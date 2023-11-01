@@ -25,9 +25,9 @@ public class AddressController {
     }
 
     @Operation(summary = "Get all user addresses", description = "Get all user addresses")
-    @GetMapping()
-    public List<AddressDto> getUserAddresses(@RequestBody UserDto userDto) {
-        return addressService.getUserAddresses(userDto);
+    @GetMapping("/by-user/{userId}")
+    public List<AddressDto> getUserAddresses(@PathVariable Long userId) {
+        return addressService.getAddressesByUserId(userId);
     }
 
     @Operation(summary = "Change address", description = "Change address")

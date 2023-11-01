@@ -34,13 +34,13 @@ public class UserController {
     @Operation(summary = "Get user by id", description = "Get user by id")
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id) {
-        throw new EmailDuplicateException();
-//         return userService.getUser(id);
+        //throw new EmailDuplicateException();
+        return userService.getUserDto(id);
     }
 
     @Operation(summary = "Get user by email", description = "Get user by email")
-    @GetMapping("/by-email")
-    public UserDto getUserByEmail(@RequestParam String email) {
+    @GetMapping("/by-email/{email}")
+    public UserDto getUserByEmail(@PathVariable String email) {
         RestTemplate restTemplate = new RestTemplate();
         String resource = "http://worldtimeapi.org/api/timezone/Europe/Kyiv";
         ResponseEntity<String> time = restTemplate.getForEntity(resource, String.class);

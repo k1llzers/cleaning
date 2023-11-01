@@ -33,6 +33,7 @@ public class OrderEntity {
             inverseJoinColumns = @JoinColumn(name = "executor_fk"))
     private Set<UserEntity> executors;
     @OneToOne
+    @JoinColumn(name = "column_id")
     private CommentEntity comment;
     @OneToOne
     @JoinColumn(name = "address_fk", nullable = false)

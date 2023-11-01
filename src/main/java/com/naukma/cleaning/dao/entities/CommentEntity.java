@@ -22,4 +22,6 @@ public class CommentEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private LocalDateTime date;
+    //@OneToOne(mappedBy = "comment")
+    //private OrderEntity order;
 }

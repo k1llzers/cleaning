@@ -1,6 +1,7 @@
 package com.naukma.cleaning;
 
 import com.naukma.cleaning.models.dtos.AddressDto;
+import com.naukma.cleaning.models.dtos.CommentDto;
 import com.naukma.cleaning.models.dtos.OrderDto;
 import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.order.Address;
@@ -9,6 +10,7 @@ import com.naukma.cleaning.models.order.CommercialProposal;
 import com.naukma.cleaning.models.user.Role;
 import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.addressService.AddressService;
+import com.naukma.cleaning.services.commentService.CommentService;
 import com.naukma.cleaning.services.orderService.OrderService;
 import com.naukma.cleaning.services.proposalService.CommercialProposalServiceImpl;
 import com.naukma.cleaning.services.userService.UserService;
@@ -75,7 +77,7 @@ public class CleaningApplication {
         userService.createUser(user2);
 
 
-        var userDTO = userService.createUser(new UserDto("name 0", "p@SsW0rd", "ema@e.ukma", Role.User)); 
+        var userDTO = userService.createUser(new UserDto("name 0", "p@SsW0rd", "ema@e.ukma", Role.User));
         var user = userService.getUser(3);
         var addressservice = (AddressService)context.getBean("addressServiceImpl");
         var address = new Address();
@@ -85,16 +87,23 @@ public class CleaningApplication {
         address.setHouseNumber("8d");
         address.setFlatNumber(7);
         addressservice.createAddress(user, address);
-        userService.createUser(new UserDto("name 1e", "p@SsW1rd", "ex@e.edu", Role.Employee));	
+        userService.createUser(new UserDto("name 1e", "p@SsW1rd", "ex@e.edu", Role.Employee));
         var exec = userService.getUser(4);
         var execs = new HashSet<User>();
         execs.add(exec);
         OrderService orderService = (OrderService)context.getBean("orderServiceImpl");
-        orderService.createOrder(new OrderDto(1, 405.0, LocalDateTime.now(), LocalDateTime.now().plusHours(1), 
-            user, execs, null, address, 
+        orderService.createOrder(new OrderDto(1, 405.0, LocalDateTime.now(), LocalDateTime.now().plusHours(1),
+            user, execs, null, address,
             com.naukma.cleaning.models.order.Status.NOT_VERIFIED, new HashSet<CommercialProposal>()));
         System.out.println(orderService.getOrder(1).toString());
         System.out.println("It's alive!");
+        CommentService commentService = (CommentService)context.getBean("commentServiceImpl");
+        CommentDto comment = new CommentDto(1, "Text", LocalDateTime.now(), 5);
+        //commentService.createComment(1l, comment);
+        System.out.println(orderService.getOrder(1).toString());
+        comment.setText("ayayay");
+        //commentService.editComment(comment);
+        System.out.println(orderService.getOrder(1).toString());
     }
 
     @Bean
