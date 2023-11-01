@@ -35,7 +35,7 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id) {
         throw new EmailDuplicateException();
-        // return userService.getUser(id);
+//         return userService.getUser(id);
     }
 
     @Operation(summary = "Get user by email", description = "Get user by email")

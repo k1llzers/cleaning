@@ -4,6 +4,7 @@ import com.naukma.cleaning.dao.UserDao;
 import com.naukma.cleaning.dao.entities.UserEntity;
 import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.user.User;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,20 +13,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
     private final PasswordEncoder encoder;
-    private UserDao userDao;
-    private ModelMapper modelMapper;
+    private final UserDao userDao;
+    private final ModelMapper modelMapper;
     private final static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
-
-    public UserServiceImpl(PasswordEncoder encoder, UserDao userDao, ModelMapper modelMapper) {
-        this.encoder = encoder;
-        this.userDao = userDao;
-        this.modelMapper = modelMapper;
-        MDC.put("param","value");
-        LOGGER.error("UserService created!");
-        MDC.clear();
-    }
 
     @Override
     public User createUser(User user) {

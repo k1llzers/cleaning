@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -60,13 +61,13 @@ public class CleaningApplication {
         user1.setId(1);
         user1.setName("Jonathan");
         user1.setEmail("google@gmail.com");
-        user1.setPassword("asjhubulichauihcbl");
+        user1.setPassword("qwerty");
         user1.setRole(Role.User);
         User user2 = new User();
         user2.setId(2);
         user2.setName("Michael");
         user2.setEmail("google2@gmail.com");
-        user2.setPassword("asjhubulichauihcbl");
+        user2.setPassword("qwerty123");
         user2.setRole(Role.User);
 
         UserServiceImpl userService = (UserServiceImpl) context.getBean("userServiceImpl");

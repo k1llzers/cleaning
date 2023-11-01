@@ -1,7 +1,6 @@
 package com.naukma.cleaning.controllers;
 
 import com.naukma.cleaning.models.dtos.CommercialProposalDto;
-import com.naukma.cleaning.models.order.CommercialProposal;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
