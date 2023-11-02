@@ -58,6 +58,7 @@ public class SecurityConfig {
                 ).authorizeHttpRequests(auth -> auth
                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                 )
+                .formLogin(form -> form.permitAll())
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")));
