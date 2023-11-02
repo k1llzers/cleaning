@@ -71,10 +71,16 @@ public class CleaningApplication {
         user2.setEmail("google2@gmail.com");
         user2.setPassword("qwerty123");
         user2.setRole(Role.User);
-
+        User user3 = new User();
+        user3.setId(1);
+        user3.setName("admin");
+        user3.setEmail("admin");
+        user3.setPassword("admin");
+        user3.setRole(Role.Admin);
         UserServiceImpl userService = (UserServiceImpl) context.getBean("userServiceImpl");
         userService.createUser(user1);
         userService.createUser(user2);
+        userService.createUser(user3);
 
 
         var userDTO = userService.createUser(new UserDto("name 0", "p@SsW0rd", "ema@e.ukma", Role.User));

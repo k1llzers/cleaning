@@ -21,13 +21,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(PaymentUnsuccessfulException.class)
     public String handlePaymentException(HttpServletRequest request, PaymentUnsuccessfulException e) {
-        logger.error("Payment exception occurred. URL={}, Message={}", request.getRequestURL(), e.getMessage());
+        logger.error("Payment exception occurred. URL={}, Message={}", request.getRequestURL(), e.getMessage(), e);
         return "payment_error";
     }
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<Object> handleNoSuchElementException(WebRequest request, NoSuchElementException e) {
-        logger.error("Can`t find entity by {}", ((ServletWebRequest) request).getRequest().getRequestURL());
+        logger.error("Can`t find entity by {}", ((ServletWebRequest) request).getRequest().getRequestURL(), e);
         return handleExceptionInternal(e,"can`t find entity",new HttpHeaders(), HttpStatus.NOT_FOUND,request);
     }
 }
