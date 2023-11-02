@@ -7,6 +7,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
@@ -54,7 +55,12 @@ public class SecurityConfig {
                                         , antMatcher("/webjars/**")
                                         , antMatcher("/v3/api-docs/**")).hasRole("Admin")
                                 .requestMatchers(antMatcher("/h2-console/**")).hasRole("Admin")
-                );
+                ).authorizeHttpRequests(auth -> auth
+                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+                )
+                .headers(headers -> headers.frameOptions().disable())
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")));
         http.httpBasic(Customizer.withDefaults());
 
         http.csrf(AbstractHttpConfigurer::disable);
