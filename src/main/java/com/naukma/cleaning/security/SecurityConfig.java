@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
@@ -16,11 +17,33 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(
                         config -> config
-                                .requestMatchers(antMatcher(HttpMethod.PUT,"/addresses")).hasAnyRole("User")
-                                .requestMatchers(antMatcher(HttpMethod.POST,"/addresses/")).hasAnyRole("User")
+                                //address controller
+                                .requestMatchers(antMatcher(HttpMethod.PUT, "/addresses")).hasAnyRole("User", "Admin")
+                                .requestMatchers(antMatcher(HttpMethod.POST, "/addresses/**")).hasAnyRole("User", "Admin")
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/addresses/**")).hasAnyRole("User", "Employee", "Admin")
+                                .requestMatchers(antMatcher(HttpMethod.DELETE, "/addresses/**")).hasAnyRole("User", "Admin")
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/addresses/by-user/**")).hasAnyRole("Admin")
+                                //commercial-proposals controller
+                                .requestMatchers(antMatcher(HttpMethod.PUT, "/commercial-proposals")).hasAnyRole("Admin")
+                                .requestMatchers(antMatcher(HttpMethod.POST, "/commercial-proposals")).hasAnyRole("Admin")
                                 .requestMatchers(antMatcher(HttpMethod.GET, "/commercial-proposals/**")).permitAll()
-                                .requestMatchers(antMatcher("/addresses/**")).permitAll()
-//                        .requestMatchers(HttpMethod.GET,"/commercial-proposals/**").hasRole("Employee")
+                                .requestMatchers(antMatcher(HttpMethod.DELETE, "/commercial-proposals/**")).hasAnyRole("Admin")
+                                //user controller
+                                .requestMatchers(antMatcher(HttpMethod.PUT, "/users")).hasAnyRole("User", "Admin")
+                                .requestMatchers(antMatcher(HttpMethod.POST, "/users")).hasAnyRole("User", "Admin")
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/users/**")).hasAnyRole("Admin")
+                                .requestMatchers(antMatcher(HttpMethod.DELETE, "/users/**")).hasAnyRole("Admin")
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/users/by-email/**")).hasAnyRole("Admin")
+                                //comment controller
+                                .requestMatchers(antMatcher(HttpMethod.PUT, "/comments")).hasAnyRole("User")
+                                .requestMatchers(antMatcher(HttpMethod.POST, "/comments/**")).hasAnyRole("User")
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/comments/**")).hasAnyRole("Admin")
+                                .requestMatchers(antMatcher(HttpMethod.DELETE, "/comments/**")).hasAnyRole("Admin")
+                                //order controller
+                                .requestMatchers(antMatcher(HttpMethod.PUT, "/orders")).hasAnyRole("User","Admin")
+                                .requestMatchers(antMatcher(HttpMethod.POST, "/orders")).hasAnyRole("User","Admin")
+                                .requestMatchers(antMatcher(HttpMethod.PUT, "/orders/status")).hasAnyRole("User","Employee","Admin")
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/orders/**")).hasAnyRole("User","Employee","Admin")
                                 .requestMatchers(antMatcher("/swagger-ui/**")
                                         , antMatcher("/v2/api-docs")
                                         , antMatcher("/swagger-resources")
@@ -31,11 +54,10 @@ public class SecurityConfig {
                                         , antMatcher("/webjars/**")
                                         , antMatcher("/v3/api-docs/**")).hasRole("Admin")
                                 .requestMatchers(antMatcher("/h2-console/**")).hasRole("Admin")
-                        //  .requestMatchers(antMatcher(HttpMethod.DELETE,"/commercial-proposals/**")).permitAll()
                 );
         http.httpBasic(Customizer.withDefaults());
 
-        http.csrf(csrf -> csrf.disable());
+        http.csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
 }
