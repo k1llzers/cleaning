@@ -42,6 +42,10 @@ public class FilterConfig {
             try{
                 HttpServletRequest request = (HttpServletRequest) req;
                 String body = StreamUtils.copyToString(request.getInputStream(), StandardCharsets.UTF_8);
+                if(!request.getMethod().equals("POST")){
+                    chain.doFilter(req, resp);
+                    return;
+                }
                 Map<String, Object> bodyMap = new ObjectMapper().readValue(body, Map.class);
                 if(bodyMap.size() > 0){
                     chain.doFilter(req, resp);
