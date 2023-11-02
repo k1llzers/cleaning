@@ -1,7 +1,6 @@
 package com.naukma.cleaning.controllers;
 
 import com.naukma.cleaning.models.dtos.UserDto;
-import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import com.naukma.cleaning.utils.exceptions.EmailDuplicateException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,6 +10,9 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +36,6 @@ public class UserController {
     @Operation(summary = "Get user by id", description = "Get user by id")
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id) {
-        //throw new EmailDuplicateException();
         return userService.getUserDto(id);
     }
 

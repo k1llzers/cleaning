@@ -30,4 +30,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         logger.error("Can`t find entity by {}", ((ServletWebRequest) request).getRequest().getRequestURL(), e);
         return handleExceptionInternal(e,"can`t find entity",new HttpHeaders(), HttpStatus.NOT_FOUND,request);
     }
+
+    @ExceptionHandler(Exception.class)
+    public String handle(WebRequest request, Exception e){
+        logger.error(e.getMessage());
+        return "";
+    }
 }

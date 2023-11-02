@@ -10,8 +10,13 @@ import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -82,7 +87,12 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<AddressDto> getAddressesByUserId(Long id) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        List<String> authorities = authentication.getAuthorities().stream().map(e -> e + "").toList();
         UserDto userDto = userService.getUserDto(id);
+        if (!authorities.contains("ROLE_Admin") && !userDto.getEmail().equals(authentication.getName())){
+            throw new AccessDeniedException("You can`t get addresses by id " + id);
+        }
         return getUserAddresses(userDto);
     }
 }

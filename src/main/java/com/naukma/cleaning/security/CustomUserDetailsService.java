@@ -1,4 +1,4 @@
-package com.naukma.cleaning.services;
+package com.naukma.cleaning.security;
 
 import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;

@@ -1,11 +1,9 @@
 package com.naukma.cleaning;
 
-import com.naukma.cleaning.models.dtos.AddressDto;
 import com.naukma.cleaning.models.dtos.CommentDto;
 import com.naukma.cleaning.models.dtos.OrderDto;
 import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.order.Address;
-import com.naukma.cleaning.models.order.Comment;
 import com.naukma.cleaning.models.order.CommercialProposal;
 import com.naukma.cleaning.models.user.Role;
 import com.naukma.cleaning.models.user.User;
@@ -13,33 +11,15 @@ import com.naukma.cleaning.services.addressService.AddressService;
 import com.naukma.cleaning.services.commentService.CommentService;
 import com.naukma.cleaning.services.orderService.OrderService;
 import com.naukma.cleaning.services.proposalService.CommercialProposalServiceImpl;
-import com.naukma.cleaning.services.userService.UserService;
 import com.naukma.cleaning.services.userService.UserServiceImpl;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import io.swagger.v3.oas.annotations.servers.Server;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.security.SecureRandom;
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.HashSet;
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-
-import java.time.LocalDateTime;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import javax.sql.DataSource;
 
 @SpringBootApplication
 public class CleaningApplication {
@@ -72,7 +52,7 @@ public class CleaningApplication {
         user2.setPassword("qwerty123");
         user2.setRole(Role.User);
         User user3 = new User();
-        user3.setId(1);
+        user3.setId(3);
         user3.setName("admin");
         user3.setEmail("admin");
         user3.setPassword("admin");
