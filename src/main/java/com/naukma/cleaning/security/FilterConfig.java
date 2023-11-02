@@ -11,6 +11,8 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StreamUtils;
+import org.springframework.web.ErrorResponse;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -34,38 +36,35 @@ public class FilterConfig {
         return registrationBean;
     }
 
-    public class CleaningGeneralPostFilter implements Filter {
+    public class CleaningGeneralPostFilter extends OncePerRequestFilter{
         private final Logger logger = LoggerFactory.getLogger(CleaningGeneralPostFilter.class);
 
         @Override
-        public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
+        protected void doFilterInternal(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws ServletException, IOException {
             try{
-                HttpServletRequest request = (HttpServletRequest) req;
-                String body = StreamUtils.copyToString(request.getInputStream(), StandardCharsets.UTF_8);
-                if(!request.getMethod().equals("POST")){
-                    chain.doFilter(req, resp);
+                CachedBodyHttpServletRequest wrappedRequest = new CachedBodyHttpServletRequest((HttpServletRequest) req);
+                String body = StreamUtils.copyToString(wrappedRequest.getInputStream(), StandardCharsets.UTF_8);
+                if(!wrappedRequest.getMethod().equals("POST")){
+                    chain.doFilter(wrappedRequest, resp);
                     return;
                 }
                 Map<String, Object> bodyMap = new ObjectMapper().readValue(body, Map.class);
                 if(bodyMap.size() > 0){
-                    chain.doFilter(req, resp);
+                    chain.doFilter(wrappedRequest, resp);
                     return;
                 }
-                else{
-                    FilterConfig.handle(resp, new Exception("Empty Post body"), logger);
-                }
-                
+                FilterConfig.handle(resp, new Exception("Empty Post body"), logger);
             } catch (Exception e){
-                FilterConfig.handle(resp, e, logger);
+                FilterConfig.handle(resp, new Exception("Empty Post body"), logger);
             }
         }
     }
 
     static private void handle(ServletResponse resp, Exception e, Logger logger){
         HttpServletResponse response = (HttpServletResponse) resp;
-        logger.warn("(500) Error in filter: " + e.getMessage());
+        logger.warn("Error in filter: " + e.getMessage());
         try {
-            response.sendError(500, "Error in filter: " + e.getMessage());
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Empty Post body");
         } catch (IOException e2) {
             logger.error(e2.getMessage());
         }
