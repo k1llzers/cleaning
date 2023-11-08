@@ -54,6 +54,7 @@ public class SecurityConfig {
                                         , antMatcher("/webjars/**")
                                         , antMatcher("/v3/api-docs/**")).hasRole("Admin")
                                 .requestMatchers(antMatcher("/h2-console/**")).hasRole("Admin")
+                                .requestMatchers(antMatcher("/**")).permitAll()
                 )
                 .formLogin(form -> form.permitAll())
                 .headers(headers -> headers.frameOptions().disable())
