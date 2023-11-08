@@ -1,6 +1,9 @@
 package com.naukma.cleaning.controllers;
 
+import com.naukma.cleaning.models.dtos.UserCreateDto;
 import com.naukma.cleaning.models.dtos.UserDto;
+import com.naukma.cleaning.services.authenticationService.AuthenticationService;
+import com.naukma.cleaning.services.authenticationService.AuthenticationServiceImpl;
 import com.naukma.cleaning.services.userService.UserService;
 import com.naukma.cleaning.utils.exceptions.EmailDuplicateException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,6 +34,7 @@ import org.springframework.web.client.RestTemplate;
 @Tag(name = "User API", description = "Endpoint for operations with users (customers/staff)")
 public class UserController {
     private final UserService userService;
+    private final AuthenticationService authenticationService;
     private final static Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Operation(summary = "Get user by id", description = "Get user by id")
@@ -57,8 +61,8 @@ public class UserController {
 
     @Operation(summary = "Add user", description = "Add user")
     @PostMapping
-    public UserDto addUser(@RequestBody @Valid UserDto userDto) {
-        return userService.createUser(userDto);
+    public UserDto addUser(@RequestBody @Valid UserCreateDto userDto) {
+        return authenticationService.register(userDto.getName(),userDto.getEmail(),userDto.getPassword());
     }
 
     @Operation(summary = "Delete user", description = "Delete user")
