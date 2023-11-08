@@ -1,6 +1,5 @@
 package com.naukma.cleaning.controllers;
 
-import com.naukma.cleaning.models.dtos.UserCreateDto;
 import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.services.authenticationService.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,7 +25,7 @@ public class FormController {
     @PostMapping("/main/success")
 //    public String addUser(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String pass) {
 //        authenticationService.register(name,email,pass);
-    public String addUser(@ModelAttribute @Valid UserCreateDto userDto) {
+    public String addUser(@ModelAttribute @Valid UserDto userDto) {
         authenticationService.register(userDto.getName(),userDto.getEmail(),userDto.getPassword());
         return "index";
     }
