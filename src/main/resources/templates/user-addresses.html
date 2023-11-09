@@ -6,7 +6,7 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{fragments/header :: header}"></div>
 
     <h1 th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">User Addresses</h1>
 

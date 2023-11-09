@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="body_wrapper">
-        <div th:replace="fragments/header :: header"></div>
+        <div th:replace="~{fragments/header :: header}"></div>
         <div id="main_part" th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">
             <h1 id="proposals">Proposals</h1>
             <div id="proposals_list">

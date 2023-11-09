@@ -6,7 +6,7 @@
     <title>Please sign in</title>
   </head>
   <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{fragments/header :: header}"></div>
      <div class="container" th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">
       <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Please sign in</h2>
