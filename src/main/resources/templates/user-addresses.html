@@ -7,24 +7,10 @@
 </head>
 <body>
     <div th:replace="~{fragments/header :: header}"></div>
-
     <h1 th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">User Addresses</h1>
 
-    <button id="addAddressBtn">Add Address</button>
-
-    <div id="addAddressOverlay" class="overlay">
-        <div class="overlay-content">
-            <h2 class="overlayHeader">Add Address</h2>
-            <form id="addAddressForm" th:action="@{/addAddress}" method="post">
-                <input type="text" class="form-control" placeholder="City" name="city" required>
-                <input type="text" class="form-control" placeholder="Street" name="street" required>
-                <input type="text" class="form-control" placeholder="House Number" name="houseNumber" required>
-                <input type="text" class="form-control" placeholder="Flat Number" name="flatNumber">
-                <button type="submit" class="submitbtn">Add Address</button>
-            </form>
-            <button class="overlaybttn" onclick="closeAddOverlay()">Close</button>
-        </div>
-    </div>
+    
+    <div th:replace="~{add-template :: addAddressOverlay}" th:object="${addressOverlayData}"></div>
 
     <table id="addressesTable">
         <thead>
@@ -68,6 +54,8 @@
         <button class="overlaybttn" onclick="closeEditOverlay()">Close</button>
     </div>
 </div>
+
+
 
 <script>
     document.querySelectorAll('.editbtn').forEach(function(button) {

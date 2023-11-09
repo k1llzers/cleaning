@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.naukma.cleaning.models.dtos.AddressDto;
 import com.naukma.cleaning.services.addressService.AddressService;
 import com.naukma.cleaning.services.userService.UserService;
+import com.naukma.cleaning.viewControllers.TLUtils.Tables.InputsContainer;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import java.util.Arrays;
 
 
 @Controller
@@ -31,7 +33,27 @@ public class UserVC {
 	public String viewAdresses(Model model, Principal principal) {
 		var userID = userService.getUserByEmail(principal.getName()).getId();	
 		model.addAttribute("addressesList", addressService.getAddressesByUserId(userID));
+		var addressOverlayData = new AddressOverlayData();
+		addressOverlayData.buttonText = "Add Address";
+		addressOverlayData.headerText = "Add Address";
+		addressOverlayData.formAction = "addAddress";
+		addressOverlayData.inputsData = new InputsContainer(
+			Arrays.asList(
+				new InputsContainer.InputData("text", "City", "city", true),
+				new InputsContainer.InputData("text", "Street", "street", true),
+				new InputsContainer.InputData("text", "House Number", "houseNumber", true),
+				new InputsContainer.InputData("text", "Flat Number", "flatNumber", false)
+			)
+		);
+		model.addAttribute("addressOverlayData", addressOverlayData);
 		return "user-addresses";
+	}
+
+	public static class AddressOverlayData{
+		public String buttonText;
+		public String headerText;
+		public String formAction;
+		public InputsContainer inputsData;
 	}
 
 	@PostMapping("/addAddress")

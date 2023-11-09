@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+    <div th:fragment="addAddressOverlay">
+        <button th:id="${addressOverlayData.formAction} + 'Btn'" th:text="${addressOverlayData.buttonText}"></button>
+        <div id="addAddressOverlay" class="overlay">
+            <div class="overlay-content">
+                <h2 class="overlayHeader" th:text="${addressOverlayData.headerText}"> </h2>
+                <form th:id="${addressOverlayData.formAction} + 'Form'" th:action="@{'/' + ${addressOverlayData.formAction}}" method="post">
+                    <div th:each="input : ${addressOverlayData.inputsData.getInputs()}">
+                        <input th:type="${input.type}" th:placeholder="${input.placeholder}" th:name="${input.name}" th:required="${input.required}">
+                    </div>
+                    <button type="submit" class="submitbtn" th:text="${addressOverlayData.buttonText}"></button>
+                </form>
+                <button class="overlaybttn" onclick="closeAddOverlay()">Close</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

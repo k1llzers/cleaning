@@ -72,7 +72,7 @@ public class CleaningApplication {
 
 
         var userDTO = userService.createUser(new UserDto("name 0", "p@SsW0rd", "ema@e.ukma", Role.User));
-        var user = userService.getUser(3);
+        var user = userService.getUser(2);
         var addressservice = (AddressService)context.getBean("addressServiceImpl");
         var address = new Address();
         address.setId(1);
