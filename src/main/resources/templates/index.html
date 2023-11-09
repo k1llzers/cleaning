@@ -7,7 +7,7 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>Welcome to Spring Boot Thymeleaf</h1>
+<!--<h1>Welcome to Spring Boot Thymeleaf</h1>
 <p>
     Hey there! <th:block th:text="${message}">message</th:block>
 </p>
@@ -18,6 +18,46 @@
         <div sec:authorize="hasRole('User')">
             <a th:href="@{/viewAddresses}">Addresses</a>
         </div>
-        
-    </body>
+-->
+    <div class="body_wrapper">
+        <header>
+            <div class="logo_and_buttons">
+                <span class="logo">Cleaning</span>
+                <div class="login_buttons">
+                    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Log out</a>
+                    <a th:href="@{/login}" sec:authorize="isAnonymous()">Log in</a>
+                    <a th:href="@{/signUp}" sec:authorize="isAnonymous()">Sign up</a>
+                </div>
+            </div>
+            <nav sec:authorize="isAuthenticated()">
+                <a sec:authorize="hasRole('User')">Create Order</a>
+                <a th:href="@{/viewAddresses}" sec:authorize="hasRole('User')">Addresses</a>
+                <a sec:authorize="hasRole('Admin')">Employees</a>
+                <a sec:authorize="hasRole('Admin')">Proposals</a>
+                <a sec:authorize="isAuthenticated()">Orders</a>
+            </nav>
+        </header>
+        <div id="main_part">
+            <h1>Proposals</h1>
+            <div id="proposals">
+                <div class="proposal" th:each="proposal: ${proposals}">
+                    <h2 th:text="${proposal.name}"/>
+                    <p th:text="${proposal.description}"/>
+                    <h3 th:text="${proposal.price} + ' ₴'"/>
+                </div>
+            </div>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque accumsan ornare orci, eget efficitur lorem bibendum ut. Curabitur at tempus augue. Vivamus rhoncus fermentum mauris scelerisque auctor. Sed quis accumsan est. Integer nisl augue, molestie vel nisi vitae, feugiat mattis lectus. Fusce rhoncus sem non turpis varius, eu dictum ante ornare. Maecenas vitae semper quam.
+
+                Donec vitae orci sit amet est elementum pellentesque et ac nunc. Aliquam erat volutpat. Nam hendrerit ipsum magna, vel pellentesque nisi porttitor vitae. Sed posuere ut ligula tristique tristique. Integer quis condimentum ligula. Nullam volutpat gravida ante eu luctus. Curabitur semper volutpat pharetra. Suspendisse ut arcu ac tellus tristique ullamcorper. Sed mattis congue est, eget elementum magna vulputate eu. Phasellus sed vulputate mauris, a ultricies magna. Ut lobortis bibendum vulputate. Donec gravida sed dui sagittis dapibus.
+
+                Fusce at tortor ut massa facilisis iaculis et sed ante. Proin eget dui magna. Integer tincidunt justo sagittis, elementum enim in, interdum ante. Nam vehicula urna id ligula pellentesque, non aliquam ipsum eleifend. Ut ac porttitor nisi. Nam auctor sed lorem ac sodales. Curabitur iaculis elit est, faucibus euismod urna interdum at.
+
+                Duis convallis venenatis tortor eu mollis. Nullam et nunc ipsum. Quisque sed neque accumsan, maximus mi et, faucibus eros. Ut eget lorem eget odio volutpat scelerisque. Nam in placerat urna, vitae commodo purus. Phasellus mattis felis enim, in vehicula lectus elementum in. Cras enim ligula, viverra eu pretium at, suscipit nec magna. Sed iaculis quis quam ac lacinia. Fusce gravida suscipit nisi sit amet pulvinar. Maecenas ac molestie ipsum. Phasellus tempor accumsan accumsan. Fusce condimentum faucibus lacus, nec fermentum purus suscipit vitae. Nunc pellentesque risus nec laoreet faucibus. Phasellus sit amet tortor at libero tempus tincidunt vel in ex.
+
+                Morbi iaculis risus a sem rutrum, id vestibulum neque efficitur. Integer bibendum diam sit amet ipsum iaculis vestibulum. Fusce ac massa aliquet, scelerisque eros a, iaculis lacus. Nunc in tincidunt lectus. Curabitur ornare dictum mauris, a tincidunt leo mollis quis. Ut fringilla sagittis lobortis. Mauris et magna id ligula tempor suscipit sed ut odio. Praesent suscipit posuere velit vel ultricies. Donec pretium urna mi, eget sodales tellus mattis ut. Vestibulum quis massa tincidunt, facilisis dolor condimentum, finibus augue. Maecenas euismod ex eu velit vulputate, vitae fringilla ligula posuere. In quis ipsum odio. Vivamus lacinia elit libero. Mauris pretium, purus vel sollicitudin tempus, nulla diam maximus libero, molestie congue turpis tellus rutrum diam. Suspendisse potenti. Phasellus et ante id est bibendum malesuada in at ante.
+            </p>
+        </div>
+    </div>
+</body>
 </html>

@@ -38,6 +38,14 @@ public class CleaningApplication {
         prop.setPrice(100.0);
         prop.setDescription("This is description of proposal");
         ((CommercialProposalServiceImpl)context.getBean("commercialProposalServiceImpl")).createCommercialProposal(prop);
+        for(int i = 2; i <= 6; i++) {
+            CommercialProposal prop1 = new CommercialProposal();
+            prop1.setId(i);
+            prop1.setName("Super proposal" + i);
+            prop1.setPrice(i * 100.0);
+            prop1.setDescription("This is description of proposal" + i);
+            ((CommercialProposalServiceImpl) context.getBean("commercialProposalServiceImpl")).createCommercialProposal(prop1);
+        }
 
         User user1 = new User();
         user1.setId(1);
@@ -71,7 +79,7 @@ public class CleaningApplication {
         address.setCity("Kyiv");
         address.setStreet("KPI");
         address.setHouseNumber("8d");
-        address.setFlatNumber(7);
+        address.setFlatNumber("7");
         addressservice.createAddress(user, address);
         userService.createUser(new UserDto("name 1e", "p@SsW1rd", "ex@e.edu", Role.Employee));
         var exec = userService.getUser(4);

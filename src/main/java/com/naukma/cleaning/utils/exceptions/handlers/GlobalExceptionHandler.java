@@ -15,11 +15,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.NoSuchElementException;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(PaymentUnsuccessfulException.class)
+    /*@ExceptionHandler(PaymentUnsuccessfulException.class)
     public String handlePaymentException(HttpServletRequest request, PaymentUnsuccessfulException e) {
         logger.error("Payment exception occurred. URL={}, Message={}", request.getRequestURL(), e.getMessage(), e);
         return "payment_error";
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleNoSuchElementException(WebRequest request, NoSuchElementException e) {
         logger.error("Can`t find entity by {}", ((ServletWebRequest) request).getRequest().getRequestURL(), e);
         return handleExceptionInternal(e,"can`t find entity",new HttpHeaders(), HttpStatus.NOT_FOUND,request);
-    }
+    }*/
 
     @ExceptionHandler(Exception.class)
     public String handle(WebRequest request, Exception e){

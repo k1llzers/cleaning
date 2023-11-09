@@ -2,11 +2,16 @@ package com.naukma.cleaning.services.proposalService;
 
 import com.naukma.cleaning.dao.CommercialProposalDao;
 import com.naukma.cleaning.dao.entities.CommercialProposalEntity;
+import com.naukma.cleaning.models.dtos.AddressDto;
 import com.naukma.cleaning.models.dtos.CommercialProposalDto;
+import com.naukma.cleaning.models.order.Address;
 import com.naukma.cleaning.models.order.CommercialProposal;
 
+import com.naukma.cleaning.models.user.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CommercialProposalServiceImpl implements CommercialProposalService {
@@ -57,5 +62,11 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
     @Override
     public CommercialProposalDto getCommercialProposalDto(long id) {
         return modelMapper.map(getCommercialProposal(id), CommercialProposalDto.class);
+    }
+
+    @Override
+    public List<CommercialProposal> getAllCommercialProposals() {
+        List<CommercialProposalEntity> proposals = commercialProposalDao.findAll();
+        return proposals.stream().map(x -> modelMapper.map(x, CommercialProposal.class)).toList();
     }
 }
