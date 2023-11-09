@@ -51,6 +51,8 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public void editAddress(Address address) {
         AddressEntity addressEntity = modelMapper.map(address, AddressEntity.class);
+        var userEntity = addressDao.findById(address.getId()).get().getUserEntity();
+        addressEntity.setUserEntity(userEntity);
         addressDao.save(addressEntity);
     }
 

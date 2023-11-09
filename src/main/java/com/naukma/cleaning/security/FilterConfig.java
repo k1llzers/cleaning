@@ -16,7 +16,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+/* 
 @Configuration
 public class FilterConfig {
     @Bean
@@ -63,3 +63,4 @@ public class FilterConfig {
         }
     }
 }
+*/

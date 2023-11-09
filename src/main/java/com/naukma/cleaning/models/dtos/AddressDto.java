@@ -10,5 +10,5 @@ public class AddressDto {
     private String city;
     private String street;
     private String houseNumber;
-    private int flatNumber;
+    private String flatNumber;
 }

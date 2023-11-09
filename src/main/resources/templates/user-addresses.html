@@ -1,0 +1,128 @@
+<!-- FILEPATH: /f:/cleaning/src/main/resources/templates/user-addresses.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>User Addresses</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+    <h1>User Addresses</h1>
+   
+    <button id="addAddressBtn">Add Address</button>
+
+    <div id="addAddressOverlay" class="overlay">
+        <div class="overlay-content">
+            <h2 class="overlayHeader">Add Address</h2>
+            <form id="addAddressForm" th:action="@{/addAddress}" method="post">
+                <input type="text" class="form-control" placeholder="City" name="city" required>
+                <input type="text" class="form-control" placeholder="Street" name="street" required>
+                <input type="text" class="form-control" placeholder="House Number" name="houseNumber" required>
+                <input type="text" class="form-control" placeholder="Flat Number" name="flatNumber">
+                <button type="submit" class="submitbtn">Add Address</button>
+            </form>
+            <button class="overlaybttn" onclick="closeAddOverlay()">Close</button>
+        </div>
+    </div>
+
+    <table id="addressesTable">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Street</th>
+                <th>House</th>
+                <th>Flat</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="address:${addressesList}" th:id="'row-' + ${address.id}">
+                <td class="city" th:text="${address.city}"></td>
+                <td class="street" th:text="${address.street}"></td>
+                <td class="houseNumber" th:text="${address.houseNumber}"></td>
+                <td class="flatNumber" th:text="${address.flatNumber}"></td>
+                <td style="display: flex;">
+                    <button class="editbtn" th:attr="data-id=${address.id}" style="margin-right: 10px;">Edit</button>
+                    <form th:action="@{/removeAddress}" method="post">
+                        <input type="hidden" name="id" th:value="${address.id}">
+                        <button type="submit" class="deletebtn" onclick="return confirm('Are you sure you want to delete this address?')">Delete</button>
+                    </form>
+                </td>
+                
+            </tr>
+        </tbody>
+    </table>
+
+    
+</div>
+
+<div id="editFormOverlay" class="overlay">
+    <div class="overlay-content">
+        <h2 class="overlayHeader">Edit Address</h2>
+        <form id="editForm" th:action="@{/editAddress}" method="post">
+            <input type="hidden" id="editId" name="id" required>
+            <input type="text" id="editCity" name="city" placeholder="City" required>
+            <input type="text" id="editStreet" name="street" placeholder="Street" required>
+            <input type="text" id="editHouseNumber" name="houseNumber" placeholder="House Number" required>
+            <input type="text" id="editFlatNumber" name="flatNumber" placeholder="Flat Number">
+            <button type="submit" class="submitbtn">Save</button>
+        </form>
+        <button class="overlaybttn" onclick="closeEditOverlay()">Close</button>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.editbtn').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        var id = event.target.getAttribute('data-id');
+        var row = document.getElementById('row-' + id);
+
+        document.getElementById('editId').value = id;
+        document.getElementById('editCity').value = row.querySelector('.city').textContent;
+        document.getElementById('editStreet').value = row.querySelector('.street').textContent;
+        document.getElementById('editHouseNumber').value = row.querySelector('.houseNumber').textContent;
+        document.getElementById('editFlatNumber').value = row.querySelector('.flatNumber').textContent;
+
+        document.getElementById('editFormOverlay').style.display = 'block';
+    });   
+});
+
+    function closeEditOverlay() {
+        document.getElementById('editFormOverlay').style.display = 'none';
+    }
+
+    function closeAddOverlay() {
+        document.getElementById('addAddressOverlay').style.display = 'none';
+    }
+
+    document.getElementById('addAddressBtn').addEventListener('click', function() {
+        document.getElementById('addAddressOverlay').style.display = 'block';
+    });
+
+
+    window.onload = function() {
+        var addOverlay = document.getElementById('addAddressOverlay');
+        var editFormOverlay = document.getElementById('editFormOverlay');
+
+        window.onclick = function(event) {
+            if (event.target == addOverlay) {
+                addOverlay.style.display = 'none';
+            } else if (event.target == editFormOverlay) {
+                editFormOverlay.style.display = 'none';
+            }
+        }
+
+        window.onkeydown = function(event) {
+            if (event.key == 'Escape') {
+                if (addOverlay.style.display == 'block') {
+                    addOverlay.style.display = 'none';
+                }
+                if (editFormOverlay.style.display == 'block') {
+                    editFormOverlay.style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,20 +1,19 @@
-package com.naukma.cleaning.controllers;
+package com.naukma.cleaning.viewControllers;
 
 import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.services.authenticationService.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class FormController {
+@RequiredArgsConstructor
+public class SignUpVC {
     private final AuthenticationService authenticationService;
-    @Autowired
-    public FormController(AuthenticationService authenticationService) {
-        this.authenticationService = authenticationService;
-    }
 
     @GetMapping("/signUp")
     public String showForm() {
