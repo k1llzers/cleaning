@@ -67,7 +67,7 @@ h1{
 
 .overlay-content input{
     width: auto;
-} 
+}
 
 button {
     background-color: #b5b5b5;
@@ -151,4 +151,128 @@ tbody tr:last-of-type {
 
 .overlaybttn{
     width: 100%;
+}
+
+header {
+    background-color: #45a049;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.logo_and_buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 50px;
+    color: white;
+    font-family: Arial;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.login_buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: Arial;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+header a:hover {
+    cursor: pointer;
+    color: lightgray;
+}
+
+nav {
+    padding-bottom: 10px;
+}
+
+body {
+    margin: 0;
+}
+
+#proposals {
+    text-align: center;
+}
+
+#about {
+    text-align: center;
+}
+
+#proposals_list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#main_part {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-bottom: 10px;
+    font-family: Arial;
+}
+
+.logged_out {
+    padding-top: 80px;
+}
+
+.logged_in {
+    padding-top: 116px;
+}
+
+.proposal {
+    overflow: hidden;
+    text-align: center;
+    font-family: Arial;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.proposal:hover {
+    box-shadow: 0 0 5px #808080;
+}
+
+.proposal_header {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: #79ce7c;
+}
+
+.proposal h2 {
+    margin: auto;
+    color: white;
+}
+
+hr {
+    width: 50%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    background-color: #333333;
+    height: 100px;
+    font-family: Arial;
+}
+
+footer p {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    margin-top: auto;
+    margin-bottom: auto;
 }

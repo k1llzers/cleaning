@@ -3,22 +3,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Spring Boot Thymeleaf Web Application</title>
+    <title>Cleaning</title>
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-<!--<h1>Welcome to Spring Boot Thymeleaf</h1>
-<p>
-    Hey there! <th:block th:text="${message}">message</th:block>
-</p>
-
-        <h1>Welcome to the Cleaning App</h1>
-        <p>Here's a sample index for cleaning:</p>
-
-        <div sec:authorize="hasRole('User')">
-            <a th:href="@{/viewAddresses}">Addresses</a>
-        </div>
--->
     <div class="body_wrapper">
         <header>
             <div class="logo_and_buttons">
@@ -37,15 +25,19 @@
                 <a sec:authorize="isAuthenticated()">Orders</a>
             </nav>
         </header>
-        <div id="main_part">
-            <h1>Proposals</h1>
-            <div id="proposals">
+        <div id="main_part" th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">
+            <h1 id="proposals">Proposals</h1>
+            <div id="proposals_list">
                 <div class="proposal" th:each="proposal: ${proposals}">
-                    <h2 th:text="${proposal.name}"/>
+                    <div class="proposal_header">
+                        <h2 th:text="${proposal.name}"/>
+                    </div>
                     <p th:text="${proposal.description}"/>
                     <h3 th:text="${proposal.price} + ' ₴'"/>
                 </div>
             </div>
+            <hr/>
+            <h1 id="about">About us</h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque accumsan ornare orci, eget efficitur lorem bibendum ut. Curabitur at tempus augue. Vivamus rhoncus fermentum mauris scelerisque auctor. Sed quis accumsan est. Integer nisl augue, molestie vel nisi vitae, feugiat mattis lectus. Fusce rhoncus sem non turpis varius, eu dictum ante ornare. Maecenas vitae semper quam.
 
@@ -58,6 +50,9 @@
                 Morbi iaculis risus a sem rutrum, id vestibulum neque efficitur. Integer bibendum diam sit amet ipsum iaculis vestibulum. Fusce ac massa aliquet, scelerisque eros a, iaculis lacus. Nunc in tincidunt lectus. Curabitur ornare dictum mauris, a tincidunt leo mollis quis. Ut fringilla sagittis lobortis. Mauris et magna id ligula tempor suscipit sed ut odio. Praesent suscipit posuere velit vel ultricies. Donec pretium urna mi, eget sodales tellus mattis ut. Vestibulum quis massa tincidunt, facilisis dolor condimentum, finibus augue. Maecenas euismod ex eu velit vulputate, vitae fringilla ligula posuere. In quis ipsum odio. Vivamus lacinia elit libero. Mauris pretium, purus vel sollicitudin tempus, nulla diam maximus libero, molestie congue turpis tellus rutrum diam. Suspendisse potenti. Phasellus et ante id est bibendum malesuada in at ante.
             </p>
         </div>
+        <footer>
+            <p>Footer</p>
+        </footer>
     </div>
 </body>
 </html>
