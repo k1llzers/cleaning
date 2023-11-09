@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>Please sign in</title>
+  </head>
+  <body>
+    <div th:replace="fragments/header :: header"></div>
+     <div class="container">
+      <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <p th:if="${param.error}" class="error-message">Invalid username or password.</p>
+
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="username" required>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <button type="submit" class="confirmbtn">Sign in</button>
+    </form>
+    <form th:action="@{/signUp}" method="get">
+        <button type="submit">Register</button>
+    </form>
+</div>
+</body></html>

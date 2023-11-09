@@ -56,7 +56,7 @@ public class SecurityConfig {
                                 .requestMatchers(antMatcher("/h2-console/**")).hasRole("Admin")
                                 .requestMatchers(antMatcher("/**")).permitAll()
                 )
-                .formLogin(form -> form.permitAll())
+                .formLogin(login -> login.loginPage("/login").permitAll().failureUrl("/login?error=true"))
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")));

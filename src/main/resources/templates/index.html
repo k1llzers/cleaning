@@ -1,33 +1,16 @@
-<!-- FILEPATH: /f:/cleaning/src/main/resources/templates/index.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Cleaning</title>
+    <title>Spring Boot Thymeleaf Web Application</title>
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
     <div class="body_wrapper">
-        <header>
-            <div class="logo_and_buttons">
-                <span class="logo">Cleaning</span>
-                <div class="login_buttons">
-                    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Log out</a>
-                    <a th:href="@{/login}" sec:authorize="isAnonymous()">Log in</a>
-                    <a th:href="@{/signUp}" sec:authorize="isAnonymous()">Sign up</a>
-                </div>
-            </div>
-            <nav sec:authorize="isAuthenticated()">
-                <a sec:authorize="hasRole('User')">Create Order</a>
-                <a th:href="@{/viewAddresses}" sec:authorize="hasRole('User')">Addresses</a>
-                <a sec:authorize="hasRole('Admin')">Employees</a>
-                <a sec:authorize="hasRole('Admin')">Proposals</a>
-                <a sec:authorize="isAuthenticated()">Orders</a>
-            </nav>
-        </header>
-        <div id="main_part" th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">
-            <h1 id="proposals">Proposals</h1>
-            <div id="proposals_list">
+        <div th:replace="fragments/header :: header"></div>
+        <div id="main_part">
+            <h1>Proposals</h1>
+            <div id="proposals">
                 <div class="proposal" th:each="proposal: ${proposals}">
                     <div class="proposal_header">
                         <h2 th:text="${proposal.name}"/>
