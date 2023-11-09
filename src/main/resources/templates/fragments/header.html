@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Spring Boot Thymeleaf App</title>
+</head>
+<body>
+    <div th:fragment="header" class="sticky-header">
+        <header>
+            <div class="logo_and_buttons">
+                <span class="logo">Cleaning</span>
+                <div class="login_buttons">
+                    <a th:href="@{/}" sec:authorize="isAnonymous()">Home</a>
+                    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Log out</a>
+                    <a th:href="@{/login}" sec:authorize="isAnonymous()">Log in</a>
+                    <a th:href="@{/signUp}" sec:authorize="isAnonymous()">Sign up</a>
+                </div>
+            </div>
+            <nav sec:authorize="isAuthenticated()">
+                <a th:href="@{/}">Home</a>
+                <a sec:authorize="hasRole('User')">Create Order</a>
+                <a th:href="@{/viewAddresses}" sec:authorize="hasRole('User')">Addresses</a>
+                <a sec:authorize="hasRole('Admin')">Employees</a>
+                <a sec:authorize="hasRole('Admin')">Proposals</a>
+                <a sec:authorize="isAuthenticated()">Orders</a>
+            </nav>
+        </header>
+    </div>
+</body>
+</html>

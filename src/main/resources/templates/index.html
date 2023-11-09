@@ -1,4 +1,3 @@
-<!-- FILEPATH: /f:/cleaning/src/main/resources/templates/index.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
@@ -7,36 +6,8 @@
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-<!--<h1>Welcome to Spring Boot Thymeleaf</h1>
-<p>
-    Hey there! <th:block th:text="${message}">message</th:block>
-</p>
-
-        <h1>Welcome to the Cleaning App</h1>
-        <p>Here's a sample index for cleaning:</p>
-
-        <div sec:authorize="hasRole('User')">
-            <a th:href="@{/viewAddresses}">Addresses</a>
-        </div>
--->
     <div class="body_wrapper">
-        <header>
-            <div class="logo_and_buttons">
-                <span class="logo">Cleaning</span>
-                <div class="login_buttons">
-                    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Log out</a>
-                    <a th:href="@{/login}" sec:authorize="isAnonymous()">Log in</a>
-                    <a th:href="@{/signUp}" sec:authorize="isAnonymous()">Sign up</a>
-                </div>
-            </div>
-            <nav sec:authorize="isAuthenticated()">
-                <a sec:authorize="hasRole('User')">Create Order</a>
-                <a th:href="@{/viewAddresses}" sec:authorize="hasRole('User')">Addresses</a>
-                <a sec:authorize="hasRole('Admin')">Employees</a>
-                <a sec:authorize="hasRole('Admin')">Proposals</a>
-                <a sec:authorize="isAuthenticated()">Orders</a>
-            </nav>
-        </header>
+        <div th:replace="fragments/header :: header"></div>
         <div id="main_part">
             <h1>Proposals</h1>
             <div id="proposals">

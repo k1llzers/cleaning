@@ -26,7 +26,7 @@ input {
     width: 94%;
 }
 
-button.registerbtn {
+button.confirmbtn {
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
@@ -36,7 +36,7 @@ button.registerbtn {
     cursor: pointer;
 }
 
-button.registerbtn:hover {
+button.confirmbtn:hover {
     background-color: #45a049;
 }
 
@@ -151,4 +151,11 @@ tbody tr:last-of-type {
 
 .overlaybttn{
     width: 100%;
+}
+
+
+.error-message{
+    color: red;
+    font-family: Arial;
+    font-size: 0.8em;
 }
