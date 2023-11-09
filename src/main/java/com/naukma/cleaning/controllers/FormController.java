@@ -16,15 +16,13 @@ public class FormController {
         this.authenticationService = authenticationService;
     }
 
-    @GetMapping("/main/sign")
+    @GetMapping("/signUp")
     public String showForm() {
         return "signup-form";
     }
 
     @Operation(summary = "Add user", description = "Add user")
-    @PostMapping("/main/success")
-//    public String addUser(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("password") String pass) {
-//        authenticationService.register(name,email,pass);
+    @PostMapping("/signUp/success")
     public String addUser(@ModelAttribute @Valid UserDto userDto) {
         authenticationService.register(userDto.getName(),userDto.getEmail(),userDto.getPassword());
         return "index";

@@ -1,9 +1,7 @@
 package com.naukma.cleaning.controllers;
 
-import com.naukma.cleaning.models.dtos.UserCreateDto;
 import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.services.authenticationService.AuthenticationService;
-import com.naukma.cleaning.services.authenticationService.AuthenticationServiceImpl;
 import com.naukma.cleaning.services.userService.UserService;
 import com.naukma.cleaning.utils.exceptions.EmailDuplicateException;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,9 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -61,7 +55,7 @@ public class UserController {
 
     @Operation(summary = "Add user", description = "Add user")
     @PostMapping
-    public UserDto addUser(@RequestBody @Valid UserCreateDto userDto) {
+    public UserDto addUser(@RequestBody @Valid UserDto userDto) {
         return authenticationService.register(userDto.getName(),userDto.getEmail(),userDto.getPassword());
     }
 
