@@ -8,8 +8,8 @@
 <body>
     <div th:replace="fragments/header :: header"></div>
 
-    <h1>User Addresses</h1>
-    
+    <h1 th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">User Addresses</h1>
+
     <button id="addAddressBtn">Add Address</button>
 
     <div id="addAddressOverlay" class="overlay">
@@ -82,7 +82,7 @@
         document.getElementById('editFlatNumber').value = row.querySelector('.flatNumber').textContent;
 
         document.getElementById('editFormOverlay').style.display = 'block';
-    });   
+    });
 });
 
     function closeEditOverlay() {

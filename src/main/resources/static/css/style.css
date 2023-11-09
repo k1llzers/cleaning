@@ -224,11 +224,11 @@ body {
 }
 
 .logged_out {
-    padding-top: 80px;
+    margin-top: 90px;
 }
 
 .logged_in {
-    padding-top: 116px;
+    margin-top: 126px;
 }
 
 .proposal {

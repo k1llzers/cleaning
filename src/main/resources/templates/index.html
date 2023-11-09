@@ -8,9 +8,9 @@
 <body>
     <div class="body_wrapper">
         <div th:replace="fragments/header :: header"></div>
-        <div id="main_part">
-            <h1>Proposals</h1>
-            <div id="proposals">
+        <div id="main_part" th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">
+            <h1 id="proposals">Proposals</h1>
+            <div id="proposals_list">
                 <div class="proposal" th:each="proposal: ${proposals}">
                     <div class="proposal_header">
                         <h2 th:text="${proposal.name}"/>
