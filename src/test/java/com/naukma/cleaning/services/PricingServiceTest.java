@@ -4,25 +4,29 @@ import com.naukma.cleaning.models.order.CommercialProposal;
 import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaningstarter.Discount;
 import com.naukma.cleaningstarter.DiscountService;
+import com.naukma.cleaningstarter.DiscountServiceImpl;
 import com.naukma.cleaning.services.pricingService.PricingService;
 import com.naukma.cleaning.services.pricingService.PricingServiceImpl;
-import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @ExtendWith(SpringExtension.class)
+@TestPropertySource(properties = {"fee = 10"})
 public class PricingServiceTest {
 
-    @Autowired
+    @MockBean
     private DiscountService discountService;
 
     @Autowired
@@ -33,7 +37,7 @@ public class PricingServiceTest {
 
     @Test
     public void calculateTestOne() {
-        discountService.createDiscount(null);
+        Mockito.when(discountService.getCurrentDiscount()).thenReturn(null);
         Set<CommercialProposal> proposals = createProposals();
         Order order = createOrder(proposals);
         Assertions.assertEquals(pricingService.calculate(order), 0);
@@ -41,7 +45,7 @@ public class PricingServiceTest {
 
     @Test
     public void calculateTestTwo() {
-        discountService.createDiscount(new Discount("test", 0.5));
+        Mockito.when(discountService.getCurrentDiscount()).thenReturn(new Discount("test", 0.5));
         Set<CommercialProposal> proposals = createProposals();
         Order order = createOrder(proposals);
         Assertions.assertEquals(pricingService.calculate(order), 0);
@@ -49,7 +53,7 @@ public class PricingServiceTest {
 
     @Test
     public void calculateTestThree() {
-        discountService.createDiscount(null);
+        Mockito.when(discountService.getCurrentDiscount()).thenReturn(null);
         Set<CommercialProposal> proposals = createProposals(100, 100, 100);
         Order order = createOrder(proposals);
         Assertions.assertEquals(pricingService.calculate(order), 300 * (1 + fee / 100.0));
@@ -57,7 +61,7 @@ public class PricingServiceTest {
 
     @Test
     public void calculateTestFour() {
-        discountService.createDiscount(new Discount("test", 0.5));
+        Mockito.when(discountService.getCurrentDiscount()).thenReturn(new Discount("test", 0.5));
         Set<CommercialProposal> proposals = createProposals(100, 100, 100);
         Order order = createOrder(proposals);
         Assertions.assertEquals(pricingService.calculate(order), 300 * (1 - 0.5) * (1 + fee / 100.0));
@@ -65,7 +69,7 @@ public class PricingServiceTest {
 
     @Test
     public void calculateTestFive() {
-        discountService.createDiscount(new Discount("test", 0));
+        Mockito.when(discountService.getCurrentDiscount()).thenReturn(new Discount("test", 0));
         Set<CommercialProposal> proposals = createProposals(100, 100, 100);
         Order order = createOrder(proposals);
         Assertions.assertEquals(pricingService.calculate(order), 300 * (1 + fee / 100.0));
@@ -73,7 +77,7 @@ public class PricingServiceTest {
 
     @Test
     public void calculateTestSix() {
-        discountService.createDiscount(new Discount("test", 1));
+        Mockito.when(discountService.getCurrentDiscount()).thenReturn(new Discount("test", 1));
         Set<CommercialProposal> proposals = createProposals(100, 100, 100);
         Order order = createOrder(proposals);
         Assertions.assertEquals(pricingService.calculate(order), 300 * 0 * (1 + fee / 100.0));
@@ -100,36 +104,7 @@ public class PricingServiceTest {
 
         @Bean
         public DiscountService discountService() {
-            return new DiscountService() {
-
-                private Discount discount;
-
-                @SneakyThrows
-                @Override
-                public void createDiscount(Discount discount) {
-                    this.discount = discount;
-                }
-
-                @Override
-                public void editDiscount(Discount discount) {
-                    this.discount = discount;
-                }
-
-                @Override
-                public void deleteDiscount(long id) {
-                    this.discount = null;
-                }
-
-                @Override
-                public Discount getDiscount(long id) {
-                    return this.discount;
-                }
-
-                @Override
-                public Discount getCurrentDiscount() {
-                    return this.discount;
-                }
-            };
+            return new DiscountServiceImpl();
         }
 
         @Bean
