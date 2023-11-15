@@ -25,6 +25,6 @@ public class PricingServiceImpl implements PricingService {
                     * (1 + fee / 100.0);
         }
         return order.getCommercialProposals().stream().mapToDouble(CommercialProposal::getPrice).sum()
-                * discountService.getCurrentDiscount().getDiscountPercent() * (1 + fee / 100.0);
+                * (1 - discountService.getCurrentDiscount().getDiscountPercent()) * (1 + fee / 100.0);
     }
 }

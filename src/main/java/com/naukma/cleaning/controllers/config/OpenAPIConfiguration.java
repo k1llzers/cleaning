@@ -1,4 +1,4 @@
-package com.naukma.cleaning.config;
+package com.naukma.cleaning.controllers.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Info;
