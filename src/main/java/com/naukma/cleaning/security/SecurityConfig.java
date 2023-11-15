@@ -20,7 +20,7 @@ public class SecurityConfig {
                                 //address controller
                                 .requestMatchers(antMatcher(HttpMethod.PUT, "/addresses")).hasAnyRole("User", "Admin")
                                 .requestMatchers(antMatcher(HttpMethod.POST, "/addresses/**")).hasAnyRole("User", "Admin")
-                                .requestMatchers(antMatcher(HttpMethod.GET, "/addresses/**")).hasAnyRole("User", "Employee", "Admin")
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/addresses/*")).hasAnyRole("User", "Employee", "Admin")
                                 .requestMatchers(antMatcher(HttpMethod.DELETE, "/addresses/**")).hasAnyRole("User", "Admin")
                                 .requestMatchers(antMatcher(HttpMethod.GET, "/addresses/by-user/**")).hasAnyRole("Admin")
                                 //commercial-proposals controller
