@@ -26,7 +26,7 @@ public class Order {
     @NotEmpty(message = "Executors cannot be empty")
     private Set<User> executors;
     //@Valid
-    @NotNull(message = "Comment cannot be null")
+    //@NotNull(message = "Comment cannot be null")
     private Comment comment;
     //@Valid
     @NotNull(message = "Address cannot be null")

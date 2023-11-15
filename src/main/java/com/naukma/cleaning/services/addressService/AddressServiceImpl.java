@@ -1,6 +1,7 @@
 package com.naukma.cleaning.services.addressService;
 
 import com.naukma.cleaning.dao.AddressDao;
+import com.naukma.cleaning.dao.OrderDao;
 import com.naukma.cleaning.dao.entities.AddressEntity;
 import com.naukma.cleaning.dao.entities.UserEntity;
 import com.naukma.cleaning.models.dtos.AddressDto;
@@ -10,6 +11,7 @@ import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.userService.UserService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +28,7 @@ public class AddressServiceImpl implements AddressService {
     private final AddressDao addressDao;
     private final ModelMapper modelMapper;
     private final UserService userService;
+    private final OrderDao orderDao;
 
     @Override
     public void createAddress(User user, Address address) {
@@ -50,7 +53,14 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void editAddress(Address address) {
-        AddressEntity addressEntity = modelMapper.map(address, AddressEntity.class);
+        
+        var addressEntity = modelMapper.map(address, AddressEntity.class);
+        var orders = orderDao.findOrderEntitiesByAddress(addressEntity);
+        for (var order : orders) {
+            if (!(order.getOrderStatus() == com.naukma.cleaning.models.order.Status.NOT_VERIFIED || order.getOrderStatus() == com.naukma.cleaning.models.order.Status.CANCELLED)) {
+                throw new AccessDeniedException("You can`t edit address with id " + address.getId());
+            }
+        }
         var userEntity = addressDao.findById(address.getId()).get().getUserEntity();
         addressEntity.setUserEntity(userEntity);
         addressDao.save(addressEntity);
