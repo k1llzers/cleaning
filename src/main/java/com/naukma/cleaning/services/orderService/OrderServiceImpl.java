@@ -8,6 +8,10 @@ import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.pricingService.PricingService;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
+import com.naukma.cleaning.services.userService.UserService;
+
+import lombok.RequiredArgsConstructor;
+
 import com.naukma.cleaning.services.commentService.CommentService;
 
 import java.util.List;
@@ -21,21 +25,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
     private PricingService pricingService;
     private CommentService commentService;
     private CommercialProposalService commercialProposalService;
     private OrderDao orderDao;
     private ModelMapper modelMapper;
+    private UserService userService;
 
     @Autowired
-    public OrderServiceImpl(PricingService pricingService, CommentService commentService, CommercialProposalService commercialProposalService, ModelMapper modelMapper, OrderDao orderDao) {
+    public OrderServiceImpl(PricingService pricingService, CommentService commentService, CommercialProposalService commercialProposalService, OrderDao orderDao, ModelMapper modelMapper, UserService userService) {
         this.pricingService = pricingService;
         this.commentService = commentService;
         this.commercialProposalService = commercialProposalService;
-        this.modelMapper = modelMapper;
         this.orderDao = orderDao;
+        this.modelMapper = modelMapper;
+        this.userService = userService;
     }
-
 
     @Override
     public void createOrder(Order order) {
@@ -45,36 +51,41 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void editOrder(Order order) {
-        if (order.getOrderStatus() != orderDao.findById(order.getId()).get().getOrderStatus()) {
-            if(order.getOrderStatus() == Status.CANCELLED){
-                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                long userId = ((UserDto) authentication.getPrincipal()).getId();
-                if(order.getClient().getId() != userId)
-                {
-                    throw new AccessDeniedException("Access denied for other users");
-                }
-                orderDao.save(modelMapper.map(order, OrderEntity.class));
-                return;
+        var oldOrder = orderDao.findById(order.getId()).get();
+        
+
+        if (order.getOrderStatus() != oldOrder.getOrderStatus()) {
+            var authentication = SecurityContextHolder.getContext().getAuthentication();
+            var email = authentication.getName();
+            long currentUserId = userService.getUserByEmail(email).getId();
+            List<String> authorities = authentication.getAuthorities().stream().map(e -> e + "").toList();
+
+            if(authorities.size() == 0){
+                throw new AccessDeniedException("Access denied for anonymous users");
             }
-            else{
-                Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                List<String> authorities = authentication.getAuthorities().stream().map(e -> e + "").toList();
-                if (!authorities.contains("ROLE_Admin") && !authorities.contains("ROLE_Employee")){
-                    throw new AccessDeniedException("Access denied for users");
-                }
-                /* 
+
+            if(authorities.contains("ROLE_Admin") || authorities.contains("ROLE_Employee")){
                 if(authorities.contains("ROLE_Employee")){
                     var execs = order.getExecutors();
-                    long userId = ((UserDto) authentication.getPrincipal()).getId();
-                    if(execs.stream().noneMatch(e -> e.getId() == userId)){
+                    if(execs.stream().noneMatch(e -> e.getId() == currentUserId)){
                         throw new AccessDeniedException("Access denied for other employees");
                     }
                 }
-                */
-                
                 orderDao.save(modelMapper.map(order, OrderEntity.class));
                 return;
             }
+            else{ //if user
+                if(order.getOrderStatus() == Status.CANCELLED){
+                    if(order.getClient().getId() != currentUserId) {
+                        throw new AccessDeniedException("Access denied to other users' orders");
+                    }
+                    orderDao.save(modelMapper.map(order, OrderEntity.class));
+                    return;
+                }
+                else{
+                    throw new AccessDeniedException("Access denied for users");
+                }
+            }      
         }
 
         order.setPrice(pricingService.calculate(order));

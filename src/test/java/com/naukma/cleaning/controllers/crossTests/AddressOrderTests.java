@@ -3,6 +3,7 @@ package com.naukma.cleaning.controllers.crossTests;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
@@ -105,7 +107,6 @@ public class AddressOrderTests {
         orderController.editOrder(order);
     }
     
-/* 
     @Test
     @WithMockUser(username = "ex2@e.edu", roles = "Employee")
     @Order(3)
@@ -117,7 +118,7 @@ public class AddressOrderTests {
             assert(false);
         } catch (Exception e) {}
     }
-*/
+
     @Test
     @WithMockUser(username = "em@ai.ll", roles = "User")
     @Order(4)
