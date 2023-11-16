@@ -1,25 +1,23 @@
 package com.naukma.cleaning.viewControllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.naukma.cleaning.models.dtos.AddressDto;
 import com.naukma.cleaning.services.addressService.AddressService;
 import com.naukma.cleaning.services.userService.UserService;
-import com.naukma.cleaning.viewControllers.TLUtils.Tables.InputsContainer;
+import com.naukma.cleaning.viewControllers.vcDtos.AdressDtoVC;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import java.util.Arrays;
+import java.util.List;
 
 
 @Controller
@@ -32,28 +30,16 @@ public class UserVC {
 	@GetMapping("/viewAddresses")
 	public String viewAdresses(Model model, Principal principal) {
 		var userID = userService.getUserByEmail(principal.getName()).getId();	
-		model.addAttribute("addressesList", addressService.getAddressesByUserId(userID));
-		var addressOverlayData = new AddressOverlayData();
-		addressOverlayData.buttonText = "Add Address";
-		addressOverlayData.headerText = "Add Address";
-		addressOverlayData.formAction = "addAddress";
-		addressOverlayData.inputsData = new InputsContainer(
-			Arrays.asList(
-				new InputsContainer.InputData("text", "City", "city", true),
-				new InputsContainer.InputData("text", "Street", "street", true),
-				new InputsContainer.InputData("text", "House Number", "houseNumber", true),
-				new InputsContainer.InputData("text", "Flat Number", "flatNumber", false)
-			)
-		);
-		model.addAttribute("addressOverlayData", addressOverlayData);
+		var addresses = addressService.getAddressesByUserId(userID);
+		List<AdressDtoVC> addressesVC = new ArrayList<>();
+		for (var address : addresses){
+			var ad = new AdressDtoVC(address);
+			ad.setCanDelete(addressService.canDeleteAddress(address.getId()));
+			ad.setCanEdit(addressService.canEditAddress(address.getId()));
+			addressesVC.add(ad);
+		}
+		model.addAttribute("addressesList", addressesVC);
 		return "user-addresses";
-	}
-
-	public static class AddressOverlayData{
-		public String buttonText;
-		public String headerText;
-		public String formAction;
-		public InputsContainer inputsData;
 	}
 
 	@PostMapping("/addAddress")

@@ -10,7 +10,21 @@
     <h1 th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">User Addresses</h1>
 
     
-    <div th:replace="~{add-template :: addAddressOverlay}" th:object="${addressOverlayData}"></div>
+    <button id="addAddressBtn">Add Address</button>
+    <div id="addAddressOverlay" class="overlay">
+        <div class="overlay-content">
+            <h2 class="overlayHeader">Add Address</h2>
+            <form id="addAddressForm" th:action="@{/addAddress}" method="post">
+                <input type="text" class="form-control" placeholder="City" name="city" required>
+                <input type="text" class="form-control" placeholder="Street" name="street" required>
+                <input type="text" class="form-control" placeholder="House Number" name="houseNumber" required>
+                <input type="text" class="form-control" placeholder="Flat Number" name="flatNumber">
+                <button type="submit" class="submitbtn">Add Address</button>
+            </form>
+            <button class="overlaybttn" onclick="closeAddOverlay()">Close</button>
+        </div>
+    </div>
+    
 
     <table id="addressesTable">
         <thead>
@@ -29,8 +43,8 @@
                 <td class="houseNumber" th:text="${address.houseNumber}"></td>
                 <td class="flatNumber" th:text="${address.flatNumber}"></td>
                 <td style="display: flex;">
-                    <button class="editbtn" th:attr="data-id=${address.id}" style="margin-right: 10px;">Edit</button>
-                    <form th:action="@{/removeAddress}" method="post">
+                    <button th:if="${address.canEdit}" class="editbtn" th:attr="data-id=${address.id}" style="margin-right: 10px;">Edit</button>
+                    <form th:if="${address.canDelete}" th:action="@{/removeAddress}" method="post">
                         <input type="hidden" name="id" th:value="${address.id}">
                         <button type="submit" class="deletebtn" onclick="return confirm('Are you sure you want to delete this address?')">Delete</button>
                     </form>
