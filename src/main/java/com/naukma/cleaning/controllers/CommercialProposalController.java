@@ -2,6 +2,7 @@ package com.naukma.cleaning.controllers;
 
 import com.naukma.cleaning.models.dtos.CommercialProposalDto;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
+import com.naukma.cleaning.viewControllers.RateLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -23,6 +24,7 @@ public class CommercialProposalController {
     private final CommercialProposalService commercialProposalService;
 
     @Operation(summary = "Get commercial proposal by id", description = "Get commercial proposal by id")
+    @RateLimited
     @GetMapping("/{id}")
     public CommercialProposalDto getProposalById(@PathVariable Long id) {
         return commercialProposalService.getCommercialProposalDto(id);

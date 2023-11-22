@@ -18,6 +18,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         config -> config
                                 //address controller
+                                .requestMatchers(antMatcher(HttpMethod.GET, "/addresses")).hasAnyRole("User", "Admin")
                                 .requestMatchers(antMatcher(HttpMethod.PUT, "/addresses")).hasAnyRole("User", "Admin")
                                 .requestMatchers(antMatcher(HttpMethod.POST, "/addresses/**")).hasAnyRole("User", "Admin")
                                 .requestMatchers(antMatcher(HttpMethod.GET, "/addresses/*")).hasAnyRole("User", "Employee", "Admin")
