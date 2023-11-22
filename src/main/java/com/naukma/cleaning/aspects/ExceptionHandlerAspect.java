@@ -14,7 +14,7 @@ import java.util.Arrays;
 @Component
 public class ExceptionHandlerAspect {
     private static Logger logger = LoggerFactory.getLogger(ExceptionHandlerAspect.class);
-    @Pointcut("execution(* com.naukma.cleaning.controllers.TestAspectController.*(..))")
+    @Pointcut("execution(* com.naukma.cleaning.controllers.CommercialProposalController.*(..))")
     void cut() {}
 
     @AfterThrowing(value = "cut()", throwing = "exception")
