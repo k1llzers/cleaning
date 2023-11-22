@@ -14,6 +14,9 @@
             <h2>Registration</h2>
             <p>Please fill in this form to create an account.</p>
 
+            <p th:if="${#strings.toString(param.error)} == 'pass'" class="error-message">Password is not strong enough.</p>
+            <p th:if="${#strings.toString(param.error)} == 'email'" class="error-message">Email already used.</p>
+
             <label><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="name" required>
 

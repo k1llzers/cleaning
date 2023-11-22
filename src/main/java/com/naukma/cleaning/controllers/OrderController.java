@@ -21,7 +21,6 @@ public class OrderController {
     @Operation(summary = "Get order by id", description = "Get order by id")
     @GetMapping("/{id}")
     public OrderDto getOrder(@PathVariable("id") Long id) {
-        //throw new PaymentUnsuccessfulException();
         return orderService.getOrderDto(id);
     }
 

@@ -10,8 +10,10 @@
      <div class="container" th:classappend="${#authorization.expression('isAuthenticated()')?'logged_in':'logged_out'}">
       <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Please sign in</h2>
+        
         <p th:if="${param.error}" class="error-message">Invalid username or password.</p>
-
+        <p th:if="${param.registered}" class="success-message">You've been registed succesfully.</p>
+        
         <label><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="username" required>
 
