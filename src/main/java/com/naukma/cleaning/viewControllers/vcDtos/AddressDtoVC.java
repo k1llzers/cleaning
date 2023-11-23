@@ -7,11 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AdressDtoVC extends AddressDto{
+public class AddressDtoVC extends AddressDto{
     private boolean canEdit;
     private boolean canDelete;
 
-    public AdressDtoVC(AddressDto addressDto){
+    public AddressDtoVC(AddressDto addressDto){
         setId(addressDto.getId());
         setCity(addressDto.getCity());
         setStreet(addressDto.getStreet());

@@ -2,7 +2,8 @@ package com.naukma.cleaning.controllers;
 
 import com.naukma.cleaning.models.dtos.CommercialProposalDto;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
-import com.naukma.cleaning.viewControllers.RateLimited;
+import com.naukma.cleaning.utils.RateLimited;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

@@ -1,4 +1,4 @@
-package com.naukma.cleaning.viewControllers;
+package com.naukma.cleaning.utils;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

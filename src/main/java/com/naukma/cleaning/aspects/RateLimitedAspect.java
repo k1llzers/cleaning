@@ -1,6 +1,5 @@
 package com.naukma.cleaning.aspects;
 
-import com.naukma.cleaning.viewControllers.RateLimited;
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
 import io.github.bucket4j.Refill;
@@ -10,6 +9,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+
+import com.naukma.cleaning.utils.RateLimited;
+
 import java.time.Duration;
 
 @Aspect

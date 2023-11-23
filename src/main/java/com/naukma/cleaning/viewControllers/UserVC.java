@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.naukma.cleaning.models.dtos.AddressDto;
 import com.naukma.cleaning.services.addressService.AddressService;
 import com.naukma.cleaning.services.userService.UserService;
-import com.naukma.cleaning.viewControllers.vcDtos.AdressDtoVC;
+import com.naukma.cleaning.viewControllers.vcDtos.AddressDtoVC;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -31,12 +31,12 @@ public class UserVC {
 	public String viewAdresses(Model model, Principal principal) {
 		var userID = userService.getUserByEmail(principal.getName()).getId();	
 		var addresses = addressService.getAddressesByUserId(userID);
-		List<AdressDtoVC> addressesVC = new ArrayList<>();
+		List<AddressDtoVC> addressesVC = new ArrayList<>();
 		for (var address : addresses){
-			var ad = new AdressDtoVC(address);
-			ad.setCanDelete(addressService.canDeleteAddress(address.getId()));
-			ad.setCanEdit(addressService.canEditAddress(address.getId()));
-			addressesVC.add(ad);
+			var add = new AddressDtoVC(address);
+			add.setCanDelete(addressService.canDeleteAddress(address.getId()));
+			add.setCanEdit(addressService.canEditAddress(address.getId()));
+			addressesVC.add(add);
 		}
 		model.addAttribute("addressesList", addressesVC);
 		return "user-addresses";
