@@ -41,7 +41,7 @@ public class OrderDto {
     @NotNull(message = "Address cannot be null")
     private Address address;
     @NotNull(message = "Order status cannot be null")
-    private Status orderStatus = Status.NOT_STARTED;
+    private Status orderStatus = Status.NOT_VERIFIED;
     @NotEmpty(message = "Commercial proposals cannot be empty")
     private Set<CommercialProposal> commercialProposals;
 }

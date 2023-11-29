@@ -3,25 +3,24 @@ package com.naukma.cleaning.services.orderService;
 import com.naukma.cleaning.dao.OrderDao;
 import com.naukma.cleaning.dao.entities.OrderEntity;
 import com.naukma.cleaning.models.dtos.OrderDto;
-import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.order.Order;
 import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.services.pricingService.PricingService;
 import com.naukma.cleaning.services.proposalService.CommercialProposalService;
 import com.naukma.cleaning.services.userService.UserService;
 
-import lombok.RequiredArgsConstructor;
-
 import com.naukma.cleaning.services.commentService.CommentService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -125,5 +124,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderDto getOrderDto(long id) {
         return modelMapper.map(getOrder(id), OrderDto.class);
+    }
+
+//    @Scheduled(cron = "0 0-59/1 * * * *" , zone = "GMT+2")
+    @Scheduled(cron = "0 8 * * * *" , zone = "GMT+2")
+    public void changeStatuses() {
+        List<OrderEntity> orderEntities = orderDao.findAll().stream()
+                .filter(order -> order.getOrderTime().toLocalDate().equals(LocalDate.now()))
+                .toList();
+        orderEntities.forEach(order -> order.setOrderStatus(Status.PREPARING));
+        orderDao.saveAll(orderEntities);
     }
 }

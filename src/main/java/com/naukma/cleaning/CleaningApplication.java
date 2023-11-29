@@ -16,12 +16,14 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.HashSet;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
+@EnableScheduling
 public class CleaningApplication {
 
     //@Autowired
@@ -89,15 +91,15 @@ public class CleaningApplication {
         orderService.createOrder(new OrderDto(1, 405.0, LocalDateTime.now(), LocalDateTime.now().plusHours(1),
             user, execs, null, address,
             com.naukma.cleaning.models.order.Status.NOT_VERIFIED, new HashSet<CommercialProposal>()));
-        System.out.println(orderService.getOrder(1).toString());
-        System.out.println("It's alive!");
+//        System.out.println(orderService.getOrder(1).toString());
+//        System.out.println("It's alive!");
         CommentService commentService = (CommentService)context.getBean("commentServiceImpl");
         CommentDto comment = new CommentDto(1, "Text", LocalDateTime.now(), 5);
         //commentService.createComment(1l, comment);
-        System.out.println(orderService.getOrder(1).toString());
+//        System.out.println(orderService.getOrder(1).toString());
         comment.setText("ayayay");
         //commentService.editComment(comment);
-        System.out.println(orderService.getOrder(1).toString());
+//        System.out.println(orderService.getOrder(1).toString());
     }
 
     @Bean
