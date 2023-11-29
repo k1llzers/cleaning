@@ -9,6 +9,7 @@ import com.naukma.cleaning.models.order.CommercialProposal;
 
 import com.naukma.cleaning.models.user.User;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,6 +66,7 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
     }
 
     @Override
+    @Cacheable(value="proposals", key = "#root.methodName")
     public List<CommercialProposal> getAllCommercialProposals() {
         List<CommercialProposalEntity> proposals = commercialProposalDao.findAll();
         return proposals.stream().map(x -> modelMapper.map(x, CommercialProposal.class)).toList();
