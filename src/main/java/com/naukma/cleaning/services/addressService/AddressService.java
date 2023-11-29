@@ -13,8 +13,7 @@ public interface AddressService {
     void editAddress(AddressDto addressDto);
     void editAddress(Address address);
     void deleteAddress(long id);
-    boolean canEditAddress(long id);
-    boolean canDeleteAddress(long id);
+    boolean hasAttachedOrders(long id);
     Address getAddress(long id);
     AddressDto getAddressDto(long id);
     List<Address> getUserAddresses(User user);

@@ -109,29 +109,10 @@ public class AddressServiceImpl implements AddressService {
         return getUserAddresses(userDto);
     }
 
-    //TODO: related logic in editAddress
     @Override
-    public boolean canEditAddress(long id) {
-        var addressEntity = modelMapper.map(getAddress(id), AddressEntity.class);
-        var orders = orderDao.findOrderEntitiesByAddress(addressEntity);
-        for (var order : orders) {
-            if (!(order.getOrderStatus() == Status.NOT_VERIFIED || order.getOrderStatus() == Status.CANCELLED || order.getOrderStatus() == Status.DONE)) {
-                return false;
-            }
-        }
+    public boolean hasAttachedOrders(long id) {
+        Address address = getAddress(id);
         return true;
-    }
-
-    //TODO: related logic in deleteAddress
-    @Override
-    public boolean canDeleteAddress(long id) {
-        var addressEntity = modelMapper.map(getAddress(id), AddressEntity.class);
-        var orders = orderDao.findOrderEntitiesByAddress(addressEntity);
-        for (var order : orders) {
-            if (!(order.getOrderStatus() == Status.DONE || order.getOrderStatus() == Status.CANCELLED)) {
-                return false;
-            }
-        }
-        return true;
+        //return address.getOrders().stream().anyMatch(x -> x.getOrderStatus() != Status.NOT_VERIFIED && x.getOrderStatus() != Status.CANCELLED);
     }
 }

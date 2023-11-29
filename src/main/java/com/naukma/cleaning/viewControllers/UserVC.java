@@ -34,8 +34,7 @@ public class UserVC {
 		List<AddressDtoVC> addressesVC = new ArrayList<>();
 		for (var address : addresses){
 			var add = new AddressDtoVC(address);
-			add.setCanDelete(addressService.canDeleteAddress(address.getId()));
-			add.setCanEdit(addressService.canEditAddress(address.getId()));
+			add.setHasAttachedOrders(addressService.hasAttachedOrders(address.getId()));
 			addressesVC.add(add);
 		}
 		model.addAttribute("addressesList", addressesVC);
