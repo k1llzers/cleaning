@@ -8,8 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AddressDtoVC extends AddressDto{
-    private boolean canEdit;
-    private boolean canDelete;
+    private boolean hasAttachedOrders;
 
     public AddressDtoVC(AddressDto addressDto){
         setId(addressDto.getId());
