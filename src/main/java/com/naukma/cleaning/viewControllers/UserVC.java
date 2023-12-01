@@ -3,12 +3,15 @@ package com.naukma.cleaning.viewControllers;
 import java.security.Principal;
 import java.util.ArrayList;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.naukma.cleaning.models.dtos.AddressDto;
 import com.naukma.cleaning.services.addressService.AddressService;
@@ -18,12 +21,14 @@ import com.naukma.cleaning.viewControllers.vcDtos.AddressDtoVC;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 @Controller
 @RequiredArgsConstructor
 public class UserVC {
 	
+	private final Logger logger = Logger.getLogger(UserVC.class.getName());
 	private final UserService userService;
 	private final AddressService addressService;
 
@@ -42,22 +47,24 @@ public class UserVC {
 	}
 
 	@PostMapping("/addAddress")
-	public String addAddress(@ModelAttribute @Valid AddressDto addressDto, Model model, Principal principal) {
+	public ResponseEntity<?> addAddress(@RequestBody AddressDto addressDto, Model model, Principal principal) {
+		logger.info(addressDto.toString());
 		var userID = userService.getUserByEmail(principal.getName()).getId();
 		addressService.createAddress(userID, addressDto);
-		return "redirect:/viewAddresses";
+		var addressID = addressService.getAddressesByUserId(userID).get(addressService.getAddressesByUserId(userID).size() - 1).getId();
+		return ResponseEntity.ok(addressID);
 	}
 
 	@PostMapping("/removeAddress")
-	public String removeAddress(@RequestParam("id") long id) {
+	public ResponseEntity<?> removeAddress(@RequestParam("id") long id) {
 		addressService.deleteAddress(id); 
-		return "redirect:/viewAddresses";
+		return ResponseEntity.ok(id);
 	}
 
 	@PostMapping("/editAddress")
-	public String editAddress(@ModelAttribute @Valid AddressDto addressDto) {
+	public ResponseEntity<?> editAddress(@RequestBody AddressDto addressDto) {
 		addressService.editAddress(addressDto);
-		return "redirect:/viewAddresses";
+		return ResponseEntity.ok(addressDto);
 	}
 }
 

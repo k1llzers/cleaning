@@ -96,11 +96,11 @@ button.editbtn:hover {
     background-color: rgb(64, 27, 212);
 }
 
-button.deletebtn {
+button.deletebtn, button.deletebtnform {
     background-color: rgb(202, 5, 5);
 }
 
-button.deletebtn:hover {
+button.deletebtn:hover, button.deletebtnform:hover {
     background-color: rgb(230, 35, 35);
 }
 

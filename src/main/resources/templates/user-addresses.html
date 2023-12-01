@@ -29,19 +29,33 @@
                 <td class="houseNumber" th:text="${address.houseNumber}"></td>
                 <td class="flatNumber" th:text="${address.flatNumber}"></td>
                 <td style="display: flex;">
-                    <button class="editbtn" th:attr="data-id=${address.id}, hasOrders=${address.hasAttachedOrders}" style="margin-right: 10px;">Edit</button>
-                    <button class="deletebtn" th:attr="hasOrders=${address.hasAttachedOrders}" style="margin-right: 10px;">Delete</button>
+                    <button class="editbtn"   th:attr="data-id=${address.id}, hasOrders=${address.hasAttachedOrders}" style="margin-right: 10px;">Edit</button>
+                    <button class="deletebtn" th:attr="data-id=${address.id}, hasOrders=${address.hasAttachedOrders}" style="margin-right: 10px;">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
 
-<div id="editFormOverlay" class="overlay">
+<div id="addAddressOverlay" class="overlay">
+    <div class="overlay-content">
+        <h2 class="overlayHeader">Add Address</h2>
+        <form id="addAddressForm" method="post">
+            <input type="text" class="form-control" placeholder="City" name="city" required>
+            <input type="text" class="form-control" placeholder="Street" name="street" required>
+            <input type="text" class="form-control" placeholder="House Number" name="houseNumber" required>
+            <input type="text" class="form-control" placeholder="Flat Number" name="flatNumber">
+            <button type="submit" class="submitbtn">Add Address</button>
+        </form>
+        <button class="overlaybttn" onclick="closeAddOverlay()">Close</button>
+    </div>
+</div>
+
+<div id="editAddressOverlay" class="overlay">
     <div class="overlay-content">
         <h2 class="overlayHeader">Edit Address</h2>
         <h3 class="notice" id="editNotice"></h3>
-        <form id="editForm" th:action="@{/editAddress}" method="post">
+        <form id="editAddressForm" method="post">
             <input type="hidden" id="editId" name="id" required>
             <input type="text" id="editCity" name="city" placeholder="City" required>
             <input type="text" id="editStreet" name="street" placeholder="Street" required>
@@ -53,117 +67,20 @@
     </div>
 </div>
 
-<div id="addAddressOverlay" class="overlay">
-    <div class="overlay-content">
-        <h2 class="overlayHeader">Add Address</h2>
-        <form id="addAddressForm" th:action="@{/addAddress}" method="post">
-            <input type="text" class="form-control" placeholder="City" name="city" required>
-            <input type="text" class="form-control" placeholder="Street" name="street" required>
-            <input type="text" class="form-control" placeholder="House Number" name="houseNumber" required>
-            <input type="text" class="form-control" placeholder="Flat Number" name="flatNumber">
-            <button type="submit" class="submitbtn">Add Address</button>
-        </form>
-        <button class="overlaybttn" onclick="closeAddOverlay()">Close</button>
-    </div>
-</div>
-
-
 <div id="deleteAddressOverlay" class="overlay">
     <div class="overlay-content">
         <h2 class="overlayHeader">Delete Address</h2>
         <h3 class="notice" id="deleteNotice"></h3>
-        <form id="deleteAddressForm" th:action="@{/removeAddress}" method="post">
+        <form id="deleteAddressForm" method="post">
             <input type="hidden" id="deleteId" name="id" required>
             <p>Are you sure you want to delete this address?</p>
-            <button type="submit" class="deletebtn">Delete</button>
+            <button type="submit" class="deletebtnform">Delete</button>
         </form>
         <button class="overlaybttn" onclick="closeDeleteOverlay()">Close</button>
     </div>
 </div>
 
-
-<script>
-    document.querySelectorAll('.editbtn').forEach(function(button) {
-    button.addEventListener('click', function(event) {
-        var id = event.target.getAttribute('data-id');
-        var row = document.getElementById('row-' + id);
-        var hasOrders = button.getAttribute('hasOrders');
-        if (hasOrders == 'true') {
-            document.querySelector('#editNotice').innerHTML = 'This address has orders attached to it. <br>Editing it will <strong>NOT</strong> affect those orders.';
-        } else {
-            document.querySelector('#editNotice').textContent = '';
-        }
-        document.getElementById('editId').value = id;
-        document.getElementById('editCity').value = row.querySelector('.city').textContent;
-        document.getElementById('editStreet').value = row.querySelector('.street').textContent;
-        document.getElementById('editHouseNumber').value = row.querySelector('.houseNumber').textContent;
-        document.getElementById('editFlatNumber').value = row.querySelector('.flatNumber').textContent;
-
-        document.getElementById('editFormOverlay').style.display = 'block';
-    });
-});
-
-    document.querySelectorAll('.deletebtn').forEach(function(button) {
-    button.addEventListener('click', function(event) {
-        var hasOrders = button.getAttribute('hasOrders');
-        if (hasOrders == 'true') {
-            document.querySelector('#deleteNotice').innerHTML = 'This address has orders attached to it. <br>Deleting it will <strong>NOT</strong> affect those orders.';
-        } else {
-            document.querySelector('#deleteNotice').textContent = '';
-        }
-        document.getElementById('deleteId').value = event.target.parentNode.parentNode.getAttribute('id').replace('row-', '');
-        document.getElementById('deleteAddressOverlay').style.display = 'block';
-    });
-});
-
-
-
-
-    function closeEditOverlay() {
-        document.getElementById('editFormOverlay').style.display = 'none';
-    }
-
-    function closeAddOverlay() {
-        document.getElementById('addAddressOverlay').style.display = 'none';
-    }
-
-    function closeDeleteOverlay() {
-        document.getElementById('deleteAddressOverlay').style.display = 'none';
-    }
-
-    document.getElementById('addAddressBtn').addEventListener('click', function() {
-        document.getElementById('addAddressOverlay').style.display = 'block';
-    });
-
-
-    window.onload = function() {
-        var addOverlay = document.getElementById('addAddressOverlay');
-        var editFormOverlay = document.getElementById('editFormOverlay');
-        var deleteOverlay = document.getElementById('deleteAddressOverlay');
-
-        window.onclick = function(event) {
-            if (event.target == addOverlay) {
-                addOverlay.style.display = 'none';
-            } else if (event.target == editFormOverlay) {
-                editFormOverlay.style.display = 'none';
-            } else if (event.target == deleteOverlay) {
-                deleteOverlay.style.display = 'none';
-            }
-        }
-
-        window.onkeydown = function(event) {
-            if (event.key == 'Escape') {
-                if (addOverlay.style.display == 'block') {
-                    addOverlay.style.display = 'none';
-                }
-                if (editFormOverlay.style.display == 'block') {
-                    editFormOverlay.style.display = 'none';
-                } else if (deleteOverlay.style.display == 'block') {
-                    deleteOverlay.style.display = 'none';
-                }
-            }
-        }
-    }
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="../scripts/addresses.js"></script>
 </body>
 </html>
