@@ -8,7 +8,9 @@ import com.naukma.cleaning.models.order.Address;
 import com.naukma.cleaning.models.order.CommercialProposal;
 
 import com.naukma.cleaning.models.user.User;
+import org.hibernate.annotations.Cache;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -26,30 +28,35 @@ public class CommercialProposalServiceImpl implements CommercialProposalService 
 
 
     @Override
+    @CacheEvict("proposals")
     public CommercialProposal createCommercialProposal(CommercialProposal commercialProposal) {
         var commercialProposalEntity = modelMapper.map(commercialProposal, CommercialProposalEntity.class);
         return modelMapper.map(commercialProposalDao.save(commercialProposalEntity), CommercialProposal.class);
     }
 
     @Override
+    @CacheEvict("proposals")
     public CommercialProposalDto createCommercialProposal(CommercialProposalDto commercialProposalDto) {
         CommercialProposal commercialProposal = modelMapper.map(commercialProposalDto, CommercialProposal.class);
         return modelMapper.map(createCommercialProposal(commercialProposal), CommercialProposalDto.class);
     }
 
     @Override
+    @CacheEvict("proposals")
     public CommercialProposal editCommercialProposal(CommercialProposal commercialProposal) {
         var commercialProposalEntity = modelMapper.map(commercialProposal, CommercialProposalEntity.class);
         return modelMapper.map(commercialProposalDao.save(commercialProposalEntity), CommercialProposal.class);
     }
 
     @Override
+    @CacheEvict("proposals")
     public CommercialProposalDto editCommercialProposal(CommercialProposalDto commercialProposalDto) {
         CommercialProposal commercialProposal = modelMapper.map(commercialProposalDto, CommercialProposal.class);
         return modelMapper.map(editCommercialProposal(commercialProposal), CommercialProposalDto.class);
     }
 
     @Override
+    @CacheEvict("proposals")
     public void deleteCommercialProposal(long id) {
         commercialProposalDao.deleteById(id);
     }

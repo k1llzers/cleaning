@@ -5,6 +5,7 @@ public enum Status {
     VERIFIED,
     NOT_STARTED,
     IN_PROGRESS,
+    PREPARING,
     DONE,
     CANCELLED
 }

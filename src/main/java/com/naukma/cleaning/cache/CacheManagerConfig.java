@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableCaching
-@EnableScheduling
 public class CacheManagerConfig {
 
     @Bean
