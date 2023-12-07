@@ -15,19 +15,6 @@ import com.naukma.cleaning.services.proposalService.CommercialProposalServiceImp
 import com.naukma.cleaning.services.userService.UserServiceImpl;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.batch.core.*;
-import org.springframework.batch.core.job.builder.JobBuilder;
-import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.scope.context.ChunkContext;
-import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.batch.core.step.tasklet.Tasklet;
-import org.springframework.batch.repeat.CompletionPolicy;
-import org.springframework.batch.repeat.RepeatStatus;
-import org.springframework.batch.repeat.policy.CompositeCompletionPolicy;
-import org.springframework.batch.repeat.policy.SimpleCompletionPolicy;
-import org.springframework.batch.repeat.policy.TimeoutTerminationPolicy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -155,6 +142,11 @@ public class CleaningApplication {
         orderService.createOrder(new OrderDto(5, 762, LocalDateTime.now().minusDays(4), LocalDateTime.now().plusHours(1),
                 null, execs, null, null, Status.DONE, new HashSet<CommercialProposal>()));
         System.out.println("It's alive!");
+        try {
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Bean
@@ -167,24 +159,33 @@ public class CleaningApplication {
         return new ModelMapper();
     }
 
-    @Autowired
-    private JobLauncher jobLauncher;
+//    @Autowired
+//    private JobLauncher jobLauncher;
+//
+//    @Autowired
+//    private JobRepository jobRepository;
+//
+//    @Autowired
+//    private Job job;
+//
+//    @Autowired
+//    private PlatformTransactionManager transactionManager;
+//
+//    @Scheduled(fixedRate = 15000)
+////    @Scheduled(cron = "* */1 * * * *")
+//
+//    public void launchJob() throws Exception {
+//        Date date = new Date();
+//        JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("launchDate", date)
+//                    .toJobParameters());
+////        JobExecution execution = jobLauncher.run(
+////                job,
+////                new JobParametersBuilder().toJobParameters()
+////        );
+//    }
 
-    @Autowired
-    private JobRepository jobRepository;
 
-    @Autowired
-    private Job job;
 
-    @Autowired
-    private PlatformTransactionManager transactionManager;
-
-    @Scheduled(fixedRate = 2000)
-    public void launchJob() throws Exception {
-        Date date = new Date();
-        JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("launchDate", date)
-                    .toJobParameters());
-    }
 //    @Scheduled(cron = "0/10 * * * * *") // define schedule as needed
 //    public void runJob(@Autowired JobLauncher jobLauncher, @Autowired Job job) throws Exception {
 //        JobParameters parameters = new JobParameters();

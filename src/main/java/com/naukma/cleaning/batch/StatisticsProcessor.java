@@ -15,6 +15,9 @@ import java.util.List;
 public class StatisticsProcessor implements ItemProcessor<List<OrderEntity>, ReportEntity> {
     @Override
     public ReportEntity process(List<OrderEntity> list) throws Exception {
+        if (list == null) {
+            log.error("LIST NULL");
+        }
         log.info("BATCH: start processing orders data");
         BigDecimal totalMoney = new BigDecimal("0");
         long orderCounter = 0;

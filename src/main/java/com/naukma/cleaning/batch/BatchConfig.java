@@ -33,7 +33,8 @@ public class BatchConfig {
     @Bean
     public Step getStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("step", jobRepository)
-                .<List<OrderEntity>, ReportEntity> chunk(10, transactionManager)
+                .<List<OrderEntity>, ReportEntity> chunk(1, transactionManager)
+//                .<List<OrderEntity>, List<OrderEntity>> chunk(1, transactionManager)
                 .reader(getReader())
                 .processor(getProcessor())
                 .writer(getWriter())
@@ -41,20 +42,22 @@ public class BatchConfig {
     }
 
     @Bean
-//    @StepScope
+    @StepScope
     public OrderReader getReader() {
+//        return new OrderReader2();
         return new OrderReader();
     }
 
     @Bean
-//    @StepScope
+    @StepScope
     public StatisticsProcessor getProcessor() {
         return new StatisticsProcessor();
     }
 
     @Bean
-//    @StepScope
+    @StepScope
     public StatisticsWriter getWriter() {
+//        return new StatisticsWriter2();
         return new StatisticsWriter();
     }
 }
