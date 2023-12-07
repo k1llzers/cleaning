@@ -27,18 +27,15 @@ public class OrderReader implements ItemReader<List<OrderEntity>> {
             return List.of(null);
         }
         log.info("Starting BATCH");
-        // TODO FIND IN PERIOD
         LocalDate startDate = LocalDate.now().minusMonths(1);
         LocalDate endDate = LocalDate.now();
         List<OrderEntity> orders2 = orderDao.findAll();
         List<OrderEntity> orders =
                 orderDao.findAllByOrderTimeLessThanEqualAndOrderTimeGreaterThanEqualAndOrderStatusIs(endDate.atStartOfDay(), startDate.atStartOfDay(), Status.DONE);
-
         if(orders == null || orders.isEmpty()) {
             log.warn("No orders found for the given period and status");
             return List.of(null);
         }
-
         log.info("Retrieved {} orders", orders.size());
         done = true;
         return orders;

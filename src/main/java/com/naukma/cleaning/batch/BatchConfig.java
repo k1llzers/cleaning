@@ -5,7 +5,6 @@ import com.naukma.cleaning.dao.entities.ReportEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
@@ -18,7 +17,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import java.util.List;
 
 @Configuration
-//@EnableBatchProcessing//(dataSourceRef = "batchDataSource", transactionManagerRef = "batchTransactionManager")
 @RequiredArgsConstructor
 public class BatchConfig {
 
@@ -34,7 +32,6 @@ public class BatchConfig {
     public Step getStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("step", jobRepository)
                 .<List<OrderEntity>, ReportEntity> chunk(1, transactionManager)
-//                .<List<OrderEntity>, List<OrderEntity>> chunk(1, transactionManager)
                 .reader(getReader())
                 .processor(getProcessor())
                 .writer(getWriter())
@@ -44,7 +41,6 @@ public class BatchConfig {
     @Bean
     @StepScope
     public OrderReader getReader() {
-//        return new OrderReader2();
         return new OrderReader();
     }
 
@@ -57,7 +53,6 @@ public class BatchConfig {
     @Bean
     @StepScope
     public StatisticsWriter getWriter() {
-//        return new StatisticsWriter2();
         return new StatisticsWriter();
     }
 }
