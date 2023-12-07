@@ -12,13 +12,33 @@ import com.naukma.cleaning.services.commentService.CommentService;
 import com.naukma.cleaning.services.orderService.OrderService;
 import com.naukma.cleaning.services.proposalService.CommercialProposalServiceImpl;
 import com.naukma.cleaning.services.userService.UserServiceImpl;
+
 import org.modelmapper.ModelMapper;
+import org.springframework.batch.core.*;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.scope.context.ChunkContext;
+import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.repeat.CompletionPolicy;
+import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.batch.repeat.policy.CompositeCompletionPolicy;
+import org.springframework.batch.repeat.policy.SimpleCompletionPolicy;
+import org.springframework.batch.repeat.policy.TimeoutTerminationPolicy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.PlatformTransactionManager;
+
+import javax.sql.DataSource;
+import java.util.Date;
 import java.util.HashSet;
 import java.time.LocalDateTime;
 
@@ -26,11 +46,46 @@ import java.time.LocalDateTime;
 @EnableScheduling
 public class CleaningApplication {
 
-    //@Autowired
-    //NotificationService notificationService;
-
-    //@Autowired
-    //LoggingService loggingService;
+//    @Autowired
+//    private DataSource batchDataSource;
+//
+//    @Bean
+//    public Step step(JobRepository jobRepository) {
+//        StepBuilder stepBuilderOne = new StepBuilder("step1", jobRepository);
+//        return stepBuilderOne.tasklet(helloWorldTasklet(), transactionManager())
+//                .build();
+//    }
+//
+//    @Bean
+//    public Job job(JobRepository jobRepository) {
+//        return new JobBuilder("job", jobRepository)
+//                .start(step(jobRepository))
+//                .build();
+//    }
+//
+//    @Bean
+//    public CompletionPolicy completionPolicy() {
+//        CompositeCompletionPolicy policy =
+//                new CompositeCompletionPolicy();
+//        policy.setPolicies(
+//                new CompletionPolicy[] {
+//                        new TimeoutTerminationPolicy(3),
+//                        new SimpleCompletionPolicy(1000)});
+//        return policy;
+//    }
+//
+//    @Bean
+//    public DataSourceTransactionManager transactionManager() {
+//        return new DataSourceTransactionManager(batchDataSource);
+//    }
+//
+//    @Bean
+//    public Tasklet helloWorldTasklet() {
+//        return (StepContribution contribution, ChunkContext chunkContext) -> {
+//            System.out.println("Hello, World!");
+//            return RepeatStatus.FINISHED;
+//        };
+//    }
 
     public static void main(String[] args) {
         var context = SpringApplication.run(CleaningApplication.class, args);
@@ -111,4 +166,35 @@ public class CleaningApplication {
     public ModelMapper getModelMapper(){
         return new ModelMapper();
     }
+
+    @Autowired
+    private JobLauncher jobLauncher;
+
+    @Autowired
+    private JobRepository jobRepository;
+
+    @Autowired
+    private Job job;
+
+    @Autowired
+    private PlatformTransactionManager transactionManager;
+
+    @Scheduled(fixedRate = 2000)
+    public void launchJob() throws Exception {
+        Date date = new Date();
+//        logger.debug("scheduler starts at " + date);
+//        if (enabled.get()) {
+            JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("launchDate", date)
+                    .toJobParameters());
+//            batchRunCounter.incrementAndGet();
+//            logger.debug("Batch job ends with status as " + jobExecution.getStatus());
+//        }
+//        logger.debug("scheduler ends ");
+    }
+//    @Scheduled(cron = "0/10 * * * * *") // define schedule as needed
+//    public void runJob(@Autowired JobLauncher jobLauncher, @Autowired Job job) throws Exception {
+//        JobParameters parameters = new JobParameters();
+//        // add parameters as needed
+//        jobLauncher.run(job, parameters);
+//    }
 }

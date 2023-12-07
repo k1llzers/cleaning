@@ -156,6 +156,14 @@
             <version>7.6.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
