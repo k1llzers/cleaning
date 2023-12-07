@@ -14,8 +14,8 @@ import java.util.Set;
 @Table(name = "cleaning_order")
 public class OrderEntity {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(nullable = false)
     private double price;
     @Temporal(TemporalType.TIMESTAMP)
@@ -25,7 +25,7 @@ public class OrderEntity {
     @Column(nullable = false)
     private LocalDateTime creationTime;
     @OneToOne
-    @JoinColumn(name = "client_fk", nullable = false)
+    @JoinColumn(name = "client_fk", nullable = true)
     private UserEntity client;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "order_executors",
@@ -36,7 +36,7 @@ public class OrderEntity {
     @JoinColumn(name = "column_id")
     private CommentEntity comment;
     @OneToOne
-    @JoinColumn(name = "address_fk", nullable = false)
+    @JoinColumn(name = "address_fk", nullable = true)
     private AddressEntity address;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

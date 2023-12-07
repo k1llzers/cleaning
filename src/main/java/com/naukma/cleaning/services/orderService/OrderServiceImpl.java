@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void createOrder(Order order) {
-        order.setPrice(pricingService.calculate(order));
+//        order.setPrice(pricingService.calculate(order));
         orderDao.save(modelMapper.map(order, OrderEntity.class));
     }
 

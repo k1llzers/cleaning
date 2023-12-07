@@ -5,6 +5,7 @@ import com.naukma.cleaning.models.dtos.OrderDto;
 import com.naukma.cleaning.models.dtos.UserDto;
 import com.naukma.cleaning.models.order.Address;
 import com.naukma.cleaning.models.order.CommercialProposal;
+import com.naukma.cleaning.models.order.Status;
 import com.naukma.cleaning.models.user.Role;
 import com.naukma.cleaning.models.user.User;
 import com.naukma.cleaning.services.addressService.AddressService;
@@ -143,18 +144,17 @@ public class CleaningApplication {
         var execs = new HashSet<User>();
         execs.add(exec);
         OrderService orderService = (OrderService)context.getBean("orderServiceImpl");
-        orderService.createOrder(new OrderDto(1, 405.0, LocalDateTime.now(), LocalDateTime.now().plusHours(1),
-            user, execs, null, address,
-            com.naukma.cleaning.models.order.Status.NOT_VERIFIED, new HashSet<CommercialProposal>()));
-//        System.out.println(orderService.getOrder(1).toString());
-//        System.out.println("It's alive!");
-        CommentService commentService = (CommentService)context.getBean("commentServiceImpl");
-        CommentDto comment = new CommentDto(1, "Text", LocalDateTime.now(), 5);
-        //commentService.createComment(1l, comment);
-//        System.out.println(orderService.getOrder(1).toString());
-        comment.setText("ayayay");
-        //commentService.editComment(comment);
-//        System.out.println(orderService.getOrder(1).toString());
+        orderService.createOrder(new OrderDto(1, 405.0, LocalDateTime.now().minusDays(5), LocalDateTime.now().plusHours(1),
+            null, execs, null, null, Status.DONE, new HashSet<CommercialProposal>()));
+        orderService.createOrder(new OrderDto(2, 1560, LocalDateTime.now().minusDays(1), LocalDateTime.now().plusHours(1),
+                null, execs, null, null, Status.DONE, new HashSet<CommercialProposal>()));
+        orderService.createOrder(new OrderDto(3, 300, LocalDateTime.now().minusDays(3), LocalDateTime.now().plusHours(1),
+                null, execs, null, null, Status.CANCELLED, new HashSet<CommercialProposal>()));
+        orderService.createOrder(new OrderDto(4, 2800, LocalDateTime.now().minusDays(1), LocalDateTime.now().plusHours(1),
+                null, execs, null, null, Status.DONE, new HashSet<CommercialProposal>()));
+        orderService.createOrder(new OrderDto(5, 762, LocalDateTime.now().minusDays(4), LocalDateTime.now().plusHours(1),
+                null, execs, null, null, Status.DONE, new HashSet<CommercialProposal>()));
+        System.out.println("It's alive!");
     }
 
     @Bean
@@ -182,14 +182,8 @@ public class CleaningApplication {
     @Scheduled(fixedRate = 2000)
     public void launchJob() throws Exception {
         Date date = new Date();
-//        logger.debug("scheduler starts at " + date);
-//        if (enabled.get()) {
-            JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("launchDate", date)
+        JobExecution jobExecution = jobLauncher.run(job, new JobParametersBuilder().addDate("launchDate", date)
                     .toJobParameters());
-//            batchRunCounter.incrementAndGet();
-//            logger.debug("Batch job ends with status as " + jobExecution.getStatus());
-//        }
-//        logger.debug("scheduler ends ");
     }
 //    @Scheduled(cron = "0/10 * * * * *") // define schedule as needed
 //    public void runJob(@Autowired JobLauncher jobLauncher, @Autowired Job job) throws Exception {

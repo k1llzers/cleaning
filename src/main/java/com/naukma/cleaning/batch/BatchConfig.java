@@ -1,6 +1,7 @@
 package com.naukma.cleaning.batch;
 
 import com.naukma.cleaning.dao.entities.OrderEntity;
+import com.naukma.cleaning.dao.entities.ReportEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -32,21 +33,27 @@ public class BatchConfig {
     @Bean
     public Step getStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("step", jobRepository)
-                .<List<OrderEntity>, List<OrderEntity>> chunk(10, transactionManager)
+                .<List<OrderEntity>, ReportEntity> chunk(10, transactionManager)
                 .reader(getReader())
-//                .processor()
+                .processor(getProcessor())
                 .writer(getWriter())
                 .build();
     }
 
     @Bean
-    @StepScope
+//    @StepScope
     public OrderReader getReader() {
         return new OrderReader();
     }
 
     @Bean
-    @StepScope
+//    @StepScope
+    public StatisticsProcessor getProcessor() {
+        return new StatisticsProcessor();
+    }
+
+    @Bean
+//    @StepScope
     public StatisticsWriter getWriter() {
         return new StatisticsWriter();
     }
